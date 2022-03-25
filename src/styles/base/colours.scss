@@ -1,0 +1,48 @@
+//* Colours
+//* Color palette - SCSS RGB
+$color-1: rgba(32, 32, 32, 1);
+$color-2: rgba(26, 32, 53, 1);
+$color-3: rgba(31, 40, 62, 1);
+$color-4: rgba(15, 57, 78, 1);
+$color-5: rgba(36, 135, 177, 1);
+$color-6: rgba(238, 70, 47, 1);
+$color-7: rgba(255, 166, 0, 1);
+$color-8: rgba(125, 181, 99, 1);
+
+//* Neutral
+$neutral-1: rgba(0 , 0, 0, 1);
+$neutral-2: rgba(255 , 255, 255, 1);
+$neutral-3: rgba(128, 128, 128, 1);
+
+//* Text
+$main-title: $color-5;
+$secondary-title: $color-8;
+$titles: $neutral-2;
+$paragraph: $neutral-2;
+$link: $neutral-2;
+$link-hover: $color-5;
+$icon: $neutral-2; 
+$icon-hover: rgba($color: $neutral-2, $alpha: 0.4);
+
+//* button
+$buttonNav-bg: transparent;
+$buttonNavHover-bg: rgba($color: $neutral-2, $alpha: 0.7);
+
+
+//* background
+$main-bg: $color-2;
+$header-bg: $neutral-1;
+$aside-bg: $color-3;
+$navBar-bg: $color-2;
+$navBar-bg-hover: rgba($color: $color-3, $alpha: 0.7);
+$icon-bg-hover: rgba($color: $neutral-2, $alpha: 0.4);
+$content: $color-2;
+$menu-item-hover: rgba($color: $neutral-2, $alpha: 0.4);
+
+$lineChart-bg: $color-3;
+$barChart-bg: $color-3;
+
+$shadow: rgba($color: $neutral-1, $alpha: 0.5);
+$line: $neutral-2;
+$lineChartBorder: $color-5;
+

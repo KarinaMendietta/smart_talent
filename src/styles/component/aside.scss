@@ -1,0 +1,41 @@
+@import "./../base/colours.scss";
+@import "./../base/variables.scss";
+@import "./../base/mixins.scss";
+
+.menu {
+  width: 100%;
+  height: calc(100vh - 4rem);
+  margin-right: 2rem;
+  padding: 2rem;
+  border-radius: 1rem;
+  background-color: $aside-bg;
+  overflow-y: auto;
+
+  box-shadow: rgb(0 0 0 / 5%) 0rem 1.25rem 1.6875rem 0rem;
+  border: none;
+
+  .menu__container {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+.menu__title {
+  margin-bottom: $margin_elemt;
+}
+
+.menu__list {
+  display: flex;
+  flex-direction: column;
+}
+
+.menu__link {
+  display: flex;
+  align-items: center;
+  padding: calc($padding_elemt/2) $padding_elemt;
+
+  &:hover {
+    background-color: $menu-item-hover;
+    border-radius: 1rem;
+  }
+}

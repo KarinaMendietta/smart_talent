@@ -1,0 +1,59 @@
+@import "./../base/colours.scss";
+@import "./../base/variables.scss";
+@import "./../base/mixins.scss";
+
+.navBar {
+  background-color: $navBar-bg;
+  border-radius: 1rem;
+
+  .navBar__container {
+    display: flex;
+    justify-content: space-between;
+    padding: $padding_elemt;
+  }
+
+  &.fijo {
+    background-color: $navBar-bg-hover;
+    width: 70%;
+    position: fixed;
+    z-index: 1;
+    top: 2rem;
+    backdrop-filter: blur(1rem);
+    -webkit-backdrop-filter: blur(1rem);
+    -o-filter-backdrop-filter: blur(1rem);
+    -ms-filter-backdrop-filter: blur(1rem);
+    -moz-backdrop-filter: blur(1rem);
+    @include tablet {
+      background-color: $navBar-bg-hover;
+    }
+  }
+}
+
+.navBar__item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.navBar__item--page {
+  display: flex;
+  flex-direction: column;
+
+  .page {
+    margin-bottom: $margin_elemt;
+  }
+}
+
+.navBar__item--icon {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+
+  .icon--navBar {
+    &:hover {
+      background-color: $icon-bg-hover;
+      padding: 1rem;
+      border-radius: 50%;
+    }
+  }
+}

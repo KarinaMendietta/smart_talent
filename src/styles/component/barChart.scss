@@ -1,0 +1,22 @@
+@import './../base/colours.scss';
+@import './../base/variables.scss';
+@import './../base/mixins.scss';
+
+.barChart{
+    background: $barChart-bg;
+    border-radius: 0.5rem;
+    padding: $padding_elemt;
+    // flex-basis: 50%;
+    // -webkit-box-flex: 0;
+    // flex-grow: 0;
+    // max-width: 50%;
+    // @include tablet{
+    //     flex-basis: 33.3333%;
+    //     flex-grow: 0;
+    //     max-width: 33.3333%;
+    // }
+}
+.barChart__graphic{
+    background: linear-gradient(195deg, rgb(102, 187, 106), rgb(67, 160, 71));
+    border-radius: 0.5rem;
+}
