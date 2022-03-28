@@ -18,6 +18,6 @@
 }
 
 .lineChart__graphic{
-    background: linear-gradient(195deg, rgb(73, 163, 241), rgb(26, 115, 232));
+    background: $lineChartGraphic-bg;
     border-radius: 0.5rem;
 }

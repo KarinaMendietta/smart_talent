@@ -5,20 +5,15 @@ import { Link } from "react-router-dom";
 // Importando Font Awesome
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faBars,
-  faCog,
   faHouse,
-  faUser,
-  faRemove,
 } from "@fortawesome/free-solid-svg-icons";
 // Importando estilos SASS
 import "./../styles/component/aside.scss";
 
-const Aside = () => {
-  
+const Aside = (props) => {
   return (
     <>
-      <aside className="menu ">
+      <aside className="menu"> 
         <div className="menu__container">
           <h3 className="menu__title">Smart Talent</h3>
 

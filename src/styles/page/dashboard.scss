@@ -6,9 +6,9 @@
     background-color: transparent;
     padding: $padding-elemt 0;
     overflow: hidden;
-    &::-webkit-scrollbar {
-        -webkit-appearance: none;
-    }
+    // &::-webkit-scrollbar {
+    //     -webkit-appearance: none;
+    // }
 }
 
 .charts{

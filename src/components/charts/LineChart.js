@@ -84,7 +84,7 @@ const LineChart = () => {
         borderColor: "rgba(255 , 255, 255, 1)",
         pointRadius: 6,
         pointBackgroundColor: "rgba(255 , 255, 255, 1)",
-        backgroundColor: "rgba(36, 135, 177, 0.5)",
+        backgroundColor: "rgba(0, 0, 0, 0.3)",
         fill: true,
       },
     ],

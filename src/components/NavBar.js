@@ -9,34 +9,20 @@ import {
   faCog,
   faHouse,
   faUser,
-  faRemove,
 } from "@fortawesome/free-solid-svg-icons";
-// import { faLinkedin, faGithub } from '@fortawesome/free-brands-svg-icons';
 // Importando estilos SASS
 import "./../styles/component/navBar.scss";
 
-const NavBar = () => {
+const NavBar = (props) => {
   const [navBar, setNavBar] = useState(false);
-  // const [btnMenu, setBtnMenu] = useState(false);
-  // const [btnMenuContent, setBtnMenuContent] = useState(faBars);
 
   const NavegacionFija = () => {
-    if(window.scrollY >= 100){
+    if(window.scrollY >= 10){
       setNavBar(true);
     }else{
       setNavBar(false);
     }
   }
-
-  // const HandleBtnMenu = () => {
-  //   if(btnMenu == true){
-  //     setBtnMenu(false);
-  //     setBtnMenuContent(faBars);
-  //   } else{
-  //     setBtnMenu(true);
-  //     setBtnMenuContent(faRemove);
-  //   }
-  // };
 
   useEffect(() => {
     window.addEventListener('scroll', NavegacionFija, true);
@@ -47,8 +33,7 @@ const NavBar = () => {
   }, []);
 
   const classNavBar = navBar ? 'navBar fijo': 'navBar';
-  // const classMenu = btnMenu ? 'nav nav--float': 'nav';
-  // className={classNavBar}
+
   return (
     <>
       <div className={classNavBar}>
@@ -66,7 +51,7 @@ const NavBar = () => {
             </button>
 
             <button href="/" className="icon icon--navBar">
-              <FontAwesomeIcon icon={faBars} />
+              <FontAwesomeIcon icon={faBars} onClick={props.funcion}/>
             </button>
             
             <button href="/" className="icon icon--navBar">

@@ -14,6 +14,8 @@ const Dashboard = () => {
           <LineChart/>
           <BarChart/>
           <LineChart/>
+          <BarChart/>
+          <LineChart/>
         </div>
       </div>
     </>

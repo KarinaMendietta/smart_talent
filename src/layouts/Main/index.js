@@ -1,5 +1,7 @@
+// Importando Hooks
+import { useState } from "react";
 // Importando react-router
-import { Link, Outlet } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 // Importando componentes
 import Aside from "./../../components/Aside";
 import NavBar from "../../components/NavBar";
@@ -7,18 +9,29 @@ import NavBar from "../../components/NavBar";
 import "./../../styles/layouts/main.scss";
 
 const Main = () => {
+  const [btnMenu, setBtnMenu] = useState(false);
+
+  const HandleBtnMenu = () => {
+    if(btnMenu === true){
+      setBtnMenu(false);
+    } else{
+      setBtnMenu(true);
+    }
+  };
+  
+  const classMenu = btnMenu ? 'aside aside--float': 'aside';
 
   return (
     <>
       <div className="main">
         <div className="main__container">
-          <div className="aside">
+          <div className={classMenu}>
             <Aside />
           </div>
 
           <div className="content">
             <div className="header--main">
-              <NavBar />
+              <NavBar funcion={HandleBtnMenu}/>
             </div>
             
             <div className="Outlet">

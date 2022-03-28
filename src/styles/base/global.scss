@@ -21,7 +21,7 @@ body{
 
 [class*="__container"] {
     width: 95%;
-    max-width: 1200px;
+    max-width: 1300px;
     margin:0 auto;
     @include macbook_air{
         max-width: 1900px;;

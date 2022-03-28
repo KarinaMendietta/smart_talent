@@ -13,19 +13,13 @@
   }
 
   &.fijo {
-    background-color: $navBar-bg-hover;
-    width: 70%;
-    position: fixed;
-    z-index: 1;
-    top: 2rem;
-    backdrop-filter: blur(1rem);
-    -webkit-backdrop-filter: blur(1rem);
-    -o-filter-backdrop-filter: blur(1rem);
-    -ms-filter-backdrop-filter: blur(1rem);
-    -moz-backdrop-filter: blur(1rem);
-    @include tablet {
-      background-color: $navBar-bg-hover;
-    }
+    background-color: $navBarFijo-bg;
+    box-shadow: rgb(52 71 103 / 90%) 0rem 0rem 0.0625rem 0.0625rem inset, rgb(0 0 0 / 5%) 0rem 1.25rem 1.6875rem 0rem;
+    -webkit-backdrop-filter: saturate(200%) blur(1.9rem);
+    -o-filter-backdrop-filter: saturate(200%) blur(1.9rem);
+    -ms-filter-backdrop-filter: saturate(200%) blur(1.9rem);
+    -moz-backdrop-filter: saturate(200%) blur(1.9rem);
+    backdrop-filter: saturate(200%) blur(1.9rem);
   }
 }
 
