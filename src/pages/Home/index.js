@@ -17,7 +17,6 @@ const Home = () => {
                 </Link>
               </li>
             </ul>
-            <ButtonModal/>
           </nav>
         </div>
       </header>
