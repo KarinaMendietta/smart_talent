@@ -3,7 +3,7 @@ import React from 'react'
 const Tables = () => {
   return (
     <>
-        <h4>Tables</h4>
+        <h4>Table</h4>
     </>
   )
 }
