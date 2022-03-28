@@ -2,6 +2,7 @@
 import { Link } from "react-router-dom";
 // Importando estilos
 import "./../../styles/page/home.scss";
+import { ButtonModal } from "../../components/ButtonModal";
 
 const Home = () => {
   return (
@@ -16,6 +17,7 @@ const Home = () => {
                 </Link>
               </li>
             </ul>
+            <ButtonModal/>
           </nav>
         </div>
       </header>

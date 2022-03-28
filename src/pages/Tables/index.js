@@ -8,4 +8,4 @@ const Tables = () => {
   )
 }
 
-export default Tables
+export default Tables;
