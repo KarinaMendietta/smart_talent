@@ -9,6 +9,7 @@ import Dashboard from "./../pages/Dashboard";
 import Tables from "./../pages/Tables";
 import Profile from "./../pages/Profile";
 import FormPostulante from "../pages/FormPostulante";
+import FormAcademico from "../pages/FormAcademico";
 
 // Importando Layouts
 import Main from "./../layouts/Main"
@@ -22,6 +23,8 @@ const Router = () => {
         {/* Route para el usuario  */}
         <Route path="/" element={<Home />} />
         <Route path="/form-postulante" element={<FormPostulante />} />
+        <Route path="/form-academico" element={<FormAcademico />} />
+
 
         {/* Route para la empresa  */}
         <Route path="/sign-in" element={<SignIn />} />
