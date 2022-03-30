@@ -1,11 +1,9 @@
 // Importando react-router-dom
 import { Link } from "react-router-dom";
-// Importando estilos MUI
-// import { Divider } from "@mui/material";
 // Importando Font Awesome
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faHouse,
+  faHouse, faTableList, faUser, faRightFromBracket
 } from "@fortawesome/free-solid-svg-icons";
 // Importando estilos SASS
 import "./../styles/component/aside.scss";
@@ -24,17 +22,17 @@ const Aside = (props) => {
             </Link>
 
             <Link to={"/tables"} className="menu__link" >
-              <FontAwesomeIcon icon={faHouse}  className="icon icon--menu" />
+              <FontAwesomeIcon icon={faTableList}  className="icon icon--menu" />
               <p>Tables</p>
             </Link>
             
             <Link to={"/profile"} className="menu__link">
-              <FontAwesomeIcon icon={faHouse} className="icon icon--menu" />
+              <FontAwesomeIcon icon={faUser} className="icon icon--menu" />
               <p>Profile</p>
             </Link>
           
             <Link to={"/sign-in"} className="menu__link">
-              <FontAwesomeIcon icon={faHouse} className="icon icon--menu" />
+              <FontAwesomeIcon icon={faRightFromBracket} className="icon icon--menu" />
               <p>Sign out</p>
             </Link>
           </div>
