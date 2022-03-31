@@ -1,5 +1,6 @@
 import { React, useState } from "react";
-import {  Select,
+import {
+  Select,
   MenuItem,
   Stack,
   TextField,
@@ -9,14 +10,17 @@ import {  Select,
   Input,
   FormHelperText,
   Container,
+  Button,
 } from "@mui/material";
 import { TextFieldsOutlined } from "@mui/icons-material";
+import DateAdapter from "@mui/lab/AdapterDateFns";
+import { LocalizationProvider, DatePicker } from "@mui/lab";
 
 const FormPostulante = () => {
-  const [dep, setDep] = useState("");
+  const [post, setPost] = useState(null);
 
   const handleChange = (event) => {
-    setDep(event.target.value);
+    setPost(event.target.value);
   };
   return (
     <FormControl container sx={{ display: "flex", justifyContent: "center" }}>
@@ -43,12 +47,20 @@ const FormPostulante = () => {
         />
         <TextField name="dni" label="Dni" type="text" variant="filled" />
         <TextField name="correo" label="Correo" type="mail" variant="filled" />
-        <TextField
-          name="fechaDeNacimiento"
-          label="Fecha de nacimiento"
-          type="text"
-          variant="filled"
-        />
+        
+        <Box>
+          <LocalizationProvider dateAdapter={DateAdapter}>
+            <DatePicker
+              sx={{ color: "gray", position: "relative", top: "15px" }}
+              label="Fecha de nacimiento"
+              value={post}
+              onChange={(newPost) => {
+                setPost(newPost);
+              }}
+              renderInput={(params) => <TextField {...params} />}
+            />
+          </LocalizationProvider>
+        </Box>
         <Box fullWidth>
           <InputLabel
             fullWidth
@@ -62,7 +74,7 @@ const FormPostulante = () => {
             fullWidth
             labelId="select-genero-label"
             id="select-genero"
-            value={dep}
+            value={post}
             label="Genero"
             onChange={handleChange}
             variant="filled"
@@ -96,7 +108,7 @@ const FormPostulante = () => {
             fullWidth
             labelId="select-departamento-label"
             id="select-departamento"
-            value={dep}
+            value={post}
             label="Departamento"
             onChange={handleChange}
             variant="filled"
@@ -141,11 +153,11 @@ const FormPostulante = () => {
             fullWidth
             labelId="select-provincia-label"
             id="select-provincia"
-            value={dep}
+            value={post}
             label="Provincia"
             onChange={handleChange}
             variant="filled"
-          >            
+          >
             <MenuItem value={"Abancay "}>Abancay</MenuItem>
             <MenuItem value={"Arequipa "}>Arequipa</MenuItem>
             <MenuItem value={"Ayacucho "}>Ayacucho</MenuItem>
@@ -173,7 +185,7 @@ const FormPostulante = () => {
             <MenuItem value={"Tumbes "}>Tumbes</MenuItem>
             <MenuItem value={"Otro "}>Otro</MenuItem>
           </Select>
-        </Box>       
+        </Box>
 
         <TextField
           name="direccion"
@@ -187,3 +199,4 @@ const FormPostulante = () => {
 };
 
 export default FormPostulante;
+

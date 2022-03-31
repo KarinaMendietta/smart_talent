@@ -10,11 +10,16 @@ import {
   Input,
   FormHelperText,
   Container,
+  Grid,
+  Checkbox 
 } from "@mui/material";
 import { TextFieldsOutlined } from "@mui/icons-material";
+import DateAdapter from "@mui/lab/AdapterDateFns";
+import { LocalizationProvider, DatePicker } from "@mui/lab";
+
 
 const FormAcademico = () => {
-  const [academ, setAcadem] = useState("");
+  const [academ, setAcadem] = useState(null);
 
   const handleChange = (event) => {
     setAcadem(event.target.value);
@@ -69,12 +74,8 @@ const FormAcademico = () => {
             <MenuItem value={"TecSistTelecom"}>
               Tecnologia, Sistemas Y Telecomunicaciones
             </MenuItem>
-            <MenuItem value={"ProdManuf"}>
-              Produccion y Manufactura
-            </MenuItem>
-            <MenuItem
-              value={"AtencCallCentTelemark "}
-            >
+            <MenuItem value={"ProdManuf"}>Produccion y Manufactura</MenuItem>
+            <MenuItem value={"AtencCallCentTelemark "}>
               Atencion Al Cliente, Call Center Y Telemarketing
             </MenuItem>
             <MenuItem value={"AbastLogist "}>
@@ -87,26 +88,18 @@ const FormAcademico = () => {
             <MenuItem value={"RecHumCapacit"}>
               Recursos Humanos y Capacitacion
             </MenuItem>
-            <MenuItem value={"MinPetroGas "}>
-              Mineria, Petroleo Y Gas
-            </MenuItem>
-            <MenuItem value={"MarkPubli "}>
-              Marketing Y Publicidad
-            </MenuItem>
+            <MenuItem value={"MinPetroGas "}>Mineria, Petroleo Y Gas</MenuItem>
+            <MenuItem value={"MarkPubli "}>Marketing Y Publicidad</MenuItem>
             <MenuItem value={"IngCivilConstr"}>
               Ingenieria Civil y Construccion
             </MenuItem>
             <MenuItem value={"EducDocencInvest "}>
               Educacion, Docencia e Investigacion
             </MenuItem>
-            <MenuItem value={"GastroTurismo "}>
-              Gastronomia Y Turismo
-            </MenuItem>
+            <MenuItem value={"GastroTurismo "}>Gastronomia Y Turismo</MenuItem>
             <MenuItem value={"Legales "}>Legales</MenuItem>
-            <MenuItem value={"DiseÑO "}>DiseÑO</MenuItem>
-            <MenuItem
-              value={"ComuniRelacionesInstPubli "}
-            >
+            <MenuItem value={"Diseno "}>Diseno</MenuItem>
+            <MenuItem value={"ComuniRelacionesInstPubli "}>
               Comunicacion, Relaciones Institucionales Y Publicas
             </MenuItem>
             <MenuItem value={"SecretariasRecepcion "}>
@@ -146,7 +139,6 @@ const FormAcademico = () => {
             <MenuItem value={"Titulado"}>Titulado</MenuItem>
             <MenuItem value={"Maestria"}>Maestria</MenuItem>
             <MenuItem value={"Doctorado"}>Doctorado</MenuItem>
-
           </Select>
         </Box>
         <TextField
@@ -154,14 +146,60 @@ const FormAcademico = () => {
           label="Centro de estudios"
           type="text"
           variant="filled"
-        />
+        />        
+        <Box  >
+          <LocalizationProvider dateAdapter={DateAdapter}>
+            <DatePicker
+              sx={{ color: "gray", position: "relative", top: "15px" }}  
+              label="Fecha de egreso"
+              value={academ}
+              onChange={(newAcadem) => {
+                setAcadem(newAcadem);
+              }}
+              renderInput={(params) => <TextField {...params} />}
+            />
+          </LocalizationProvider>
+        </Box>
         <TextField
-          name="fechaEgreso"
-          label="Fecha de egreso"
+          name="CursoAdicional"
+          label="Curso adicional"
           type="text"
           variant="filled"
         />
-      </Stack>
+        <TextField
+          name="CursoAdicional"
+          label="Curso adicional"
+          type="text"
+          variant="filled"
+        />
+      
+      <Box fullWidth>
+          <InputLabel
+            fullWidth
+            id="select-ingles-label"
+            variant="filled"
+            sx={{ color: "gray", position: "relative", top: "15px" }}
+          >
+            Nivel de ingles
+          </InputLabel>
+          <Select
+            fullWidth
+            labelId="select-ingles-label"
+            id="select-ingles"
+            value={academ}
+            label="Nivel de ingles"
+            onChange={handleChange}
+            variant="filled"
+          >
+            <MenuItem value={"Nulo"}>Nulo</MenuItem>
+            <MenuItem value={"Basico"}>Basico</MenuItem>
+            <MenuItem value={"Intermedio"}>Intermedio</MenuItem>
+            <MenuItem value={"Avanzado"}>Avanzado</MenuItem>
+            <MenuItem value={"Nativo"}>Nativo</MenuItem>
+          </Select>
+          
+        </Box>
+        </Stack>
     </FormControl>
   );
 };
