@@ -1,13 +1,30 @@
-//* Colours
 //* Color palette - SCSS RGB
-$color-1: rgba(32, 32, 32, 1);
-$color-2: rgba(26, 32, 53, 1);
-$color-3: rgba(31, 40, 62, 1);
-$color-4: rgba(15, 57, 78, 1);
-$color-5: rgba(36, 135, 177, 1);
-$color-6: rgba(238, 70, 47, 1);
-$color-7: rgba(255, 166, 0, 1);
-$color-8: rgba(125, 181, 99, 1);
+//* Theme Dark
+$color-1-d: rgb(26, 32, 53); // bg main
+$color-2-d: rgb(31, 40, 62); // bg aside
+$color-3-d: rgb(32, 41, 64); // bg table
+$color-4-d: rgba(255,255,255,0.6); // texto icon
+
+//* Theme Light
+$color-1-l: rgb(240, 242, 245); // bg main
+$color-2-l: rgb(66, 66, 74); // bg aside 1
+$color-3-l: rgb(25, 25, 25); // bg aside 2
+$color-4-l: rgb(123, 128, 154); // icon
+$color-2-l: rgb(52, 71, 103); // texto icon / dashboard
+
+//* main
+$color-1:rgb(73, 163, 241); //bg gradient 1a
+$color-2:rgb(26, 115, 232); //bg gradient 1b
+$color-3:rgb(102, 187, 106); //bg gradient 2a
+$color-4:rgb(67, 160, 71); //bg gradient 2b
+$color-5:rgb(255, 167, 38); //bg gradient 3a
+$color-6:rgb(251, 140, 0); //bg gradient 3b
+$color-7:rgb(239, 83, 80); //bg gradient 4a
+$color-8:rgb(229, 57, 53); //bg gradient 4b
+$color-9:rgb(236, 64, 122); //bg gradient 5a
+$color-10:rgb(216, 27, 96); //bg gradient 5b
+$color-11:rgb(50, 58, 84); //bg gradient 6a
+$color-12:rgb(26, 32, 53); //bg gradient 6b
 
 //* Neutral
 $neutral-1: rgba(0 , 0, 0, 1);
@@ -21,7 +38,7 @@ $titles: $neutral-2;
 $paragraph: $neutral-2;
 $link: $neutral-2;
 $link-hover: $color-5;
-$icon: $neutral-2; 
+$icon: $neutral-2;
 $icon-hover: rgba($color: $neutral-2, $alpha: 0.4);
 
 //* button
@@ -45,4 +62,3 @@ $barChart-bg: $color-3;
 $shadow: rgba($color: $neutral-1, $alpha: 0.5);
 $line: $neutral-2;
 $lineChartBorder: $color-5;
-
