@@ -32,7 +32,7 @@ const NavBar = (props) => {
     };
   }, []);
 
-  const classNavBar = navBar ? 'navBar fijo': 'navBar';
+  const classNavBar = navBar ? 'navBar--fijo': 'navBar';
 
   return (
     <>
@@ -50,7 +50,7 @@ const NavBar = (props) => {
               <FontAwesomeIcon icon={faUser} />
             </button>
 
-            <button href="/" className="icon icon--navBar">
+            <button href="/" className="icon icon--navBar icon--bar">
               <FontAwesomeIcon icon={faBars} onClick={props.funcion}/>
             </button>
             

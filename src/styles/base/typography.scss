@@ -71,15 +71,10 @@ p, span {
     font-weight: $regular;
     color: $paragraph;
     line-height: 1.8rem;
-    font-size: 1.2rem;
-    @include telefono{
-        font-size: 1.3rem;
-    }
-    @include tablet{
-        font-size: 1.5rem;
-    }
+    font-size: 1.6rem;
+    
     @include desktop{
-        font-size: 1.6rem;
+        font-size: 1.7rem;
     }
 }
 
@@ -138,6 +133,7 @@ a svg, button svg {
     text-decoration: none;
     transition-property: color;
     transition-duration: .5s;
+    cursor: pointer;
     &:hover {
         color: $icon-hover;
     } 

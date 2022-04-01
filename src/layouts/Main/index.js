@@ -30,12 +30,14 @@ const Main = () => {
           </div>
 
           <div className="content">
+            <div className="content__container">
             <div className="header--main">
               <NavBar funcion={HandleBtnMenu}/>
             </div>
             
             <div className="Outlet">
               <Outlet />
+            </div>
             </div>
           </div>          
         </div>

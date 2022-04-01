@@ -3,23 +3,34 @@
 @import "./../base/mixins.scss";
 
 .navBar {
-  background-color: $navBar-bg;
+  width: 100%;
+  background: $navBar-bg;
   border-radius: 1rem;
+}
 
-  .navBar__container {
-    display: flex;
-    justify-content: space-between;
-    padding: $padding_elemt;
-  }
+.navBar--fijo {
+  background: $navBarFijo-bg;
+  border-radius: 1rem;
+  // box shadow
+  box-shadow: -3px 5px 14px -1px rgba(17,0,51,0.43);
+  -webkit-box-shadow: -3px 5px 14px -1px rgba(17,0,51,0.43);
+  -moz-box-shadow: -3px 5px 14px -1px rgba(17,0,51,0.43);
+  // blur
+  -webkit-backdrop-filter: saturate(200%) blur(1.9rem);
+  -o-filter-backdrop-filter: saturate(200%) blur(1.9rem);
+  -ms-filter-backdrop-filter: saturate(200%) blur(1.9rem);
+  -moz-backdrop-filter: saturate(200%) blur(1.9rem);
+  backdrop-filter: saturate(200%) blur(1.9rem);
+}
 
-  &.fijo {
-    background-color: $navBarFijo-bg;
-    box-shadow: rgb(52 71 103 / 90%) 0rem 0rem 0.0625rem 0.0625rem inset, rgb(0 0 0 / 5%) 0rem 1.25rem 1.6875rem 0rem;
-    -webkit-backdrop-filter: saturate(200%) blur(1.9rem);
-    -o-filter-backdrop-filter: saturate(200%) blur(1.9rem);
-    -ms-filter-backdrop-filter: saturate(200%) blur(1.9rem);
-    -moz-backdrop-filter: saturate(200%) blur(1.9rem);
-    backdrop-filter: saturate(200%) blur(1.9rem);
+.navBar__container {
+  display: flex;
+  justify-content: space-between;
+  padding: $padding_elemt;
+
+  a svg, button svg{
+    color: $icon-nav;
+    font-size: 1.5rem;
   }
 }
 
@@ -32,6 +43,14 @@
 .navBar__item--page {
   display: flex;
   flex-direction: column;
+  span{
+    color: $link-nav
+  }
+  p{
+    color: #000;
+    font-weight: 700;
+    font-size: 2rem;
+  }
 
   .page {
     margin-bottom: $margin_elemt;
@@ -42,12 +61,23 @@
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
+  color: #000;
 
   .icon--navBar {
     &:hover {
-      background-color: $icon-bg-hover;
+      background: $icon-bg-hover;
       padding: 1rem;
       border-radius: 50%;
+    }
+  }
+
+  .icon--bar svg{
+    display: block;
+    // visibility: visible;
+
+    @include desktop{
+      display: none;
+      // visibility: hidden;
     }
   }
 }

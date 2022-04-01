@@ -2,9 +2,9 @@
 import Chart from "react-apexcharts";
 // Importando estilos
 import "./../../styles/base/colours.scss";
-import "./../../styles/component/lineChart.scss";
+import "./../../styles/component/lineChart2.scss";
 
-const LineChart = (props) => {
+const LineChart2 = (props) => {
   const chartData = {
     series: [
       {
@@ -79,4 +79,4 @@ const LineChart = (props) => {
   );
 };
 
-export default LineChart;
+export default LineChart2;

@@ -8,27 +8,8 @@
     }
 }
 
-.aside{
-    width: 25rem;
-    margin-top: 2rem;
-    position: fixed;
-    top: 0;
-    z-index: 2;
-    outline: 0px;
-
-    // efecto del desplazamiento del aside al aparecer o desaparecer
-    transform: translateX(-30rem);
-    transition: transform 200ms cubic-bezier(0.4, 0, 0.6, 1) 0ms;
-    &.aside--float{
-        transform: translateX(0);
-    }
-    @include desktop{
-      transform: translateX(0);
-    }
-}
-
 .content{
-    padding: 0 $padding-elemt;
+    padding: 0 ;
     position: relative;
     background-color: transparent;
     border-radius: 1rem;
@@ -45,15 +26,34 @@
 .header--main{
     width: 100%;
     position: sticky;
-    z-index: 1;
+    z-index: 20; // se pone 20 para tapar los controles superiores del apexchart
     left: auto;
-    right: 0px;
+    right: 0;
     top: 2rem;
     // transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
 }
 
+.aside{
+    width: 25rem;
+    margin-top: 2rem;
+    position: fixed;
+    top: 0;
+    z-index: 25;
+    outline: 0px;
+
+    // efecto del desplazamiento del aside al aparecer o desaparecer
+    transform: translateX(-30rem);
+    transition: transform 200ms cubic-bezier(0.4, 0, 0.6, 1) 0ms;
+    &.aside--float{
+        transform: translateX(0);
+    }
+    @include desktop{
+      transform: translateX(0);
+    }
+}
+
 .Outlet{
-    width: 100%;
+    max-width: 100%;
 }
 
 

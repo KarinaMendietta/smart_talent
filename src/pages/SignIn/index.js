@@ -3,7 +3,7 @@ import { useState, useEffect, useContext } from "react";
 // Importando Context
 // import { userContext } from "../../context/userContext";
 // Importando firestore
-import { getUsersAdmin } from "../../service/firestore";
+// import { getUsersAdmin } from "../../service/firestore";
 // Importando Material
 import { Button, Grid, Card, CardContent, TextField } from "@mui/material";
 // Importando estilos SASS
@@ -11,20 +11,6 @@ import "./../../styles/page/signIn.scss";
 // Importando Sweet Alert
 // import swal from "sweetalert";
 // import bgLogin from "../../assets/image/bg-login.png";
-
-// import {
-//   Select,
-//   MenuItem,
-//   Stack,
-//   TextField,
-//   Box,
-//   FormControl,
-//   InputLabel,
-//   Input,
-//   FormHelperText,
-//   Container,
-// } from "@mui/material";
-// import { TextFieldsOutlined } from "@mui/icons-material";
 
 const SignIn = () => {
   // const [users, setUsers] = useState([]);
@@ -126,94 +112,6 @@ const SignIn = () => {
         </Card>
       </Grid>
     </Grid>
-
-
-
-    // <FormControl container sx={{ display: "flex", justifyContent: "center" }}>
-    //   <h1>Formulario de datos</h1>
-    //   <Stack
-    //     component="form"
-    //     sx={{
-    //       width: "500px",
-    //       margin: "0 auto",
-    //       background: "#fff",
-    //       padding: "2rem",
-    //       borderRadius: "1rem",
-    //     }}
-    //     spacing={2}
-    //     noValidate
-    //     autoComplete="off"
-    //   >
-    //     <TextField name="nombre" label="Nombre" type="text" variant="filled" />
-    //     <TextField
-    //       name="apellido"
-    //       label="Apellido"
-    //       type="text"
-    //       variant="filled"
-    //     />
-    //     <TextField name="dni" label="Dni" type="text" variant="filled" />
-    //     <TextField name="correo" label="Correo" type="mail" variant="filled" />
-    //     <TextField
-    //       name="fechaDeNacimiento"
-    //       label="Fecha de nacimiento"
-    //       type="text"
-    //       variant="filled"
-    //     />
-    //     <TextField name="genero" label="Genero" type="text" variant="filled" />
-    //     <TextField
-    //       name="PaisDeNacimiento"
-    //       label="Pais de nacimiento"
-    //       type="text"
-    //       variant="filled"
-    //     />
-    //     <TextField
-    //       name="celular"
-    //       label="Celular"
-    //       type="text"
-    //       variant="filled"
-    //     />
-    //     <TextField
-    //       name="departamento"
-    //       label="Departamento"
-    //       type="text"
-    //       variant="filled"
-    //     />
-    //     <TextField
-    //       name="provincia"
-    //       label="Provincia"
-    //       type="text"
-    //       variant="filled"
-    //     />
-    //     <Box fullWidth>
-    //       <InputLabel fullWidth id="select-departamento-label" variant="filled" sx={{color:"gray", position:'relative', top: '15px'}}>Departamento</InputLabel>
-    //       <Select
-    //         fullWidth
-    //         labelId="select-departamento-label"
-    //         id="select-departamento"
-    //         value={dep}
-    //         label="Departamento"
-    //         onChange={handleChange}
-    //         variant="filled"
-    //       >
-    //         <MenuItem value={'Lima'}>Lima</MenuItem>
-    //         <MenuItem value={'Arequipa'}>Arequipa</MenuItem>
-    //         <MenuItem value={'Puno'}>Puno</MenuItem>
-    //       </Select>
-    //     </Box>
-    //     <TextField
-    //       name="distrito"
-    //       label="Distrito"
-    //       type="text"
-    //       variant="filled"
-    //     />
-    //     <TextField
-    //       name="direccion"
-    //       label="Direccion"
-    //       type="text"
-    //       variant="filled"
-    //     />
-    //   </Stack>
-    // </FormControl>
   );
 };
 

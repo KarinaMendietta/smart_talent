@@ -1,0 +1,6 @@
+@import './../base/colours.scss';
+@import './../base/variables.scss';
+
+.apexcharts-canvas>svg{
+    background: linear-gradient(195deg, $color-3, $color-4)!important;
+}

@@ -1,106 +1,102 @@
-// Importando Hooks
-import { useEffect, useState } from "react";
-// Importando data
-import {barDb} from "./../../assets/data/chartDb";
+// Importando MUI
+import { Container, Grid } from "@mui/material";
+// Importando ApexCharts
+import Chart from "react-apexcharts";
 // Importando estilos
 import "./../../styles/base/colours.scss";
 import "./../../styles/component/barChart.scss";
-// Importando Chart JS
-import {
-  Chart as ChartJS,
-  CategoryScale,
-  LinearScale,
-  PointElement,
-  BarElement,
-  Title,
-  Tooltip,
-  Legend,
-  Filler,
-} from "chart.js";
-import { Bar } from "react-chartjs-2";
-ChartJS.register(
-  CategoryScale,
-  LinearScale,
-  PointElement,
-  BarElement,
-  Title,
-  Tooltip,
-  Legend,
-  Filler
-);
-
-const options = {
-  responsive: true,
-  fill: true,
-  scales: {
-    y:{
-      ticks:{
-        color:"white",
-        beginAtZero: true,
-        stepSize: 1,
-        font:{
-          size:16
-        }
-      },
-      grid:{
-        color:"rgb(15, 57, 78, 1)"
-      }
-    },
-    x:{
-      ticks:{
-        color:"white",
-        font:{
-          size:16
-        }
-      },
-      grid:{
-        color:"rgba(128, 128, 128, 1)"
-      }
-    }
-  },
-  plugins: {
-    legend: {
-      display: false,
-    },
-    title: {
-      display: false,
-      text: "Line Chart",
-    }
-  },
-};
-
-const labels = ["January", "February", "March", "April", "May", "June", "July"];
-const score = [2, 2, 3, 5, 4, 8, 6];
 
 const BarChart = () => {
-  const data = {
-    labels,
-    datasets: [
+  const chartData = {
+    series: [
       {
-        label: "dataset 1",
-        data: [3, 5, 3, 1, 8, 9, 4],
-        borderWidth: 3,
-        borderColor: "rgba(255 , 255, 255, 1)",
-        pointRadius: 6,
-        pointBackgroundColor: "rgba(255 , 255, 255, 1)",
-        backgroundColor: "rgba(0, 0, 0, 0.3)",
-        fill: true,
+        name: "Tech Development",
+        data: [10, 30, 20, 14, 66, 32, 16],
       },
     ],
+    options: {
+      xaxis: {
+        categories: ["JS", "CSS", "HTML", "Firebase", "NodeJS", "React", "Vue"],
+      },
+      fill: {
+        colors: ["#fffaaa"],
+      },
+      // grid: {
+      //   row: {
+      //     colors: ["#F44336", "#E91E63", "#9C27B0"],
+      //   },
+      //   column: {
+      //     colors: ["#F44336", "#E91E63", "#9C27B0"],
+      //   },
+      // },
+      chart: {
+        zoom: {
+          enabled: true,
+          type: "x",
+          autoScaleYaxis: false,
+          zoomedArea: {
+            fill: {
+              color: "#90CAF9",
+              opacity: 0.4,
+            },
+            stroke: {
+              color: "#0D47A1",
+              opacity: 0.4,
+              width: 1,
+            },
+          },
+        },
+      },
+    },
   };
 
   return (
-    <>
-      <div className='barChart'>
-        <div className='barChart__graphic'>
-          <Bar data={data} options={options} />
-        </div>
-        <div className='barChart__content'>
-          <h4>Daily Sales</h4>
-          <p>Increase in today sales.</p>
-        </div>
+    <div className="barChart">
+      <div className="barChart__graphic">
+        <Chart
+          options={chartData.options}
+          series={chartData.series}
+          type="bar"
+          height={300}
+        />
       </div>
-    </>
+      <div className="barChart__content">
+        <h4>Daily Sales</h4>
+        <p>Increase in today sales.</p>
+      </div>
+    </div>
+    // <Container>
+    //   <Grid>
+    //     <Chart
+    //       options={chartData.options}
+    //       series={chartData.series}
+    //       type="bar"
+    //       height={500}
+    //     />
+    //     <Chart
+    //       options={chartData.options}
+    //       series={chartData.series}
+    //       type="area"
+    //       height={500}
+    //     />
+    //     <Chart
+    //       options={{
+    //         labels: ["A", "B", "C", "D", "E"],
+    //         fill: {
+    //           colors: ["#addccc", "#f01", "#F44336", "#E91E63", "#ccaadd"],
+    //         },
+    //         dataLabels: {
+    //           style: {
+    //             colors: ["#addccc", "#f01", "#F44336", "#E91E63", "#ccaadd"],
+    //           },
+    //         },
+    //       }}
+    //       series={[44, 55, 41, 17, 15]}
+    //       type="donut"
+    //       width={500}
+    //     />
+    //   </Grid>
+    // </Container>
   );
 };
 

@@ -1,3 +1,5 @@
+// Importando Hooks
+import { useState, useEffect, useContext } from "react";
 // Importando Font Awesome
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
@@ -5,7 +7,6 @@ import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper } from '@mui/material';
 // Importando estilos
 import "./../../styles/page/tables.scss";
-// import "./../../styles/base/colours.scss";
 
 const Tables = () => {
   function createData(
