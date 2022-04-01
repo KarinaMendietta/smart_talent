@@ -1,4 +1,5 @@
 import { React, useState } from "react";
+import { Outlet, Link } from "react-router-dom";
 import {
   Select,
   MenuItem,
@@ -47,7 +48,7 @@ const FormPostulante = () => {
         />
         <TextField name="dni" label="Dni" type="text" variant="filled" />
         <TextField name="correo" label="Correo" type="mail" variant="filled" />
-        
+
         <Box>
           <LocalizationProvider dateAdapter={DateAdapter}>
             <DatePicker
@@ -194,9 +195,19 @@ const FormPostulante = () => {
           variant="filled"
         />
       </Stack>
+      <TextButtons />
     </FormControl>
   );
 };
 
-export default FormPostulante;
+export const TextButtons = () => {
+  return (
+    <Link to="/form-academico">
+      <Stack direction="row" spacing={2}>
+        <Button href="#text-buttons">Siguiente</Button>
+      </Stack>
+    </Link>
+  );
+};
 
+export default FormPostulante;

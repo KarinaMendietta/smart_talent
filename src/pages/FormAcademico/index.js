@@ -1,4 +1,5 @@
 import { React, useState } from "react";
+import { Outlet, Link } from "react-router-dom";
 import {
   Select,
   MenuItem,
@@ -11,8 +12,10 @@ import {
   FormHelperText,
   Container,
   Grid,
-  Checkbox 
+  Checkbox,
+  Button
 } from "@mui/material";
+
 import { TextFieldsOutlined } from "@mui/icons-material";
 import DateAdapter from "@mui/lab/AdapterDateFns";
 import { LocalizationProvider, DatePicker } from "@mui/lab";
@@ -200,7 +203,18 @@ const FormAcademico = () => {
           
         </Box>
         </Stack>
+        <TextButtons />
     </FormControl>
+  );
+};
+
+export const TextButtons = () => {
+  return (
+    <Link to="/form-laboral">
+      <Stack direction="row" spacing={2}>
+        <Button href="#text-buttons">Siguiente</Button>
+      </Stack>
+    </Link>
   );
 };
 
