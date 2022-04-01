@@ -8,6 +8,11 @@ import SignUp from "./../pages/SignUp";
 import Dashboard from "./../pages/Dashboard";
 import Tables from "./../pages/Tables";
 import Profile from "./../pages/Profile";
+//import FormPostulante from "../pages/FormPostulante";
+//import FormAcademico from "../pages/FormAcademico";
+import FormLaboral from "../pages/FormLaboral";
+import FormPsicologico from "../pages/FormPsicologico";
+
 // Importando Layouts
 import Main from "./../layouts/Main"
 import Private from "./../layouts/Private";
@@ -19,6 +24,8 @@ const Router = () => {
         {/* Route (Públicas) */}
         {/* Route para el usuario  */}
         <Route path="/" element={<Home />} />
+        <Route path="/form-laboral" element={<FormLaboral />} />
+        <Route path="/form-psicologico" element={<FormPsicologico />} />
         {/* Route para la empresa  */}
         <Route path="/sign-in" element={<SignIn />} />
         <Route path="/sign-up" element={<SignUp />} />
