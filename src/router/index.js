@@ -8,8 +8,8 @@ import SignUp from "./../pages/SignUp";
 import Dashboard from "./../pages/Dashboard";
 import Tables from "./../pages/Tables";
 import Profile from "./../pages/Profile";
-//import FormPostulante from "../pages/FormPostulante";
-//import FormAcademico from "../pages/FormAcademico";
+import FormPostulante from "../pages/FormPostulante";
+import FormAcademico from "../pages/FormAcademico";
 import FormLaboral from "../pages/FormLaboral";
 import FormPsicologico from "../pages/FormPsicologico";
 
@@ -24,6 +24,8 @@ const Router = () => {
         {/* Route (Públicas) */}
         {/* Route para el usuario  */}
         <Route path="/" element={<Home />} />
+        <Route path="/form-postulante" element={<FormPostulante />} />
+        <Route path="/form-academico" element={<FormAcademico />} />
         <Route path="/form-laboral" element={<FormLaboral />} />
         <Route path="/form-psicologico" element={<FormPsicologico />} />
         {/* Route para la empresa  */}

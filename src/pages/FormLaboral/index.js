@@ -2,13 +2,19 @@ import { React, useState } from "react";
 import { Outlet, Link } from "react-router-dom";
 import { Button, Select, MenuItem, Stack, TextField, Box, FormControl, InputLabel, Input, FormHelperText, Container } from "@mui/material";
 import { TextFieldsOutlined } from "@mui/icons-material";
+//import { Formik } from "formik";
 //import { useFormik } from "formik";
 import DateAdapter from "@mui/lab/AdapterDateFns";
 import { LocalizationProvider, DatePicker } from "@mui/lab";
 import { getPostulantes,registerLaboral } from "../../service/firestore";
-//import swal from "sweetalert";
+import swal from "sweetalert";
 
 const FormLaboral = () => {  
+
+  const [idPostulante, setIDPostulante] = useState(
+    localStorage.getItem("idPostulante")
+  );
+
   const [values,setValues] = useState({
     id_postulante:"",
     nombre_empresa:"",
@@ -16,8 +22,8 @@ const FormLaboral = () => {
     telefono:"",
     direccion:"",
     cargo_desempenho:"",
-    fecha_inicio:"",
-    fecha_termino:"",
+    fecha_inicio: new Date,
+    fecha_termino: new Date,
     breve_descripcion_actividad:"",
   })
 
@@ -25,24 +31,38 @@ const FormLaboral = () => {
     const { name, value } = e.target;
 
     setValues({
-      ...values,
+     ...values,
       [name]: value,
+
+      fecha_inicio: FechaInicio,
+      fecha_termino: FechaFinal,
+      
     });
   };
 
   const handleClickRegister = async () => {
-      await registerLaboral(1,values)
+      await registerLaboral(idPostulante,values)
+      swal({
+        icon: "success",
+        title: "Success",
+        text: "Se creo correctamente",
+      });
   }
 
-  const [Fecha, setFecha] = useState(null);
+  const [FechaInicio, setFechaInicio] = useState(null);
+  const [FechaFinal, setFechaFinal] = useState(null);
       
-  const handleChange = (event) => {
-    setFecha(event.target.value);
+  const handleChangeFechaInicio = (event) => {
+    setFechaInicio(event.target.value);
+  };
+
+  const handleChangeFechaFinal = (event) => {
+    setFechaFinal(event.target.value);
   };
 
   return (
     <Container maxWidth="lg" >
-      <form >
+      <FormControl >
         <h1>Formulario Laboral</h1>
             &nbsp;&nbsp;
             
@@ -101,11 +121,12 @@ const FormLaboral = () => {
             <DatePicker
               sx={{ color: "gray", position: "relative", top: "15px" }}  
               label="Fecha Inicio"
-              value={Fecha}
-              onChange={(newFecha) => {
-                setFecha(newFecha);
+              value={FechaInicio}
+              onChange={(newFechaInicio) => {
+                setFechaInicio(newFechaInicio);
               }}
               renderInput={(params) => <TextField {...params} />}
+              
             />
           </LocalizationProvider>
         </Box>
@@ -114,9 +135,9 @@ const FormLaboral = () => {
             <DatePicker
               sx={{ color: "gray", position: "relative", top: "15px" }}  
               label="Fecha Termino"
-              value={Fecha}
-              onChange={(newFecha) => {
-                setFecha(newFecha);
+              value={FechaFinal}
+              onChange={(newFechaFin) => {
+                setFechaFinal(newFechaFin);
               }}
               renderInput={(params) => <TextField {...params} />}
             />
@@ -135,7 +156,7 @@ const FormLaboral = () => {
 
         </Stack>
         <TextButtons />
-      </form>
+      </FormControl>
     </Container> 
 
   )

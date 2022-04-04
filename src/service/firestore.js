@@ -58,6 +58,13 @@ const firebaseConfig = {
     await setDoc(doc(db, "postulante", id), postulante);
   };
 
+  export const registerAcademico = async (idPostulante,academico) => {
+    const id = uuidv4().replaceAll("-", "");
+    academico.id_academico = id;
+    academico.id_postulante = idPostulante;
+    await setDoc(doc(db, "academico", id), academico);
+  };
+
   export const registerLaboral = async (idPostulante,laboral) => {
     const id = uuidv4().replaceAll("-", "");
     laboral.id_laboral = id;
