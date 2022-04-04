@@ -19,14 +19,74 @@ import {
 import { TextFieldsOutlined } from "@mui/icons-material";
 import DateAdapter from "@mui/lab/AdapterDateFns";
 import { LocalizationProvider, DatePicker } from "@mui/lab";
+import { getPostulantes,registerAcademico } from "../../service/firestore";
+import swal from "sweetalert";
+
 
 
 const FormAcademico = () => {
-  const [academ, setAcadem] = useState(null);
 
-  const handleChange = (event) => {
-    setAcadem(event.target.value);
+  const [idPostulante, setIDPostulante] = useState(
+    localStorage.getItem("idPostulante")
+  );
+
+  const [values,setValues] = useState({
+    profesion:"",
+    area_profesional:"",
+    nivel_academico:"",
+    centro_estudios:"",
+    fecha_egreso: new Date,
+    curso_adicional_1:"",
+    curso_adicional_2:"",
+    nivel_ingles:"",
+    estado:"",
+  })
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+
+    setValues({
+     ...values,
+      [name]: value,
+
+      area_profesional:Areaprofesional,
+      nivel_academico:Nivelacademico,
+      fecha_egreso:Fecha,
+      nivel_ingles:Nivelingles,
+      estado: "activo"
+      
+    });
   };
+
+  const handleClickRegister = async () => {
+    await registerAcademico(idPostulante,values)
+    swal({
+      icon: "success",
+      title: "Success",
+      text: "Se creo correctamente",
+    });
+}
+
+  const [Fecha, setFecha] = useState(null);
+  const [Areaprofesional, setAreaprofesional] = useState(null);
+  const [Nivelacademico, setNivelacademico] = useState(null);
+  const [Nivelingles, setNivelingles] = useState(null);
+
+
+
+  const handleChangeAreaprofesional = (event) => {
+    setAreaprofesional(event.target.value);
+  };
+
+  const handleChangeNivelacademico = (event) => {
+    setNivelacademico(event.target.value);
+  };
+
+  const handleChangeNivelingles = (event) => {
+    setNivelingles(event.target.value);
+  };
+
+
   return (
     <FormControl container sx={{ display: "flex", justifyContent: "center" }}>
       <h1>Formulario academico</h1>
@@ -62,9 +122,9 @@ const FormAcademico = () => {
             fullWidth
             labelId="select-profesion-label"
             id="select-profesion"
-            value={academ}
-            label="Profesion"
-            onChange={handleChange}
+            value={Areaprofesional}
+            label="Area profesional"
+            onChange={handleChangeAreaprofesional}
             variant="filled"
           >
             <MenuItem value={"ComerVentasNeg "}>
@@ -131,9 +191,9 @@ const FormAcademico = () => {
             fullWidth
             labelId="select-nivelAcademico-label"
             id="select-nivelAcademico"
-            value={academ}
+            value={Nivelacademico}
             label="Nivel Academico"
-            onChange={handleChange}
+            onChange={handleChangeNivelacademico}
             variant="filled"
           >
             <MenuItem value={"Secundaria"}>Secundaria</MenuItem>
@@ -145,7 +205,7 @@ const FormAcademico = () => {
           </Select>
         </Box>
         <TextField
-          name="centroEstudios"
+          name="centro_estudios"
           label="Centro de estudios"
           type="text"
           variant="filled"
@@ -155,23 +215,23 @@ const FormAcademico = () => {
             <DatePicker
               sx={{ color: "gray", position: "relative", top: "15px" }}  
               label="Fecha de egreso"
-              value={academ}
-              onChange={(newAcadem) => {
-                setAcadem(newAcadem);
+              value={Fecha}
+              onChange={(newFecha) => {
+                setFecha(newFecha);
               }}
               renderInput={(params) => <TextField {...params} />}
             />
           </LocalizationProvider>
         </Box>
         <TextField
-          name="CursoAdicional"
-          label="Curso adicional"
+          name="curso_adicional_1"
+          label="Curso adicional 1"
           type="text"
           variant="filled"
         />
         <TextField
-          name="CursoAdicional"
-          label="Curso adicional"
+          name="curso_adicional_2"
+          label="Curso adicional 2"
           type="text"
           variant="filled"
         />
@@ -189,9 +249,9 @@ const FormAcademico = () => {
             fullWidth
             labelId="select-ingles-label"
             id="select-ingles"
-            value={academ}
+            value={Nivelingles}
             label="Nivel de ingles"
-            onChange={handleChange}
+            onChange={handleChangeNivelingles}
             variant="filled"
           >
             <MenuItem value={"Nulo"}>Nulo</MenuItem>
