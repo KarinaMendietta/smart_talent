@@ -10,14 +10,14 @@ import {
 } from "firebase/firestore/lite";
 
 const firebaseConfig = {
-    apiKey: "AIzaSyD-FFcits99L6UD2WX1btnZysfS51Db9xM",
-    authDomain: "bdsmarttalent.firebaseapp.com",
-    projectId: "bdsmarttalent",
-    storageBucket: "bdsmarttalent.appspot.com",
-    messagingSenderId: "780555723303",
-    appId: "1:780555723303:web:2324b380ed1d557d976402",
-    measurementId: "G-VWV1BRJRHX"
-  };
+  apiKey: "AIzaSyAtKjCX-cgfWOKpTjUxzbeLf48jHibYVGc",
+  authDomain: "prysmarttalent.firebaseapp.com",
+  projectId: "prysmarttalent",
+  storageBucket: "prysmarttalent.appspot.com",
+  messagingSenderId: "1036928853189",
+  appId: "1:1036928853189:web:3e64b1b0dbc0dc465f3cac",
+  measurementId: "G-06B162BMY2"
+};
   
   // Initialize Firebase
   const app = initializeApp(firebaseConfig);
@@ -34,6 +34,8 @@ const firebaseConfig = {
     const documentTests = await getDocs(collectionTests);
     // paso 3: Crear un arreglo que guarde los documentos que estamos obteniendo
     const tests = documentTests.docs.map((doc) => doc.data());
-    //console.log("mira",tests)
+    console.log("mira",tests)
     return tests;
   };
+
+ 
