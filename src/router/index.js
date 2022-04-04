@@ -12,7 +12,6 @@ import FormPostulante from "../pages/FormPostulante";
 import FormAcademico from "../pages/FormAcademico";
 import FormLaboral from "../pages/FormLaboral";
 import FormPsicologico from "../pages/FormPsicologico";
-import FinRegistro from "../pages/FinRegistro";
 
 // Importando Layouts
 import Main from "./../layouts/Main"
@@ -29,9 +28,6 @@ const Router = () => {
         <Route path="/form-academico" element={<FormAcademico />} />
         <Route path="/form-laboral" element={<FormLaboral />} />
         <Route path="/form-psicologico" element={<FormPsicologico />} />
-        <Route path="/fin-registro" element={<FinRegistro />} />
-
-
         {/* Route para la empresa  */}
         <Route path="/sign-in" element={<SignIn />} />
         <Route path="/sign-up" element={<SignUp />} />

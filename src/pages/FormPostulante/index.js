@@ -1,4 +1,4 @@
-import { React, useState } from "react";
+import { React, useState, useEffect } from "react";
 import { Outlet, Link } from "react-router-dom";
 import {
   Select,
@@ -16,13 +16,86 @@ import {
 import { TextFieldsOutlined } from "@mui/icons-material";
 import DateAdapter from "@mui/lab/AdapterDateFns";
 import { LocalizationProvider, DatePicker } from "@mui/lab";
+import { getPostulantes,registerPostulante } from "../../service/firestore";
+import swal from "sweetalert";
 
 const FormPostulante = () => {
-  const [post, setPost] = useState(null);
 
-  const handleChange = (event) => {
-    setPost(event.target.value);
+  const [values,setValues] = useState({
+    nombre_postulante:"",
+    apellido_postulante:"",
+    dni_postulante:"",
+    correo_electronico:"",
+    fecha_nacimiento: new Date,
+    genero:"",
+    pais_nacimiento:"",
+    numero_celular:"",
+    departamento:"",
+    provincia:"",
+    direccion:"",
+    estado:"",
+  })
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+
+    setValues({
+     ...values,
+      [name]: value,
+
+      genero:Genero,
+      departamento:Departamento,
+      provincia:Provincia,
+      fecha_nacimiento: Fecha,
+      estado: "activo"
+      
+    });
   };
+
+  const [idPostulante, setIdPostulante] = useState(0);
+
+  const [Fecha, setFecha] = useState(null);
+  const [Genero, setGenero] = useState(null);
+  const [Departamento, setDepartamento] = useState(null);
+  const [Provincia, setProvincia] = useState(null);
+
+  const handleChangeGenero = (event) => {
+    setGenero(event.target.value);
+  };
+
+  const handleChangeDepartamento = (event) => {
+    setDepartamento(event.target.value);
+  };
+
+  const handleChangeProvincia = (event) => {
+    setProvincia(event.target.value);
+  };
+
+ 
+  const handleClickRegisterPostulante = async () => {
+
+    await registerPostulante(idPostulante,values)
+
+    localStorage.setItem("idPostulante", idPostulante);
+
+    swal({
+      icon: "success",
+      title: "Success",
+      text: "Se creo correctamente el Postulante",
+    });
+  }
+
+  const handleIdPostulante = async () => {
+
+    const id = await getPostulantes()
+    setIdPostulante(id +1)
+    console.log("este es el id",idPostulante)
+  }
+
+  useEffect(() => {
+    handleIdPostulante()
+  }, [idPostulante]);
+
   return (
     <FormControl container sx={{ display: "flex", justifyContent: "center" }}>
       <h1>Formulario de datos</h1>
@@ -39,24 +112,25 @@ const FormPostulante = () => {
         noValidate
         autoComplete="off"
       >
-        <TextField name="nombre" label="Nombre" type="text" variant="filled" />
+        <TextField name="nombre_postulante" label="Nombre" type="text" variant="filled" />
         <TextField
-          name="apellido"
+          name="apellido_postulante"
           label="Apellido"
           type="text"
           variant="filled"
+          onChange={handleInputChange}
         />
-        <TextField name="dni" label="Dni" type="text" variant="filled" />
-        <TextField name="correo" label="Correo" type="mail" variant="filled" />
+        <TextField name="dni_postulante" label="Dni" type="text" variant="filled" onChange={handleInputChange} />
+        <TextField name="correo_electronico" label="Correo" type="mail" variant="filled" onChange={handleInputChange} />
 
         <Box>
           <LocalizationProvider dateAdapter={DateAdapter}>
             <DatePicker
               sx={{ color: "gray", position: "relative", top: "15px" }}
               label="Fecha de nacimiento"
-              value={post}
-              onChange={(newPost) => {
-                setPost(newPost);
+              value={Fecha}
+              onChange={(newFecha) => {
+                setFecha(newFecha);
               }}
               renderInput={(params) => <TextField {...params} />}
             />
@@ -75,9 +149,9 @@ const FormPostulante = () => {
             fullWidth
             labelId="select-genero-label"
             id="select-genero"
-            value={post}
+            value={Genero}
             label="Genero"
-            onChange={handleChange}
+            onChange={handleChangeGenero}
             variant="filled"
           >
             <MenuItem value={"Femenino"}>Femenino</MenuItem>
@@ -85,16 +159,18 @@ const FormPostulante = () => {
           </Select>
         </Box>
         <TextField
-          name="PaisDeNacimiento"
+          name="pais_nacimiento"
           label="Pais de nacimiento"
           type="text"
           variant="filled"
+          onChange={handleInputChange}
         />
         <TextField
-          name="celular"
+          name="numero_celular"
           label="Celular"
           type="text"
           variant="filled"
+          onChange={handleInputChange}
         />
         <Box fullWidth>
           <InputLabel
@@ -109,9 +185,9 @@ const FormPostulante = () => {
             fullWidth
             labelId="select-departamento-label"
             id="select-departamento"
-            value={post}
+            value={Departamento}
             label="Departamento"
-            onChange={handleChange}
+            onChange={handleChangeDepartamento}
             variant="filled"
           >
             <MenuItem value={"Amazonas "}>Amazonas</MenuItem>
@@ -154,9 +230,9 @@ const FormPostulante = () => {
             fullWidth
             labelId="select-provincia-label"
             id="select-provincia"
-            value={post}
+            value={Provincia}
             label="Provincia"
-            onChange={handleChange}
+            onChange={handleChangeProvincia}
             variant="filled"
           >
             <MenuItem value={"Abancay "}>Abancay</MenuItem>
@@ -193,16 +269,21 @@ const FormPostulante = () => {
           label="Direccion"
           type="text"
           variant="filled"
+          onChange={handleInputChange}
         />
+        <Button onClick={handleClickRegisterPostulante} variant="contained">
+            Guardar
+        </Button> 
       </Stack>
       <TextButtons />
+      
     </FormControl>
   );
 };
 
 export const TextButtons = () => {
   return (
-    <Link to="/form-academico">
+    <Link to="/form-laboral">
       <Stack direction="row" spacing={2}>
         <Button href="#text-buttons">Siguiente</Button>
       </Stack>
