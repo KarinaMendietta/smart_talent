@@ -1,22 +1,48 @@
 import { React, useState } from "react";
 import { Outlet, Link } from "react-router-dom";
-import {Button, Select, MenuItem, Stack, TextField, Box, FormControl, InputLabel, Input, FormHelperText, Container } from "@mui/material";
+import { Button, Select, MenuItem, Stack, TextField, Box, FormControl, InputLabel, Input, FormHelperText, Container } from "@mui/material";
 import { TextFieldsOutlined } from "@mui/icons-material";
+//import { useFormik } from "formik";
 import DateAdapter from "@mui/lab/AdapterDateFns";
 import { LocalizationProvider, DatePicker } from "@mui/lab";
+import { getPostulantes,registerLaboral } from "../../service/firestore";
+//import swal from "sweetalert";
 
+const FormLaboral = () => {  
+  const [values,setValues] = useState({
+    id_postulante:"",
+    nombre_empresa:"",
+    ruc:"",
+    telefono:"",
+    direccion:"",
+    cargo_desempenho:"",
+    fecha_inicio:"",
+    fecha_termino:"",
+    breve_descripcion_actividad:"",
+  })
 
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
 
+    setValues({
+      ...values,
+      [name]: value,
+    });
+  };
 
-const FormLaboral = () => {    
-        const [Fecha, setFecha] = useState(null);
+  const handleClickRegister = async () => {
+      await registerLaboral(1,values)
+  }
+
+  const [Fecha, setFecha] = useState(null);
       
-        const handleChange = (event) => {
-            setFecha(event.target.value);
-        };
+  const handleChange = (event) => {
+    setFecha(event.target.value);
+  };
 
-    return (
-        <FormControl container sx={{display: 'flex', justifyContent:"center"}}>
+  return (
+    <Container maxWidth="lg" >
+      <form >
         <h1>Formulario Laboral</h1>
             &nbsp;&nbsp;
             
@@ -38,31 +64,37 @@ const FormLaboral = () => {
                 name="nombre_empresa"
                 label="Nombre Empresa"
                 type="text"          
-                variant="filled"      
+                variant="filled"
+                onChange={handleInputChange}
             />
             <TextField
                 name="ruc"
                 label="RUC"
                 type="text"          
                 variant="filled"
+                onChange={handleInputChange}
             />
             <TextField
                 name="telefono"
                 label="Telefono"
                 type="text"          
                 variant="filled"
+                onChange={handleInputChange}
+                
             />
             <TextField
                 name="direccion"
                 label="Direccion"
                 type="text"          
                 variant="filled"
+                onChange={handleInputChange}
             />
             <TextField
                 name="cargo_desempenho"
                 label="Cargo que Desempeño"
                 type="text"          
                 variant="filled"
+                onChange={handleInputChange}
             />            
             <Box  >
           <LocalizationProvider dateAdapter={DateAdapter}>
@@ -90,18 +122,23 @@ const FormLaboral = () => {
             />
           </LocalizationProvider>
         </Box>
-            <TextField
+          <TextField
                 name="breve_descripcion_actividad"
                 label="Descripcion Actividad (Breve)"
                 type="text"          
                 variant="filled"
-            />    
+                onChange={handleInputChange}
+          />
+          <Button onClick={handleClickRegister} variant="contained">
+            Guardar
+          </Button>    
 
-            </Stack>
-            <TextButtons />
-    </FormControl> 
+        </Stack>
+        <TextButtons />
+      </form>
+    </Container> 
 
-    )
+  )
 
     
 }
@@ -110,7 +147,7 @@ export const TextButtons = () => {
     return (
       <Link to="/form-psicologico">
         <Stack direction="row" spacing={2}>
-          <Button href="#text-buttons">Siguiente</Button>
+          <Button  href="#text-buttons">Siguiente</Button>
         </Stack>
       </Link>
     );

@@ -1,7 +1,10 @@
 import React from "react";
 import { Outlet, Link } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { Container,Grid, Divider, Button, Stack } from "@mui/material";
+import { Container,Grid, Divider, Button, Stack, FormControl,
+  FormLabel,
+  FormControlLabel,
+  RadioGroup,Radio } from "@mui/material";
 import { getTests  } from "../../service/firestore";
 
 const FormPsicologico = () => {
@@ -19,7 +22,8 @@ const FormPsicologico = () => {
 
 
   return (
-    <Container maxWidth="xl">
+    <Container maxWidth="lg">
+      <form >
         <h1>Formulario Psicológico</h1>
         &nbsp;&nbsp;
         <h2>HABILIDADES SOCIALES</h2>
@@ -33,13 +37,20 @@ const FormPsicologico = () => {
                             
                         </div>
                         <div>
-                        <ButtonRespuesta/>
+                        <RadioRespuesta/>
                         </div>
                     </Grid>                   
                     
-                    ))}                
+              ))}
+              <Grid item md={12}>
+                <Button  variant="contained" fullWidth>
+                Guardar
+                </Button>
+              </Grid>                
         </Grid>        
         <TextButtons/>
+        
+      </form>  
     </Container>  
 
     )
@@ -66,5 +77,46 @@ export const TextButtons = () => {
         </Stack>    
     );
   };
+
+  export const RadioRespuesta = () => {
+    return (
+      <FormControl sx={{display: 'flex', justifyContent:"center"}}>
+      <FormLabel id="label-radio">Rspuestas</FormLabel>
+      <RadioGroup
+        aria-labelledby="label-radio"
+        name="calificacion"
+      >
+         <FormControlLabel
+          value="nunca"
+          control={<Radio />}
+          label="NUNCA"
+        />
+        
+        <FormControlLabel
+          value="rara_vez"
+          control={<Radio />}
+          label="RARA VEZ"
+        />
+        <FormControlLabel
+          value="a_veces"
+          control={<Radio />}
+          label="A VECES"
+        />
+        <FormControlLabel
+          value="a_menudo"
+          control={<Radio />}
+          label="A MENUDO"
+        />
+        <FormControlLabel
+          value="siempre"
+          control={<Radio />}
+          label="SIEMPRE"
+        />
+       
+      </RadioGroup>
+    </FormControl>
+    )
+
+  }
   
 export default FormPsicologico;
