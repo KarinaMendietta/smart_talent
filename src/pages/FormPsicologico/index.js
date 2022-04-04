@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { Container,Grid, Divider, Button, Stack, FormControl,
   FormLabel,
   FormControlLabel,
+  FormGroup,
   RadioGroup,Radio } from "@mui/material";
 import { getTests  } from "../../service/firestore";
 
@@ -80,9 +81,10 @@ export const TextButtons = () => {
 
   export const RadioRespuesta = () => {
     return (
-      <FormControl sx={{display: 'flex', justifyContent:"center"}}>
-      <FormLabel id="label-radio">Rspuestas</FormLabel>
-      <RadioGroup
+      <Container maxWidth="lg" >
+      <FormControl sx={{display: 'flex', justifyContent:"center" , width: "500px",}}>
+      <FormLabel id="label-radio" >Respuestas</FormLabel>
+      <RadioGroup sx={{ flexDirection: 'row' }}
         aria-labelledby="label-radio"
         name="calificacion"
       >
@@ -115,6 +117,7 @@ export const TextButtons = () => {
        
       </RadioGroup>
     </FormControl>
+    </Container>
     )
 
   }
