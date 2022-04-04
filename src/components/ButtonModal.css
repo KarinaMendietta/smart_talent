@@ -6,6 +6,7 @@
 
 .contenido-modal {
     display: flex;
+    flex-direction: column;
 }
 
 .container-text {
@@ -15,9 +16,10 @@
 }
 
 .modal {
-    background: #000;
+    background: url("https://static.vecteezy.com/system/resources/previews/000/245/877/large_2x/abstract-colorful-lines-dark-background-vector.jpg");
+    background-repeat: no-repeat;
+    background-size: auto;
     border-radius: 20px;
-    border: 2px solid wheat;
 }
 
 .container-button {
@@ -25,3 +27,24 @@
     justify-content: end;
     padding: 5px;
 }
+
+.container-information {
+    text-align: center;
+}
+
+.titulo-nombre {
+    color: rgb(131, 23, 232);
+}
+
+
+/*
+1. Combinación de negro con blanco
+2. Combinación de negro con gris
+3. Combinación de negro con rojo
+4. Combinación de negro con rosa
+5. Combinación de negro con amarillo
+6. Combinación de negro con naranja
+7. Combinación de negro con dorado
+8. Combinación de negro con morado
+9. Combinación de negro con azul 
+*/
