@@ -66,6 +66,7 @@ const Tables = () => {
                   <TableCell align="right" style={{fontSize:'1.4rem', color:'#fff'}}>{row.nombre_convocatoria}</TableCell>
                   <TableCell align="right" style={{fontSize:'1.4rem', color:'#fff'}}>{row.calif_total}</TableCell>
                   <TableCell align="right" style={{fontSize:'1.4rem', color:'#fff'}}><FontAwesomeIcon icon={faEye} className="icon"/></TableCell>
+
                 </TableRow>
               ))}
             </TableBody>
