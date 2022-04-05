@@ -16,22 +16,22 @@ const Aside = (props) => {
           <h3 className="menu__title">Smart Talent</h3>
 
           <div className="menu__list">
-            <Link to={"/dashboard"} className="menu__link" >
+            <Link to={"/dashboard/dashboard"} className="menu__link" >
               <FontAwesomeIcon icon={faHouse} className="icon" />
               <p>Dashboard</p>
             </Link>
 
-            <Link to={"/tables"} className="menu__link" >
+            <Link to={"/tables/tables"} className="menu__link" >
               <FontAwesomeIcon icon={faTableList}  className="icon icon--menu" />
               <p>Tables</p>
             </Link>
             
-            <Link to={"/profile"} className="menu__link">
+            <Link to={"/profile/profile"} className="menu__link">
               <FontAwesomeIcon icon={faUser} className="icon icon--menu" />
               <p>Profile</p>
             </Link>
           
-            <Link to={"/sign-in"} className="menu__link">
+            <Link to={"/"} className="menu__link">
               <FontAwesomeIcon icon={faRightFromBracket} className="icon icon--menu" />
               <p>Sign out</p>
             </Link>

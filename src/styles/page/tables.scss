@@ -2,11 +2,16 @@
 @import "./../base/variables.scss";
 
 .tables {
+  max-width: 100%;
+  // min-width: 20rem;
   display: flex;
   flex-direction: column;
   margin-top: 4rem;
   background: $tables-bg;
   border-radius: 1rem;
+
+  // min-width: 0px;
+  // overflow-wrap: break-word;
 }
 
 .table-title {

@@ -1,7 +1,7 @@
 // Importando Hooks
 import { useEffect, useState } from "react";
 // Importando react-router-dom
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 // Importando Font Awesome
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -15,7 +15,7 @@ import "./../styles/component/navBar.scss";
 
 const NavBar = (props) => {
   const [navBar, setNavBar] = useState(false);
-
+  // A partir de esa cantidad de pixeles de altura manda true al navbar
   const NavegacionFija = () => {
     if(window.scrollY >= 10){
       setNavBar(true);
@@ -23,7 +23,7 @@ const NavBar = (props) => {
       setNavBar(false);
     }
   }
-
+  // Inicializando con el evento scroll
   useEffect(() => {
     window.addEventListener('scroll', NavegacionFija, true);
     // Remove the event listener
@@ -34,15 +34,20 @@ const NavBar = (props) => {
 
   const classNavBar = navBar ? 'navBar--fijo': 'navBar';
 
+  // Obteniendo los parámetros de la url para el navbar
+  const { name } = useParams();
   return (
     <>
       <div className={classNavBar}>
         <div className="navBar__container">
           <div className="navBar__item navBar__item--page">
-            <Link to={"/dashboard"} className="page">
-              <FontAwesomeIcon icon={faHouse} /> <span> / Dashboard</span>
-            </Link>
-            <p>Dashboard</p>
+            <div>
+              <Link to={"/dashboard/dashboard"} className="page">
+                <FontAwesomeIcon icon={faHouse} /> 
+              </Link>
+              <span> / {name}</span>
+            </div>
+            <p>{name}</p>
           </div>
 
           <div className="navBar__item navBar__item--icon">
@@ -50,8 +55,8 @@ const NavBar = (props) => {
               <FontAwesomeIcon icon={faUser} />
             </button>
 
-            <button href="/" className="icon icon--navBar icon--bar">
-              <FontAwesomeIcon icon={faBars} onClick={props.funcion}/>
+            <button href="/" className="icon icon--navBar icon--bar" onClick={props.funcion}>
+              <FontAwesomeIcon icon={faBars}/>
             </button>
             
             <button href="/" className="icon icon--navBar">
