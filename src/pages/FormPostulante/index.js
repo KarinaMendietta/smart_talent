@@ -13,6 +13,8 @@ import {
   Container,
   Button,
 } from "@mui/material";
+import { useFormik } from 'formik';
+
 import { TextFieldsOutlined } from "@mui/icons-material";
 import DateAdapter from "@mui/lab/AdapterDateFns";
 import { LocalizationProvider, DatePicker } from "@mui/lab";
@@ -35,6 +37,26 @@ const FormPostulante = () => {
     direccion:"",
     estado:"",
   })
+
+  const formik = useFormik({
+    initialValues: {
+      nombre_postulante:"",
+    apellido_postulante:"",
+    dni_postulante:"",
+    correo_electronico:"",
+    fecha_nacimiento: new Date,
+    genero:"",
+    pais_nacimiento:"",
+    numero_celular:"",
+    departamento:"",
+    provincia:"",
+    direccion:"",
+    estado:""
+    },
+    onSubmit: values => {
+      alert(JSON.stringify(values, null, 2));
+    },
+  });
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -97,7 +119,8 @@ const FormPostulante = () => {
   }, [idPostulante]);
 
   return (
-    <FormControl container sx={{ display: "flex", justifyContent: "center" }}>
+    <form onSubmit={formik.handleSubmit}
+     container sx={{ display: "flex", justifyContent: "center" }}>
       <h1>Formulario de datos</h1>
       <Stack
         component="form"
@@ -118,7 +141,7 @@ const FormPostulante = () => {
           label="Apellido"
           type="text"
           variant="filled"
-          onChange={handleInputChange}
+          onChange={formik.handleChange}
         />
         <TextField name="dni_postulante" label="Dni" type="text" variant="filled" onChange={handleInputChange} />
         <TextField name="correo_electronico" label="Correo" type="mail" variant="filled" onChange={handleInputChange} />
@@ -277,7 +300,7 @@ const FormPostulante = () => {
       </Stack>
       <TextButtons />
       
-    </FormControl>
+    </form>
   );
 };
 
