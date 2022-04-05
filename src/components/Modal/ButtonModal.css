@@ -1,42 +1,46 @@
-.img-modal {
-    height: 200px;
-    width: 200px;
+.icon {
+    color: black;
+}
+
+.icon-exit {
+    height: 14px;
+    color: black;
+}
+
+.img-user {
+    height: 250px;
+    width: 250px;
     border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 15px;
 }
 
-.contenido-modal {
-    display: flex;
-    flex-direction: column;
+.border {
+    border: 2px solid black;
+    color: black;
 }
 
-.container-text {
-    height: auto;
-    width: 60%;
-    border: 2px solid red;
+.texto {
+    color: black;
 }
 
 .modal {
-    background: url("https://static.vecteezy.com/system/resources/previews/000/245/877/large_2x/abstract-colorful-lines-dark-background-vector.jpg");
-    background-repeat: no-repeat;
-    background-size: auto;
-    border-radius: 20px;
+    background-color: gray;
 }
 
-.container-button {
+.container-cards {
+   border: solid;
+}
+
+p {
     display: flex;
-    justify-content: end;
-    padding: 5px;
+    justify-content: space-between;
+    border-bottom: 1px solid black;
 }
 
-.container-information {
-    text-align: center;
+span {
+    font-weight: bold;
 }
-
-.titulo-nombre {
-    color: rgb(131, 23, 232);
-}
-
-
 /*
 1. Combinación de negro con blanco
 2. Combinación de negro con gris

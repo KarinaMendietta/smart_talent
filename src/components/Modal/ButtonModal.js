@@ -1,17 +1,26 @@
 import { React, useState } from "react";
-import MoreRoundedIcon from '@mui/icons-material/MoreRounded';
-import { Button, Dialog, DialogContent, Slider, Chip, Avatar } from '@mui/material';
-import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
+//icon
+import IconButton from '@mui/material/IconButton';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEye } from "@fortawesome/free-solid-svg-icons";
+import CloseIcon from '@mui/icons-material/Close';
+// icon information
+import LocationCityIcon from '@mui/icons-material/LocationCity';
+import LocationOnIcon from '@mui/icons-material/LocationOn';
+import PhoneIphoneIcon from '@mui/icons-material/PhoneIphone';
+import LocalPhoneIcon from '@mui/icons-material/LocalPhone';
+import AlternateEmailIcon from '@mui/icons-material/AlternateEmail';
+import AssignmentIndIcon from '@mui/icons-material/AssignmentInd';
+import ToggleOnIcon from '@mui/icons-material/ToggleOn';
+import ChildFriendlyIcon from '@mui/icons-material/ChildFriendly';
+import TodayIcon from '@mui/icons-material/Today';
+import LanguageIcon from '@mui/icons-material/Language';
+//material
+import { Dialog, DialogContent,Card, CardContent, Grid } from '@mui/material';
 import './ButtonModal.css';
-import LocationOnRoundedIcon from '@mui/icons-material/LocationOnRounded';
-import AlternateEmailRoundedIcon from '@mui/icons-material/AlternateEmailRounded';
-import MaleRoundedIcon from '@mui/icons-material/MaleRounded';
-import PhoneIphoneRoundedIcon from '@mui/icons-material/PhoneIphoneRounded';
-import LocalPhoneRoundedIcon from '@mui/icons-material/LocalPhoneRounded';
-import AssignmentIndRoundedIcon from '@mui/icons-material/AssignmentIndRounded';
-import FlagCircleRoundedIcon from '@mui/icons-material/FlagCircleRounded';
 
-export const ButtonModal = () => {
+
+export const ButtonModal = (props) => {
 
     const [open, setOpen] = useState(false);
 
@@ -22,60 +31,134 @@ export const ButtonModal = () => {
 
     return(
         <>
-        <Button onClick={handleOpenDialog} variant='contained'>
-            <MoreRoundedIcon/>
-        </Button>
         
-        <Dialog open={open} onClose={handleOpenDialog} fullWidth={"md"} maxWidth={"md"} >
-            <DialogContent className="modal">
-                <div className="container-button">
-                <Button onClick={handleOpenDialog} variant="contained" size="large" color="error">
-                    <CloseRoundedIcon />
-                </Button>
-                </div>
-                <div className="contenido-modal">
-                    <img src={"https://www.dzoom.org.es/wp-content/uploads/2010/09/mirada-ojos-encuadre-primer-plano-sexy-810x540.jpg"} alt="" className="img-modal"/>
-                    <div className="container-text-name">
-                        <h1 className="titulo-nombre">JUAN RAMOS</h1>
-                    </div>
-                    <div className="container-information">
-                        <h3>Informacion Personal:</h3>
+            <IconButton color="primary" onClick={handleOpenDialog} aria-label="modal" variant="contained">
+                <FontAwesomeIcon  className="icon" icon={faEye} />
+            </IconButton>
+        
+            <Dialog open={open} onClose={handleOpenDialog} fullWidth={"md"} maxWidth={"md"}>
+                <DialogContent className="modal">
+                    <IconButton onClick={handleOpenDialog}>
+                        <CloseIcon className="icon-exit" color="error" variant="contained" fontSize="large"/>
+                    </IconButton>
 
-                        <p>Pais: Peru <FlagCircleRoundedIcon/></p>
-                        <Chip variant="outlined" avatar={<Avatar><FlagCircleRoundedIcon/></Avatar>} label="Peru" />
-                        <p>Departamento: Arequipa <LocationOnRoundedIcon /></p>
-                        <p>Email: ramos@gmail.com<AlternateEmailRoundedIcon/></p>
-                        <p>Genero: Masculino <MaleRoundedIcon/></p>
-                        <p>Numero de celular: 998-887-478<PhoneIphoneRoundedIcon/></p>
-                        <p>Numero telefonico: 054 326444<LocalPhoneRoundedIcon/></p>
-                        <p>DNI: 40101245 <AssignmentIndRoundedIcon/></p>
-                    </div>
-                    <div className="container-information">
-                        <h3>Calificacion: </h3>
-                        <p>Calificacion Academica: 18/20
-                            <Slider size="small" defaultValue={18 * 5} valueLabelDisplay="off" disabled />
-                        </p>
-                        <p>Calificacion Laboral: 11/20
-                            <Slider size="small" defaultValue={11 * 5} valueLabelDisplay="off" disabled />
-                        </p>
-                        <p>Calificacion psicologica: 14/20
-                            <Slider size="small" defaultValue={12 * 5} valueLabelDisplay="off" disabled/>
-                        </p>
-                    </div>
-                    <div className="container-information">
-                        <h4>Academico: </h4>
-                        <p>vacio</p>
-                    </div>
-                    <div className="container-information">
-                        <h4>Laboral:</h4>
-                        <p>Cargo: Supervisor</p>
-                        <p>Nombre de la empresa: Taiceria Delia</p>
-                        <p>RUC: 1526521210021</p>
-                    </div>
-                </div>
-                
-            </DialogContent>
-        </Dialog>
+                    <img className="img-user" src={props.applicantPhoto} alt=""/>
+                    <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
+                        <Grid item xs={6}>
+                            <Card>
+                                <CardContent>
+                                    {/*applicantPhoto
+applicantNombre
+applicantApellido
+applicantDepartamento
+applicantProvincia
+applicantDireccion
+applicantCelular
+applicantFijo
+applicantCorreo
+applicantDni
+applicantEstado
+applicantNacimiento
+applicantPostulacion
+applicantPais */}
+                                    <h4 className="texto">{props.applicantNombre} {props.applicantApellido}</h4>
+                                    <p>
+                                        <div>
+                                            <LocationCityIcon />
+                                            Departamento:
+                                        </div> 
+                                        <span>{props.applicantDepartamento}</span>
+                                    </p>
+                                    <p>
+                                        <div>
+                                            <LocationCityIcon />
+                                            Provincia:
+                                        </div>
+                                        <span>{props.applicantProvincia}</span>
+                                    </p>
+                                    <p>
+                                        <div>
+                                            <LocationOnIcon/>
+                                            Direccion:
+                                        </div>
+                                        <span>{props.applicantDireccion}</span>
+                                    </p>
+                                    <p>
+                                        <div>
+                                            <PhoneIphoneIcon />
+                                            Celular:
+                                        </div>
+                                        <span>{props.applicantCelular}</span>
+                                    </p>
+                                    <p>
+                                        <div>
+                                            <LocalPhoneIcon />
+                                            Fijo
+                                        </div>
+                                        <span>{props.applicantFijo}</span>
+                                    </p>
+                                    <p>
+                                        <div>
+                                            <AlternateEmailIcon />
+                                            Correo
+                                        </div>
+                                        <span>{props.applicantCorreo}</span>
+                                    </p>
+                                    <p>
+                                        <div>
+                                            <AssignmentIndIcon />
+                                            DNI:
+                                        </div>
+                                        <span>{props.applicantDni}</span>
+                                    </p>
+                                    <p>
+                                        <div>
+                                            <ToggleOnIcon/>
+                                            Estado
+                                        </div>
+                                        <span>{props.applicantEstado}</span>
+                                    </p>
+                                    <p>
+                                        <div>
+                                            <ChildFriendlyIcon />
+                                            Fecha de nacimiento:
+                                        </div>
+                                        <span>{+props.applicantNacimiento}</span>
+                                    </p>
+                                    <p>
+                                        <div>
+                                            <TodayIcon />
+                                            Fecha de postulacion:
+                                        </div>
+                                        <span>{+props.applicantPostulacion}</span>
+                                    </p>
+                                    <p>
+                                        <div>
+                                            <LanguageIcon />
+                                            Pais: 
+                                        </div>
+                                        <span>{props.applicantPais}</span>
+                                    </p>
+                                </CardContent>
+                            </Card> 
+                        </Grid>
+                        <Grid item xs={6}>
+                            <Card>
+                                <CardContent>
+                                    <h4 className="texto">informacion personal</h4>
+                                </CardContent>
+                            </Card> 
+                        </Grid>
+                        <Grid item xs={6}>
+                             <Card>
+                                <CardContent>
+                                    <h4 className="texto">informacion personal</h4>
+                                </CardContent>
+                            </Card> 
+                        </Grid>
+                    </Grid>
+                </DialogContent>
+            </Dialog>
         </>
     );
 }

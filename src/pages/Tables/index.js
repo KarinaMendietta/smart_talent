@@ -19,6 +19,8 @@ import {
 } from "@mui/material";
 // Importando estilos
 import "./../../styles/page/tables.scss";
+//import modal
+import { ButtonModal } from "../../components/Modal/ButtonModal";
 
 
 const Tables = () => {
@@ -169,7 +171,24 @@ const Tables = () => {
                   >
                     <FontAwesomeIcon icon={faEye} className="icon" />
                   </TableCell>
-                  <TableCell align="right" style={{fontSize:'1.4rem', color:'#fff'}}><FontAwesomeIcon icon={faEye} className="icon"/></TableCell>
+                  <TableCell align="right" style={{fontSize:'1.4rem', color:'#fff'}}><ButtonModal 
+                  applicantPhoto={applicant.photo}
+                  applicantNombre={applicant.nombre_postulante}
+                  applicantApellido={applicant.apellido_postulante}
+                  applicantCelular={applicant.numero_celular}
+                  applicantFijo={applicant.telefono_fijo}
+                  applicantProvincia={applicant.provincia}
+                  applicantDireccion={applicant.direccion}
+                  applicantDepartamento={applicant.departamento}
+                  applicantCorreo={applicant.correo_electronico}
+                  applicantDni={applicant.dni_postulante}
+                  applicantEstado={applicant.estado}
+                  applicantNacimiento={applicant.fecha_nacimiento}
+                  applicantPostulacion={applicant.fecha_postulacion}
+                  applicantPais={applicant.pais_nacimiento}
+
+                   />
+                  </TableCell>
                 </TableRow>
               ))}
           </TableBody>
