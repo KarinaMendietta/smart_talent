@@ -15,7 +15,6 @@ const Home = () => {
                 <Link to={"/sign-in"} className="btn--nav">
                   Login
                 </Link>
-                <ButtonModal />
               </li>
             </ul>
           </nav>
