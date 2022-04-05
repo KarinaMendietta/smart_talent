@@ -2,12 +2,12 @@
 @import './../base/variables.scss';
 
 .lineChart{
-    background: $lineChart-bg;
-    border-radius: 1.5rem;
-    padding: $padding_elemt;
     width: 100%;
     min-width: 25rem;
     max-width: 40rem;
+    background: $lineChart-bg;
+    border-radius: 1.5rem;
+    padding: $padding_elemt;
 }
 
 .lineChart__graphic{
@@ -26,3 +26,7 @@
         color: $color-4-l;
     }
 }
+
+// .apexcharts-canvas>svg{
+//     background: linear-gradient(195deg, $color-1, $color-2)!important;
+// }

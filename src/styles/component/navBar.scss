@@ -43,14 +43,21 @@
 .navBar__item--page {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+
   span{
-    color: $link-nav
+    color: $link-nav;
+    text-transform: capitalize;
   }
   p{
     color: #000;
     font-weight: 700;
     font-size: 2rem;
+    text-transform: capitalize;
+    margin-top: calc($margin_elemt/2);
   }
+
 
   .page {
     margin-bottom: $margin_elemt;
@@ -69,6 +76,10 @@
       padding: 1rem;
       border-radius: 50%;
     }
+  }
+
+  .icon--bar{
+    cursor: pointer;
   }
 
   .icon--bar svg{
