@@ -13,67 +13,116 @@ import {
   Container,
   Grid,
   Checkbox,
-  Button
+  Button,
 } from "@mui/material";
 
 import { TextFieldsOutlined } from "@mui/icons-material";
 import DateAdapter from "@mui/lab/AdapterDateFns";
 import { LocalizationProvider, DatePicker } from "@mui/lab";
-import { getPostulantes,registerAcademico } from "../../service/firestore";
+import { getPostulantes, registerAcademico } from "../../service/firestore";
 import swal from "sweetalert";
 import "../../styles/page/formEstilo.scss";
 
-
-
 const FormAcademico = () => {
-
   const [idPostulante, setIDPostulante] = useState(
     localStorage.getItem("idPostulante")
   );
 
-  const [values,setValues] = useState({
-    profesion:"",
-    area_profesional:"",
-    nivel_academico:"",
-    centro_estudios:"",
-    fecha_egreso: new Date,
-    curso_adicional_1:"",
-    curso_adicional_2:"",
-    nivel_ingles:"",
-    estado:"",
-  })
+  const [values, setValues] = useState({
+    profesion: "",
+    area_profesional: "",
+    nivel_academico: "",
+    centro_estudios: "",
+    fecha_egreso: new Date(),
+    curso_adicional_1: "",
+    curso_adicional_2: "",
+    nivel_ingles: "basico",
+    estado: "",
+  });
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
 
     setValues({
-     ...values,
+      ...values,
       [name]: value,
 
-      area_profesional:Areaprofesional,
-      nivel_academico:Nivelacademico,
-      fecha_egreso:Fecha,
-      nivel_ingles:Nivelingles,
-      estado: "activo"
-      
+      area_profesional: Areaprofesional,
+      nivel_academico: Nivelacademico,
+      fecha_egreso: Fecha,
+      nivel_ingles: Nivelingles,
+      estado: "activo",
     });
+
+    console.log("values", values);
   };
 
+  const [califAcadem, setCalifAcadem] = useState(0);
+
   const handleClickRegisterAcademico = async () => {
-    await registerAcademico(idPostulante,values)
+    await registerAcademico(idPostulante, values);
+
+    let academ = 0;
+    let ingles = 0;
+    let curso1 = 0;
+    let curso2 = 0;
+
+    if (values.nivel_academico === "secundaria") {
+      academ = 5;
+    } else if (values.nivel_academico === "tecnico") {
+      academ = 10;
+    } else if (values.nivel_academico === "universitario") {
+      academ = 15;
+    } else if (values.nivel_academico === "titulado") {
+      academ = 20;
+    } else if (values.nivel_academico === "maestria") {
+      academ = 25;
+    } else if (values.nivel_academico === "doctorado") {
+      academ = 30;
+    }
+    console.log("academico", academ);
+
+    if (values.curso_adicional_1 !== "") {
+      curso1 = 7;
+    }
+    console.log("curso1", curso1);
+
+    if (values.curso_adicional_2 !== "") {
+      curso2 = 8;
+    }
+    console.log("curso2", curso2);
+
+    if (values.nivel_ingles === "ninguno") {
+      ingles = 0;
+    } else if (values.nivel_ingles === "basico") {
+      ingles = 5;
+    } else if (values.nivel_ingles === "intermedio") {
+      ingles = 10;
+    } else if (values.nivel_ingles === "avanzado") {
+      ingles = 15;
+    } else if (values.nivel_ingles === "nativo") {
+      ingles = 20;
+    }
+    console.log("que dice", values.nivel_ingles);
+    console.log("ingles", ingles);
+
+    const suma = academ + ingles + curso1 + curso2;
+    console.log("sumaAcadmico", suma);
+    //setCalifAcadem(suma)
+
+    localStorage.setItem("califAcademica", suma);
+
     swal({
       icon: "success",
       title: "Success",
       text: "Se creo correctamente",
     });
-}
+  };
 
   const [Fecha, setFecha] = useState(null);
   const [Areaprofesional, setAreaprofesional] = useState(null);
   const [Nivelacademico, setNivelacademico] = useState(null);
   const [Nivelingles, setNivelingles] = useState(null);
-
-
 
   const handleChangeAreaprofesional = (event) => {
     setAreaprofesional(event.target.value);
@@ -87,15 +136,14 @@ const FormAcademico = () => {
     setNivelingles(event.target.value);
   };
 
-
   return (
     <FormControl 
     container 
     className="formEstilo"
-     sx={{ display: "flex", justifyContent: "center" }}>
+    sx={{ display: "flex", justifyContent: "center" }}>
       
-      <Stack 
-        component="form"        
+      <Stack
+        component="form"
         sx={{
           width: "500px",
           margin: "0 auto",
@@ -107,7 +155,7 @@ const FormAcademico = () => {
         noValidate
         autoComplete="off"
       >
-        <h1>Formulario academico</h1>
+          <h1>Formulario academico</h1>
         <TextField
           name="profesion"
           label="Profesión"
@@ -143,8 +191,12 @@ const FormAcademico = () => {
             <MenuItem value={"Tecnologia, Sistemas Y Telecomunicaciones"}>
               Tecnologia, Sistemas Y Telecomunicaciones
             </MenuItem>
-            <MenuItem value={"Produccion y Manufactura"}>Produccion y Manufactura</MenuItem>
-            <MenuItem value={"Atencion Al Cliente, Call Center Y Telemarketing "}>
+            <MenuItem value={"Produccion y Manufactura"}>
+              Produccion y Manufactura
+            </MenuItem>
+            <MenuItem
+              value={"Atencion Al Cliente, Call Center Y Telemarketing "}
+            >
               Atencion Al Cliente, Call Center Y Telemarketing
             </MenuItem>
             <MenuItem value={"Abastecimiento y Logistica "}>
@@ -157,18 +209,26 @@ const FormAcademico = () => {
             <MenuItem value={"RecHumCapacit"}>
               Recursos Humanos y Capacitacion
             </MenuItem>
-            <MenuItem value={"Mineria, Petroleo Y Gas "}>Mineria, Petroleo Y Gas</MenuItem>
-            <MenuItem value={"Marketing Y Publicidad "}>Marketing Y Publicidad</MenuItem>
+            <MenuItem value={"Mineria, Petroleo Y Gas "}>
+              Mineria, Petroleo Y Gas
+            </MenuItem>
+            <MenuItem value={"Marketing Y Publicidad "}>
+              Marketing Y Publicidad
+            </MenuItem>
             <MenuItem value={"Ingenieria Civil y Construccion"}>
               Ingenieria Civil y Construccion
             </MenuItem>
             <MenuItem value={"Educacion, Docencia e Investigacion "}>
               Educacion, Docencia e Investigacion
             </MenuItem>
-            <MenuItem value={"Gastronomia Y Turismo "}>Gastronomia Y Turismo</MenuItem>
+            <MenuItem value={"Gastronomia Y Turismo "}>
+              Gastronomia Y Turismo
+            </MenuItem>
             <MenuItem value={"Legales "}>Legales</MenuItem>
             <MenuItem value={"Diseno "}>Diseno</MenuItem>
-            <MenuItem value={"Comunicacion, Relaciones Institucionales Y Publicas "}>
+            <MenuItem
+              value={"Comunicacion, Relaciones Institucionales Y Publicas "}
+            >
               Comunicacion, Relaciones Institucionales Y Publicas
             </MenuItem>
             <MenuItem value={"Secretarias y Recepcion "}>
@@ -202,12 +262,12 @@ const FormAcademico = () => {
             onChange={handleChangeNivelacademico}
             variant="filled"
           >
-            <MenuItem value={"Secundaria"}>Secundaria</MenuItem>
-            <MenuItem value={"Tecnico"}>Tecnico</MenuItem>
-            <MenuItem value={"Universitario"}>Universitario</MenuItem>
-            <MenuItem value={"Titulado"}>Titulado</MenuItem>
-            <MenuItem value={"Maestria"}>Maestria</MenuItem>
-            <MenuItem value={"Doctorado"}>Doctorado</MenuItem>
+            <MenuItem value={"secundaria"}>Secundaria</MenuItem>
+            <MenuItem value={"tecnico"}>Tecnico</MenuItem>
+            <MenuItem value={"universitario"}>Universitario</MenuItem>
+            <MenuItem value={"titulado"}>Titulado</MenuItem>
+            <MenuItem value={"maestria"}>Maestria</MenuItem>
+            <MenuItem value={"doctorado"}>Doctorado</MenuItem>
           </Select>
         </Box>
         <TextField
@@ -216,11 +276,11 @@ const FormAcademico = () => {
           type="text"
           variant="filled"
           onChange={handleInputChange}
-        />        
-        <Box  >
+        />
+        <Box>
           <LocalizationProvider dateAdapter={DateAdapter}>
             <DatePicker
-              sx={{ color: "gray", position: "relative", top: "15px" }}  
+              sx={{ color: "gray", position: "relative", top: "15px" }}
               label="Fecha de egreso"
               value={Fecha}
               onChange={(newFecha) => {
@@ -244,8 +304,8 @@ const FormAcademico = () => {
           variant="filled"
           onChange={handleInputChange}
         />
-      
-      <Box fullWidth>
+
+        <Box fullWidth>
           <InputLabel
             fullWidth
             id="select-ingles-label"
@@ -269,13 +329,12 @@ const FormAcademico = () => {
             <MenuItem value={"avanzado"}>Avanzado</MenuItem>
             <MenuItem value={"nativo"}>Nativo</MenuItem>
           </Select>
-          
         </Box>
         <Button onClick={handleClickRegisterAcademico} variant="contained">
-            Guardar
-          </Button>
-        </Stack>
-        <TextButtons />
+          Guardar
+        </Button>
+      </Stack>
+      <TextButtons />
     </FormControl>
   );
 };
@@ -291,3 +350,4 @@ export const TextButtons = () => {
 };
 
 export default FormAcademico;
+

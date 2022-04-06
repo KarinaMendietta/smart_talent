@@ -13,12 +13,12 @@ import {
   Container,
   Button,
 } from "@mui/material";
-
 import { TextFieldsOutlined } from "@mui/icons-material";
 import DateAdapter from "@mui/lab/AdapterDateFns";
 import { LocalizationProvider, DatePicker } from "@mui/lab";
 import { getPostulantes, registerPostulante } from "../../service/firestore";
 import swal from "sweetalert";
+import { getMonth } from "date-fns";
 import "../../styles/page/formEstilo.scss";
 
 const FormPostulante = () => {
@@ -39,8 +39,6 @@ const FormPostulante = () => {
     mes: "",
   });
 
- 
-
   const handleInputChange = (e) => {
     const { name, value } = e.target;
 
@@ -58,13 +56,14 @@ const FormPostulante = () => {
     });
   };
 
+  const [respuesta, setRespuesta] = useState([]);
+
   const [idPostulante, setIdPostulante] = useState(0);
 
   const [Fecha, setFecha] = useState(null);
-  const [Genero, setGenero] = useState();
-  const [Departamento, setDepartamento] = useState();
-  const [Provincia, setProvincia] = useState();
-
+  const [Genero, setGenero] = useState(null);
+  const [Departamento, setDepartamento] = useState(null);
+  const [Provincia, setProvincia] = useState(null);
 
   const handleChangeGenero = (event) => {
     setGenero(event.target.value);
@@ -82,7 +81,7 @@ const FormPostulante = () => {
     await registerPostulante(idPostulante, values);
 
     localStorage.setItem("idPostulante", idPostulante);
-    localStorage.setItem("calificacionAcademica", 0);
+    localStorage.setItem("idConvocatoria", 3);
 
     swal({
       icon: "success",
@@ -126,7 +125,6 @@ const FormPostulante = () => {
           label="Nombre"
           type="text"
           variant="filled"
-          onChange={handleInputChange}
         />
         <TextField
           name="apellido_postulante"
@@ -163,7 +161,7 @@ const FormPostulante = () => {
             />
           </LocalizationProvider>
         </Box>
-        <FormControl fullWidth>
+        <Box fullWidth>
           <InputLabel
             fullWidth
             id="select-genero-label"
@@ -184,7 +182,7 @@ const FormPostulante = () => {
             <MenuItem value={"Femenino"}>Femenino</MenuItem>
             <MenuItem value={"Masculino"}>Masculino</MenuItem>
           </Select>
-        </FormControl>
+        </Box>
         <TextField
           name="pais_nacimiento"
           label="Pais de nacimiento"
@@ -312,15 +310,15 @@ export const TextButtons = () => {
     <Link to="/form-academico">
       <Stack direction="row" spacing={2}>
         <Button
-          sx={{
-            display: "flex",
-            justifycontent: "center",
-            size: "large",
-            backgroundColor: "#000",
-          }}
-          href="#text-buttons"
-        >
-          Siguiente
+            sx={{
+                display: "flex",
+                justifycontent: "center",
+                size: "large",
+                backgroundColor: "#000",
+            }} 
+            href="#text-buttons"
+            >
+            Siguiente
         </Button>
       </Stack>
     </Link>
