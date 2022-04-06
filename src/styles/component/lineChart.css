@@ -1,0 +1,12 @@
+/** Media Queries **/
+.lineChart {
+  background: #1f283e;
+  border-radius: 0.5rem;
+  padding: 2rem;
+}
+
+.lineChart__graphic {
+  background: linear-gradient(195deg, #49a3f1, #1a73e8);
+  border-radius: 0.5rem;
+}
+/*# sourceMappingURL=lineChart.css.map */

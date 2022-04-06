@@ -1,0 +1,60 @@
+/** Media Queries **/
+html {
+  font-size: 62.5%;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+*, *:before, *:after {
+  -webkit-box-sizing: inherit;
+          box-sizing: inherit;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #1a2035;
+}
+
+[class*="__container"] {
+  width: 95%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+@media only screen and (min-width: 1440px) {
+  [class*="__container"] {
+    max-width: 1900px;
+  }
+}
+
+@media only screen and (min-width: 2560px) {
+  [class*="__container"] {
+    max-width: 2800px;
+  }
+}
+
+img {
+  display: block;
+  width: auto;
+  max-width: 100%;
+  height: auto;
+  margin: 0 auto;
+  text-align: center;
+}
+
+button {
+  border: none;
+  background-color: transparent;
+  color: white;
+}
+
+.icon {
+  margin-right: 2rem;
+}
+
+.icon:last-child {
+  margin-right: 0;
+}
+/*# sourceMappingURL=global.css.map */

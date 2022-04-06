@@ -58,7 +58,7 @@ const FormAcademico = () => {
     });
   };
 
-  const handleClickRegister = async () => {
+  const handleClickRegisterAcademico = async () => {
     await registerAcademico(idPostulante,values)
     swal({
       icon: "success",
@@ -108,6 +108,7 @@ const FormAcademico = () => {
           label="Profesión"
           type="text"
           variant="filled"
+          onChange={handleInputChange}
         />
         <Box fullWidth>
           <InputLabel
@@ -127,52 +128,52 @@ const FormAcademico = () => {
             onChange={handleChangeAreaprofesional}
             variant="filled"
           >
-            <MenuItem value={"ComerVentasNeg "}>
+            <MenuItem value={"Comercial, Ventas Y Negocios "}>
               Comercial, Ventas Y Negocios
             </MenuItem>
-            <MenuItem value={"AdminContabFin "}>
+            <MenuItem value={"Administracion, Contabilidad Y Finanzas "}>
               Administracion, Contabilidad Y Finanzas
             </MenuItem>
-            <MenuItem value={"OficiosOtros "}>Oficios Y Otros</MenuItem>
-            <MenuItem value={"TecSistTelecom"}>
+            <MenuItem value={"Oficios Y Otros "}>Oficios Y Otros</MenuItem>
+            <MenuItem value={"Tecnologia, Sistemas Y Telecomunicaciones"}>
               Tecnologia, Sistemas Y Telecomunicaciones
             </MenuItem>
-            <MenuItem value={"ProdManuf"}>Produccion y Manufactura</MenuItem>
-            <MenuItem value={"AtencCallCentTelemark "}>
+            <MenuItem value={"Produccion y Manufactura"}>Produccion y Manufactura</MenuItem>
+            <MenuItem value={"Atencion Al Cliente, Call Center Y Telemarketing "}>
               Atencion Al Cliente, Call Center Y Telemarketing
             </MenuItem>
-            <MenuItem value={"AbastLogist "}>
+            <MenuItem value={"Abastecimiento y Logistica "}>
               Abastecimiento y Logistica
             </MenuItem>
             <MenuItem value={"Ingenierias "}>Ingenierias</MenuItem>
-            <MenuItem value={"SaludMedicFarma"}>
+            <MenuItem value={"Salud, Medicina y Farmacia"}>
               Salud, Medicina y Farmacia
             </MenuItem>
             <MenuItem value={"RecHumCapacit"}>
               Recursos Humanos y Capacitacion
             </MenuItem>
-            <MenuItem value={"MinPetroGas "}>Mineria, Petroleo Y Gas</MenuItem>
-            <MenuItem value={"MarkPubli "}>Marketing Y Publicidad</MenuItem>
-            <MenuItem value={"IngCivilConstr"}>
+            <MenuItem value={"Mineria, Petroleo Y Gas "}>Mineria, Petroleo Y Gas</MenuItem>
+            <MenuItem value={"Marketing Y Publicidad "}>Marketing Y Publicidad</MenuItem>
+            <MenuItem value={"Ingenieria Civil y Construccion"}>
               Ingenieria Civil y Construccion
             </MenuItem>
-            <MenuItem value={"EducDocencInvest "}>
+            <MenuItem value={"Educacion, Docencia e Investigacion "}>
               Educacion, Docencia e Investigacion
             </MenuItem>
-            <MenuItem value={"GastroTurismo "}>Gastronomia Y Turismo</MenuItem>
+            <MenuItem value={"Gastronomia Y Turismo "}>Gastronomia Y Turismo</MenuItem>
             <MenuItem value={"Legales "}>Legales</MenuItem>
             <MenuItem value={"Diseno "}>Diseno</MenuItem>
-            <MenuItem value={"ComuniRelacionesInstPubli "}>
+            <MenuItem value={"Comunicacion, Relaciones Institucionales Y Publicas "}>
               Comunicacion, Relaciones Institucionales Y Publicas
             </MenuItem>
-            <MenuItem value={"SecretariasRecepcion "}>
+            <MenuItem value={"Secretarias y Recepcion "}>
               Secretarias y Recepcion
             </MenuItem>
-            <MenuItem value={"AduanaComercioExterior "}>
+            <MenuItem value={"Aduana y Comercio Exterior "}>
               Aduana y Comercio Exterior
             </MenuItem>
             <MenuItem value={"Seguros "}>Seguros</MenuItem>
-            <MenuItem value={"GerenciaDireccionGeneral "}>
+            <MenuItem value={"Gerencia y Direccion General "}>
               Gerencia y Direccion General
             </MenuItem>
             <MenuItem value={"Enfermeria "}>Enfermeria</MenuItem>
@@ -209,6 +210,7 @@ const FormAcademico = () => {
           label="Centro de estudios"
           type="text"
           variant="filled"
+          onChange={handleInputChange}
         />        
         <Box  >
           <LocalizationProvider dateAdapter={DateAdapter}>
@@ -228,12 +230,14 @@ const FormAcademico = () => {
           label="Curso adicional 1"
           type="text"
           variant="filled"
+          onChange={handleInputChange}
         />
         <TextField
           name="curso_adicional_2"
           label="Curso adicional 2"
           type="text"
           variant="filled"
+          onChange={handleInputChange}
         />
       
       <Box fullWidth>
@@ -262,6 +266,9 @@ const FormAcademico = () => {
           </Select>
           
         </Box>
+        <Button onClick={handleClickRegisterAcademico} variant="contained">
+            Guardar
+          </Button>
         </Stack>
         <TextButtons />
     </FormControl>

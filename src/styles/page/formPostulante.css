@@ -1,0 +1,10 @@
+/** Media Queries **/
+.formPostulante {
+  background: -webkit-gradient(linear, left top, right top, from(#159957), to(#155799));
+  background: linear-gradient(90deg, #159957 0%, #155799 100%);
+}
+
+.textbutton {
+  background-color: green;
+}
+/*# sourceMappingURL=formPostulante.css.map */

@@ -13,73 +13,71 @@ import {
   Container,
   Button,
 } from "@mui/material";
-import { useFormik } from 'formik';
 
 import { TextFieldsOutlined } from "@mui/icons-material";
 import DateAdapter from "@mui/lab/AdapterDateFns";
 import { LocalizationProvider, DatePicker } from "@mui/lab";
-import { getPostulantes,registerPostulante } from "../../service/firestore";
+import { getPostulantes, registerPostulante } from "../../service/firestore";
 import swal from "sweetalert";
+import "../../styles/page/formPostulante.scss";
 
 const FormPostulante = () => {
-
-  const [values,setValues] = useState({
-    nombre_postulante:"",
-    apellido_postulante:"",
-    dni_postulante:"",
-    correo_electronico:"",
-    fecha_nacimiento: new Date,
-    genero:"",
-    pais_nacimiento:"",
-    numero_celular:"",
-    departamento:"",
-    provincia:"",
-    direccion:"",
-    estado:"",
-  })
-
-  const formik = useFormik({
-    initialValues: {
-      nombre_postulante:"",
-    apellido_postulante:"",
-    dni_postulante:"",
-    correo_electronico:"",
-    fecha_nacimiento: new Date,
-    genero:"",
-    pais_nacimiento:"",
-    numero_celular:"",
-    departamento:"",
-    provincia:"",
-    direccion:"",
-    estado:""
-    },
-    onSubmit: values => {
-      alert(JSON.stringify(values, null, 2));
-    },
+  const [values, setValues] = useState({
+    nombre_postulante: "",
+    apellido_postulante: "",
+    dni_postulante: "",
+    correo_electronico: "",
+    fecha_nacimiento: new Date(),
+    genero: "",
+    pais_nacimiento: "",
+    numero_celular: "",
+    departamento: "",
+    provincia: "",
+    direccion: "",
+    estado: "",
+    fecha_postulacion: "",
+    mes: "",
   });
+
+ 
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
 
     setValues({
-     ...values,
+      ...values,
       [name]: value,
 
-      genero:Genero,
-      departamento:Departamento,
-      provincia:Provincia,
+      genero: Genero,
+      departamento: Departamento,
+      provincia: Provincia,
       fecha_nacimiento: Fecha,
-      estado: "activo"
-      
+      estado: "activo",
+      fecha_postulacion: new Date(),
+      mes: new Date().getMonth()+1,
     });
   };
 
   const [idPostulante, setIdPostulante] = useState(0);
 
   const [Fecha, setFecha] = useState(null);
-  const [Genero, setGenero] = useState(null);
-  const [Departamento, setDepartamento] = useState(null);
-  const [Provincia, setProvincia] = useState(null);
+  const [Genero, setGenero] = useState();
+  const [Departamento, setDepartamento] = useState();
+  const [Provincia, setProvincia] = useState();
+  const [Month, setMonth] = useState([
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December"
+  ]);
 
   const handleChangeGenero = (event) => {
     setGenero(event.target.value);
@@ -93,35 +91,35 @@ const FormPostulante = () => {
     setProvincia(event.target.value);
   };
 
- 
   const handleClickRegisterPostulante = async () => {
-
-    await registerPostulante(idPostulante,values)
+    await registerPostulante(idPostulante, values);
 
     localStorage.setItem("idPostulante", idPostulante);
+    localStorage.setItem("calificacionAcademica", 0);
 
     swal({
       icon: "success",
       title: "Success",
       text: "Se creo correctamente el Postulante",
     });
-  }
+  };
 
   const handleIdPostulante = async () => {
-
-    const id = await getPostulantes()
-    setIdPostulante(id +1)
-    console.log("este es el id",idPostulante)
-  }
+    const id = await getPostulantes();
+    setIdPostulante(id + 1);
+    console.log("este es el id", idPostulante);
+  };
 
   useEffect(() => {
-    handleIdPostulante()
+    handleIdPostulante();
   }, [idPostulante]);
 
   return (
-    <form onSubmit={formik.handleSubmit}
-     container sx={{ display: "flex", justifyContent: "center" }}>
-      <h1>Formulario de datos</h1>
+    <FormControl
+      container
+      className="formPostulante"
+      sx={{ display: "flex", justifyContent: "center" }}
+    >
       <Stack
         component="form"
         sx={{
@@ -135,16 +133,35 @@ const FormPostulante = () => {
         noValidate
         autoComplete="off"
       >
-        <TextField name="nombre_postulante" label="Nombre" type="text" variant="filled" />
+        <h1>Formulario de datos</h1>
+        <TextField
+          name="nombre_postulante"
+          label="Nombre"
+          type="text"
+          variant="filled"
+          onChange={handleInputChange}
+        />
         <TextField
           name="apellido_postulante"
           label="Apellido"
           type="text"
           variant="filled"
-          onChange={formik.handleChange}
+          onChange={handleInputChange}
         />
-        <TextField name="dni_postulante" label="Dni" type="text" variant="filled" onChange={handleInputChange} />
-        <TextField name="correo_electronico" label="Correo" type="mail" variant="filled" onChange={handleInputChange} />
+        <TextField
+          name="dni_postulante"
+          label="Dni"
+          type="text"
+          variant="filled"
+          onChange={handleInputChange}
+        />
+        <TextField
+          name="correo_electronico"
+          label="Correo"
+          type="mail"
+          variant="filled"
+          onChange={handleInputChange}
+        />
 
         <Box>
           <LocalizationProvider dateAdapter={DateAdapter}>
@@ -159,7 +176,7 @@ const FormPostulante = () => {
             />
           </LocalizationProvider>
         </Box>
-        <Box fullWidth>
+        <FormControl fullWidth>
           <InputLabel
             fullWidth
             id="select-genero-label"
@@ -180,7 +197,7 @@ const FormPostulante = () => {
             <MenuItem value={"Femenino"}>Femenino</MenuItem>
             <MenuItem value={"Masculino"}>Masculino</MenuItem>
           </Select>
-        </Box>
+        </FormControl>
         <TextField
           name="pais_nacimiento"
           label="Pais de nacimiento"
@@ -295,20 +312,29 @@ const FormPostulante = () => {
           onChange={handleInputChange}
         />
         <Button onClick={handleClickRegisterPostulante} variant="contained">
-            Guardar
-        </Button> 
+          Guardar
+        </Button>
       </Stack>
       <TextButtons />
-      
-    </form>
+    </FormControl>
   );
 };
 
 export const TextButtons = () => {
   return (
-    <Link to="/form-laboral">
+    <Link to="/form-academico">
       <Stack direction="row" spacing={2}>
-        <Button href="#text-buttons">Siguiente</Button>
+        <Button
+          sx={{
+            display: "flex",
+            justifycontent: "center",
+            size: "large",
+            backgroundColor: "#000",
+          }}
+          href="#text-buttons"
+        >
+          Siguiente
+        </Button>
       </Stack>
     </Link>
   );
