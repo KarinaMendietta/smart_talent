@@ -52,6 +52,8 @@ const FormPostulante = () => {
     });
   };
 
+  const [respuesta, setRespuesta] = useState([]);
+
   const [idPostulante, setIdPostulante] = useState(0);
 
   const [Fecha, setFecha] = useState(null);
