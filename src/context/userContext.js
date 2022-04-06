@@ -3,19 +3,22 @@ import { useState, createContext } from "react";
 // Importando estilos
 
 
-export const userContext = createContext();
+export const UserContext = createContext();
 
 export const UserProvider = (props) => {
   const [user, setUser] = useState(JSON.parse(localStorage.getItem("user")));
 
+  const storeUser = (dataUser) => {
+    localStorage.setItem("user", JSON.stringify(dataUser));
+    setUser(dataUser);
+  };
+
+
+  
 //   const [basket, setBasket] = useState(
 //     JSON.parse(localStorage.getItem("basket")) ?? []
 //   );
 
-//   const storeUser = (dataUser) => {
-//     localStorage.setItem("user", JSON.stringify(dataUser));
-//     setUser(dataUser);
-//   };
 
   // vamos a guardar el objeto de cada producto
 //   const storeBasket = (product) => {
@@ -56,12 +59,12 @@ export const UserProvider = (props) => {
 //   };
 
   return (
-    <userContext.Provider
+    <UserContext.Provider
       value={{
         user,
       }}
     >
       {props.children}
-    </userContext.Provider>
+    </UserContext.Provider>
   );
 };

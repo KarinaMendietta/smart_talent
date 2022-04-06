@@ -1,24 +1,17 @@
 //Importando Hooks
 import { useState, useEffect } from "react";
 //Importando de firestore
-import { getApplicants, getAnnouncements, getQualifications } from "../../service/firestore";
+import { getAnnouncements, getQualifications } from "../../service/firestore";
 // Importando ApexCharts
 import Chart from "react-apexcharts";
 // Importando Lodash
 import _ from "lodash";
 // Importando estilos
-import "./../../styles/base/colours.scss";
-import "./../../styles/component/lineChart.scss";
+import "./../../styles/component/barChart.scss";
 
-const LineChart = (props) => {
-  // Para utilizarlo con la base de datos tblConvocatoria
+const BarChart2 = (props) => {
+  // Inicializando el chartData para el apexchart
   const [chartData, setChartData] = useState(null);
-
-  // Obteniendo la base de datos tblPostulantes
-  const fetchApplicants = async () => {
-    const data = await getApplicants();
-    return data;
-  };
 
   // Obteniendo la base de datos tblConvocatoria
   const fetchAnnouncements = async () => {
@@ -29,37 +22,61 @@ const LineChart = (props) => {
   // Obteniendo la base de datos tblCalificacion
   const fetchQualifications = async () => {
     const data = await getQualifications();
-    console.log(data)
+    return data;
   };
 
   const buildChart = async () => {
-    const applicants = await fetchApplicants();
     const announcements = await fetchAnnouncements();
     const qualifications = await fetchQualifications();
+    console.log(announcements);
     
-    // Agrupando la data de postulantes y convocatoria
-    const groupedResult = _.chain(applicants)
+    // Agrupando la data de calificaciones y convocatoria
+    const groupedResult = _.chain(qualifications)
       .groupBy((item) => {
         return item.id_convocatoria;
       })
       .map((value, key) => ({ key, items: value }))
       .value();
+    console.log('groupedResult',groupedResult);
 
     // Obteniendo el nombre de la convocatoria por el id_convocatoria
     const names = groupedResult.map(
       (_announcement, index) => announcements[index].nombre_convocatoria
     );
+    console.log('names',names);
 
-    // Obteniendo el número de postulantes por id_convocatoria
+    const names2 = groupedResult.map((announc) => announc.key); 
+    console.log('names2',names2);
+
+    // const names4 = groupedResult.map((announc) => {
+    //     announcements.map((announcement) => {
+    //         if(announc.key===announcement.id_convocatoria){
+    //             return announcement.nombre_convocatoria;
+    //         }
+    //     })
+    // }); 
+    // console.log('names4',names4);
+
+    // const names3 = groupedResult.map(
+    //     (announc) => announcements.find((announcement) => announcement.id_convocatoria === announc.key)
+    //   );
+    // console.log('names3',names3);
+
+    const names5 = groupedResult.map(
+        (announc) => announc.find((announcement) => announcement.key === announcements.id_convocatoria))
+
+    console.log('names5',names5);
+
+    // Obteniendo la cantidad de postulantes aceptados por la sumatoria de calificaciones
     const counts = groupedResult.map(
-      (announcement) => announcement.items.length
+      (applicant) => applicant.items.filter((qualification) => (qualification.calif_academica + qualification.calif_laboral + qualification.calif_psicologica)> 50 ).length
     );
 
     // Declarando la data para el apexChart
     const data = {
       series: [
         {
-          name: "N° de postulaciones",
+          name: "N° de postulantes aceptados",
           data: counts,
         },
       ],
@@ -119,21 +136,23 @@ const LineChart = (props) => {
   }, []);
 
   return (
-    <div className="lineChart">
-      <div className="lineChart__graphic" style={{background: `linear-gradient(195deg, ${props.color1}, ${props.color2})`}} >
-        <Chart
-          options={chartData.options}
-          series={chartData.series}
-          type="line"
-          height={250}
-        />
+    <div className="barChart">
+      <div className="barChart__graphic" style={{background: `linear-gradient(195deg, ${props.color1}, ${props.color2})`}} >
+        {chartData && (
+          <Chart
+            options={chartData.options}
+            series={chartData.series}
+            type="bar"
+            height={300}
+          />
+        )}
       </div>
-      <div className="lineChart__content">
-        <h3>Postulantes por mes</h3>
-        <p>Last Campaign Performance</p>
+      <div className="barChart__content">
+        <h3>Postulantes aceptados por posición laboral</h3>
+        <p>N° de postulaciones aceptados por convocatoria</p>
       </div>
     </div>
   );
 };
 
-export default LineChart;
+export default BarChart2;

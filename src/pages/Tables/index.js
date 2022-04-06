@@ -26,7 +26,7 @@ const Tables = () => {
   const [applicants, setApplicants] = useState([]);
   // Para utilizarlo con la base de datos tblConvocatoria
   const [announcements, setAnnouncements] = useState([]);
-  // Para utilizarlo con la base de datos tblConvocatoria
+  // Para utilizarlo con la base de datos tblCalificaciones
   const [qualifications, setQualifications] = useState([]);
 
   // Obteniendo la base de datos tblPostulantes
@@ -40,21 +40,21 @@ const Tables = () => {
   const fetchAnnouncements = async () => {
     const data = await getAnnouncements();
     setAnnouncements(data);
-    console.log(data)
+    // console.log(data)
   };
 
   // Obteniendo la base de datos tblCalificacion
-  const fetchQualification = async () => {
+  const fetchQualifications = async () => {
     const data = await getQualifications();
     setQualifications(data);
-    console.log(data)
+    // console.log(data)
   };
 
   //Inicializando los fetch
   useEffect(() => {
     fetchApplicants();
     fetchAnnouncements();
-    fetchQualification()
+    fetchQualifications();
   }, []);
 
   return (
@@ -154,8 +154,10 @@ const Tables = () => {
                   >
                     <Slider
                       defaultValue={+(qualifications.find((qualification) => qualification.id_postulante === applicant.id_postulante).calif_academica) + +(qualifications.find((qualification) => qualification.id_postulante === applicant.id_postulante).calif_laboral) + +(qualifications.find((qualification) => qualification.id_postulante === applicant.id_postulante).calif_psicologica)}
+
                       aria-label="Always visible"
                       valueLabelDisplay="on"
+                      max={300}
                       disabled
                       style={{
                         color: "rgb(67, 160, 71)",

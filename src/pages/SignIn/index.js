@@ -1,35 +1,36 @@
 // Importando Hooks
 import { useState, useEffect, useContext } from "react";
 // Importando Context
-// import { userContext } from "../../context/userContext";
+import { UserContext } from "../../context/UserContext";
 // Importando firestore
-// import { getUsersAdmin } from "../../service/firestore";
+import { getUsersAdmin } from "../../service/firestore";
 // Importando Material
 import { Button, Grid, Card, CardContent, TextField } from "@mui/material";
 // Importando estilos SASS
 import "./../../styles/page/signIn.scss";
 // Importando Sweet Alert
-// import swal from "sweetalert";
-// import bgLogin from "../../assets/image/bg-login.png";
+import swal from "sweetalert";
+
 
 const SignIn = () => {
-  // const [users, setUsers] = useState([]);
+  const { user, storeUser } = useContext(UserContext);
 
-  // const fetchUsersAdmin = async () => {
-  //   const data = await getUsersAdmin();
-  //   setUsers(data);
-  // };
+  const [users, setUsers] = useState([]);
+  const [userData, setUserData] = useState({
+    email: "",
+    password: "",
+  });
+  
+  const fetchUsersAdmin = async () => {
+    const data = await getUsersAdmin();
+    setUsers(data);
+  };
 
-  // useEffect(() => {
-  //   fetchUsersAdmin();
-  // }, []);
+  useEffect(() => {
+    fetchUsersAdmin();
+  }, []);
 
-  // const { user, storeUser } = useContext(UserContext);
 
-  // const [userData, setUserData] = useState({
-  //   email: "",
-  //   password: "",
-  // });
 
   // const handleChangeInput = (e) => {
   //   const { value, name } = e.target;
