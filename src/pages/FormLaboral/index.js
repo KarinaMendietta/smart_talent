@@ -15,6 +15,12 @@ const FormLaboral = () => {
     localStorage.getItem("idPostulante")
   );
 
+  const [Tiempo, setTiempo] = useState(null);
+
+  const handleChangeTiempo = (event) => {
+    setTiempo(event.target.value);
+  };
+
   const [values,setValues] = useState({
     id_postulante:"",
     nombre_empresa:"",
@@ -25,6 +31,7 @@ const FormLaboral = () => {
     fecha_inicio: new Date,
     fecha_termino: new Date,
     breve_descripcion_actividad:"",
+    tiempo:"",
   })
 
   const handleInputChange = (e) => {
@@ -36,12 +43,31 @@ const FormLaboral = () => {
 
       fecha_inicio: FechaInicio,
       fecha_termino: FechaFinal,
-      
+      tiempo:Tiempo,
     });
   };
 
-  const handleClickRegister = async () => {
+  
+
+  const handleClickRegisterLaboral = async () => {
       await registerLaboral(idPostulante,values)
+
+      let califLaboral = 0
+      console.log("dice tiempo",values.tiempo)
+      if (values.tiempo === "De 0 a 1 anho") {
+        califLaboral = 10
+      } else if (values.tiempo === "De 1 a 2 anhos") {
+        califLaboral = 20
+      } else if (values.tiempo === "De 2 a 3 anhos") {
+        califLaboral = 30
+      } else if (values.tiempo === "3 anhos a mas") {
+        califLaboral = 40
+      }
+
+      console.log("milaboral",califLaboral)
+
+      localStorage.setItem("califLaboral", califLaboral);
+      
       swal({
         icon: "success",
         title: "Success",
@@ -143,6 +169,30 @@ const FormLaboral = () => {
             />
           </LocalizationProvider>
         </Box>
+        <Box fullWidth>
+          <InputLabel
+            fullWidth
+            id="select-genero-label"
+            variant="filled"
+            sx={{ color: "gray", position: "relative", top: "15px" }}
+          >
+            Tiempo Laboral
+          </InputLabel>
+          <Select
+            fullWidth
+            labelId="select-tiempo-label"
+            id="select-tiempo"
+            value={Tiempo}
+            label="tiempo"
+            onChange={handleChangeTiempo}
+            variant="filled"
+          >
+            <MenuItem value={"De 0 a 1 anho"}>De 0 a 1 año</MenuItem>
+            <MenuItem value={"De 1 a 2 anhos"}>De 1 a 2 años</MenuItem>
+            <MenuItem value={"De 2 a 3 anhos"}>De 2 a 3 años</MenuItem>
+            <MenuItem value={"3 anhos a mas"}>3 años a mas</MenuItem>
+          </Select>
+        </Box>
           <TextField
                 name="breve_descripcion_actividad"
                 label="Descripcion Actividad (Breve)"
@@ -150,7 +200,7 @@ const FormLaboral = () => {
                 variant="filled"
                 onChange={handleInputChange}
           />
-          <Button onClick={handleClickRegister} variant="contained">
+          <Button onClick={handleClickRegisterLaboral} variant="contained">
             Guardar
           </Button>    
 

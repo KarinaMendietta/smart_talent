@@ -31,7 +31,6 @@ const FormPsicologico = () => {
 
     const fetchTests = async () => {
         const data = await getTests();
-        console.log(data)
         setTests(data);
         
       };
@@ -58,18 +57,24 @@ const FormPsicologico = () => {
       calificacion:event.target.value,
     })
 
-    if (event.target.name<=12) {
-      setValues(sumaAsertividad += +event.target.value)
-    } else if (event.target.name>12 & event.target.name<=21) {
-      setValues(sumaComunicacion += +event.target.value)
-    } else if (event.target.name>21 & event.target.name<=33) {
-      setValues(sumaAutoestima += +event.target.value)
+    const nroTest = +event.target.name
+    const calificacionTest = +event.target.value
+    console.log("NumeroTest",nroTest )
+
+    if (nroTest<=12) {
+      const sumaa = sumaAsertividad += calificacionTest
+      setSumaAsertividad(sumaa)
+    } else if (nroTest>12 & nroTest<=21) {
+      const sumac = sumaComunicacion += calificacionTest
+      setSumaComunicacion(sumac)
+    } else if (nroTest>21 & nroTest<=33) {
+      setSumaAutoestima(sumaAutoestima += calificacionTest)
     } else {
-      setValues(sumaTomaDesicion += +event.target.value)
+      setSumaTomaDesicion(sumaTomaDesicion += calificacionTest)
     }
    
-    console.log("calificacion",event.target.value)
-    console.log("idtest",event.target.name)
+    console.log("calificacion",calificacionTest)
+    console.log("idtest",nroTest)
     console.log("asertiva",sumaAsertividad)
     console.log("comunica",sumaComunicacion)
     console.log("autoesti",sumaAutoestima)
@@ -103,10 +108,13 @@ const FormPsicologico = () => {
 
   const handleClickRegisterCalificaciones = async () => {
      //aqui pongo los valores
+
+     const sumaP = sumaAsertividad + sumaComunicacion + sumaAutoestima + sumaTomaDesicion
+    
      setTodasCalif({ 
       calif_academica:califAcademica,
       calif_laboral:califLaboral,
-      calif_psicologica:sumaAsertividad + sumaComunicacion + sumaAutoestima+sumaTomaDesicion,
+      calif_psicologica:sumaP,
       calif_asertividad:sumaAsertividad,
       calif_comunicacion:sumaComunicacion,
       calif_autoestima:sumaAutoestima,

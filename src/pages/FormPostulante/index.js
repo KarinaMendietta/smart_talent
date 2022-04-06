@@ -18,6 +18,7 @@ import DateAdapter from "@mui/lab/AdapterDateFns";
 import { LocalizationProvider, DatePicker } from "@mui/lab";
 import { getPostulantes,registerPostulante } from "../../service/firestore";
 import swal from "sweetalert";
+import { getMonth } from "date-fns";
 
 const FormPostulante = () => {
 
@@ -34,6 +35,8 @@ const FormPostulante = () => {
     provincia:"",
     direccion:"",
     estado:"",
+    fecha_postulacion:"",
+    mes:"",
   })
 
   const handleInputChange = (e) => {
@@ -47,8 +50,9 @@ const FormPostulante = () => {
       departamento:Departamento,
       provincia:Provincia,
       fecha_nacimiento: Fecha,
-      estado: "activo"
-      
+      estado: "activo",
+      fecha_postulacion: new Date,
+      mes: new Date().getMonth(),
     });
   };
 
@@ -79,6 +83,7 @@ const FormPostulante = () => {
     await registerPostulante(idPostulante,values)
 
     localStorage.setItem("idPostulante", idPostulante);
+    localStorage.setItem("idConvocatoria", 3);
 
     swal({
       icon: "success",
@@ -285,7 +290,7 @@ const FormPostulante = () => {
 
 export const TextButtons = () => {
   return (
-    <Link to="/form-laboral">
+    <Link to="/form-academico">
       <Stack direction="row" spacing={2}>
         <Button href="#text-buttons">Siguiente</Button>
       </Stack>
