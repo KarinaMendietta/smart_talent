@@ -31,7 +31,9 @@ const FormPsicologico = () => {
 
     const fetchTests = async () => {
         const data = await getTests();
+        console.log(data)
         setTests(data);
+        
       };
 
     useEffect(() => {
