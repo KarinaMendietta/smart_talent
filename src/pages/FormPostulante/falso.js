@@ -13,58 +13,57 @@ import {
   Container,
   Button,
 } from "@mui/material";
-
 import { TextFieldsOutlined } from "@mui/icons-material";
 import DateAdapter from "@mui/lab/AdapterDateFns";
 import { LocalizationProvider, DatePicker } from "@mui/lab";
-import { getPostulantes, registerPostulante } from "../../service/firestore";
+import { getPostulantes,registerPostulante } from "../../service/firestore";
 import swal from "sweetalert";
-import "../../styles/page/formEstilo.scss";
+import { getMonth } from "date-fns";
 
 const FormPostulante = () => {
-  const [values, setValues] = useState({
-    nombre_postulante: "",
-    apellido_postulante: "",
-    dni_postulante: "",
-    correo_electronico: "",
-    fecha_nacimiento: new Date(),
-    genero: "",
-    pais_nacimiento: "",
-    numero_celular: "",
-    departamento: "",
-    provincia: "",
-    direccion: "",
-    estado: "",
-    fecha_postulacion: "",
-    mes: "",
-  });
 
- 
+  const [values,setValues] = useState({
+    nombre_postulante:"",
+    apellido_postulante:"",
+    dni_postulante:"",
+    correo_electronico:"",
+    fecha_nacimiento: new Date,
+    genero:"",
+    pais_nacimiento:"",
+    numero_celular:"",
+    departamento:"",
+    provincia:"",
+    direccion:"",
+    estado:"",
+    fecha_postulacion:"",
+    mes:"",
+  })
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
 
     setValues({
-      ...values,
+     ...values,
       [name]: value,
 
-      genero: Genero,
-      departamento: Departamento,
-      provincia: Provincia,
+      genero:Genero,
+      departamento:Departamento,
+      provincia:Provincia,
       fecha_nacimiento: Fecha,
       estado: "activo",
-      fecha_postulacion: new Date(),
+      fecha_postulacion: new Date,
       mes: new Date().getMonth(),
     });
   };
 
+  const [respuesta, setRespuesta] = useState([]);
+
   const [idPostulante, setIdPostulante] = useState(0);
 
   const [Fecha, setFecha] = useState(null);
-  const [Genero, setGenero] = useState();
-  const [Departamento, setDepartamento] = useState();
-  const [Provincia, setProvincia] = useState();
-
+  const [Genero, setGenero] = useState(null);
+  const [Departamento, setDepartamento] = useState(null);
+  const [Provincia, setProvincia] = useState(null);
 
   const handleChangeGenero = (event) => {
     setGenero(event.target.value);
@@ -78,35 +77,38 @@ const FormPostulante = () => {
     setProvincia(event.target.value);
   };
 
+ 
   const handleClickRegisterPostulante = async () => {
-    await registerPostulante(idPostulante, values);
+
+    await registerPostulante(idPostulante,values)
 
     localStorage.setItem("idPostulante", idPostulante);
-    localStorage.setItem("calificacionAcademica", 0);
+    localStorage.setItem("idConvocatoria", 3);
 
     swal({
       icon: "success",
       title: "Success",
       text: "Se creo correctamente el Postulante",
     });
-  };
+  }
 
   const handleIdPostulante = async () => {
-    const id = await getPostulantes();
-    setIdPostulante(id + 1);
-    console.log("este es el id", idPostulante);
-  };
+
+    const id = await getPostulantes()
+    setIdPostulante(id +1)
+    console.log("este es el id",idPostulante)
+  }
 
   useEffect(() => {
-    handleIdPostulante();
+    handleIdPostulante()
   }, [idPostulante]);
 
   return (
-    <FormControl
-      container
-      className="formEstilo"
-      sx={{ display: "flex", justifyContent: "center" }}
-    >
+    <FormControl 
+    container
+    className="formEstilo"
+    sx={{ display: "flex", justifyContent: "center" }}>
+      
       <Stack
         component="form"
         sx={{
@@ -120,14 +122,8 @@ const FormPostulante = () => {
         noValidate
         autoComplete="off"
       >
-        <h1>Formulario de datos</h1>
-        <TextField
-          name="nombre_postulante"
-          label="Nombre"
-          type="text"
-          variant="filled"
-          onChange={handleInputChange}
-        />
+          <h1>Formulario de datos</h1>
+        <TextField name="nombre_postulante" label="Nombre" type="text" variant="filled" />
         <TextField
           name="apellido_postulante"
           label="Apellido"
@@ -135,20 +131,8 @@ const FormPostulante = () => {
           variant="filled"
           onChange={handleInputChange}
         />
-        <TextField
-          name="dni_postulante"
-          label="Dni"
-          type="text"
-          variant="filled"
-          onChange={handleInputChange}
-        />
-        <TextField
-          name="correo_electronico"
-          label="Correo"
-          type="mail"
-          variant="filled"
-          onChange={handleInputChange}
-        />
+        <TextField name="dni_postulante" label="Dni" type="text" variant="filled" onChange={handleInputChange} />
+        <TextField name="correo_electronico" label="Correo" type="mail" variant="filled" onChange={handleInputChange} />
 
         <Box>
           <LocalizationProvider dateAdapter={DateAdapter}>
@@ -163,7 +147,7 @@ const FormPostulante = () => {
             />
           </LocalizationProvider>
         </Box>
-        <FormControl fullWidth>
+        <Box fullWidth>
           <InputLabel
             fullWidth
             id="select-genero-label"
@@ -184,7 +168,7 @@ const FormPostulante = () => {
             <MenuItem value={"Femenino"}>Femenino</MenuItem>
             <MenuItem value={"Masculino"}>Masculino</MenuItem>
           </Select>
-        </FormControl>
+        </Box>
         <TextField
           name="pais_nacimiento"
           label="Pais de nacimiento"
@@ -299,10 +283,11 @@ const FormPostulante = () => {
           onChange={handleInputChange}
         />
         <Button onClick={handleClickRegisterPostulante} variant="contained">
-          Guardar
-        </Button>
+            Guardar
+        </Button> 
       </Stack>
       <TextButtons />
+      
     </FormControl>
   );
 };
@@ -311,17 +296,7 @@ export const TextButtons = () => {
   return (
     <Link to="/form-academico">
       <Stack direction="row" spacing={2}>
-        <Button
-          sx={{
-            display: "flex",
-            justifycontent: "center",
-            size: "large",
-            backgroundColor: "#000",
-          }}
-          href="#text-buttons"
-        >
-          Siguiente
-        </Button>
+        <Button href="#text-buttons">Siguiente</Button>
       </Stack>
     </Link>
   );

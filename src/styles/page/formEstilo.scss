@@ -1,0 +1,20 @@
+@import './../base/colours.scss';
+@import './../base/variables.scss';
+@import './../base/mixins.scss';
+
+
+
+.formEstilo {
+    background-repeat: no-repeat ;
+    height: auto;
+    min-height: 100vh;
+    width: 100%;
+    background: linear-gradient(90deg, #159957 0%, #155799 100%);
+    // margin: 0px;
+//     width: auto,       
+//     margin: 20px auto,
+//     background: "#fff",
+//     padding: "2rem",
+//     borderRadius: "1rem",
+}
+

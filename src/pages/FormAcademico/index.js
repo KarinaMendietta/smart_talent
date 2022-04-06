@@ -21,6 +21,7 @@ import DateAdapter from "@mui/lab/AdapterDateFns";
 import { LocalizationProvider, DatePicker } from "@mui/lab";
 import { getPostulantes,registerAcademico } from "../../service/firestore";
 import swal from "sweetalert";
+import "../../styles/page/formEstilo.scss";
 
 
 
@@ -88,10 +89,13 @@ const FormAcademico = () => {
 
 
   return (
-    <FormControl container sx={{ display: "flex", justifyContent: "center" }}>
-      <h1>Formulario academico</h1>
-      <Stack
-        component="form"
+    <FormControl 
+    container 
+    className="formEstilo"
+     sx={{ display: "flex", justifyContent: "center" }}>
+      
+      <Stack 
+        component="form"        
         sx={{
           width: "500px",
           margin: "0 auto",
@@ -103,6 +107,7 @@ const FormAcademico = () => {
         noValidate
         autoComplete="off"
       >
+        <h1>Formulario academico</h1>
         <TextField
           name="profesion"
           label="Profesión"
@@ -258,11 +263,11 @@ const FormAcademico = () => {
             onChange={handleChangeNivelingles}
             variant="filled"
           >
-            <MenuItem value={"Nulo"}>Nulo</MenuItem>
-            <MenuItem value={"Basico"}>Basico</MenuItem>
-            <MenuItem value={"Intermedio"}>Intermedio</MenuItem>
-            <MenuItem value={"Avanzado"}>Avanzado</MenuItem>
-            <MenuItem value={"Nativo"}>Nativo</MenuItem>
+            <MenuItem value={"ninguno"}>Ninguno</MenuItem>
+            <MenuItem value={"basico"}>Basico</MenuItem>
+            <MenuItem value={"intermedio"}>Intermedio</MenuItem>
+            <MenuItem value={"avanzado"}>Avanzado</MenuItem>
+            <MenuItem value={"nativo"}>Nativo</MenuItem>
           </Select>
           
         </Box>

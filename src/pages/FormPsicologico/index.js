@@ -7,6 +7,8 @@ import { Container,Grid, Divider, Button, Stack, FormControl,
   RadioGroup,Radio, TextField } from "@mui/material";
 import { getTests, registerCalificacion, registerPsicologico  } from "../../service/firestore";
 import swal from "sweetalert";
+import "./../../styles/page/formEstilo.scss"
+import { height } from "@mui/system";
 
 const FormPsicologico = () => {
 
@@ -31,7 +33,6 @@ const FormPsicologico = () => {
 
     const fetchTests = async () => {
         const data = await getTests();
-        console.log(data)
         setTests(data);
         
       };
@@ -58,18 +59,24 @@ const FormPsicologico = () => {
       calificacion:event.target.value,
     })
 
-    if (event.target.name<=12) {
-      setValues(sumaAsertividad += +event.target.value)
-    } else if (event.target.name>12 & event.target.name<=21) {
-      setValues(sumaComunicacion += +event.target.value)
-    } else if (event.target.name>21 & event.target.name<=33) {
-      setValues(sumaAutoestima += +event.target.value)
+    const nroTest = +event.target.name
+    const calificacionTest = +event.target.value
+    console.log("NumeroTest",nroTest )
+
+    if (nroTest<=12) {
+      const sumaa = sumaAsertividad += calificacionTest
+      setSumaAsertividad(sumaa)
+    } else if (nroTest>12 & nroTest<=21) {
+      const sumac = sumaComunicacion += calificacionTest
+      setSumaComunicacion(sumac)
+    } else if (nroTest>21 & nroTest<=33) {
+      setSumaAutoestima(sumaAutoestima += calificacionTest)
     } else {
-      setValues(sumaTomaDesicion += +event.target.value)
+      setSumaTomaDesicion(sumaTomaDesicion += calificacionTest)
     }
    
-    console.log("calificacion",event.target.value)
-    console.log("idtest",event.target.name)
+    console.log("calificacion",calificacionTest)
+    console.log("idtest",nroTest)
     console.log("asertiva",sumaAsertividad)
     console.log("comunica",sumaComunicacion)
     console.log("autoesti",sumaAutoestima)
@@ -103,10 +110,13 @@ const FormPsicologico = () => {
 
   const handleClickRegisterCalificaciones = async () => {
      //aqui pongo los valores
+
+     const sumaP = sumaAsertividad + sumaComunicacion + sumaAutoestima + sumaTomaDesicion
+    
      setTodasCalif({ 
       calif_academica:califAcademica,
       calif_laboral:califLaboral,
-      calif_psicologica:sumaAsertividad + sumaComunicacion + sumaAutoestima+sumaTomaDesicion,
+      calif_psicologica:sumaP,
       calif_asertividad:sumaAsertividad,
       calif_comunicacion:sumaComunicacion,
       calif_autoestima:sumaAutoestima,
@@ -122,13 +132,38 @@ const FormPsicologico = () => {
 }
 
   return (
-    <Container maxWidth="lg">
-      <form >
+    // <Container maxWidth="lg" sx={{ display: "flex", justifyContent: "center" }}>
+    <FormControl
+        container
+        className="formEstilo"
+        mt={2}
+        sx={{ alignItems:"center", 
+        width: "100%",  
+        height:"auto",
+        background: "linear-gradient(90deg, #159957 0%, #155799 100%)"
+       }}
+      >
+  
+      <Stack
+          component="form"
+          sx={{
+            width: "80%",    
+            maxWidth: "600px",   
+            margin: "20px auto",
+            background: "#fff",
+            padding: "2rem",
+            borderRadius: "1rem",
+            
+          }}
+          spacing={2}
+          noValidate
+          autoComplete="off"
+        >
         <h1>Formulario Psicológico</h1>
         &nbsp;&nbsp;
         <h2>HABILIDADES SOCIALES</h2>
         <Divider />
-        <Grid container spacing={3} mt={5}>
+        <Grid container spacing={3} mt={5} sx={{width:'100%'}}>
              {tests.length > 0 &&
                     tests.map((test) => (
                     <Grid item xs={12}> 
@@ -141,7 +176,6 @@ const FormPsicologico = () => {
                         <FormControl sx={{display: 'flex', justifyContent:"center"}}>
                           <FormLabel id="label-radio"></FormLabel>
                           <RadioGroup
-                            sx={{ flexDirection: "row" }}
                             aria-labelledby="label-radio"
                             name={test.id_test}
                             onChange={handleChangeCalificacion}
@@ -175,15 +209,15 @@ const FormPsicologico = () => {
                           
                           </RadioGroup>
                         </FormControl>
-                        <div sx={{ flexDirection: "row" }}>
+                        
+                        </div>
+                        <div>
                           <Button
                             onClick={handleClickRegisterCalificacion}  
                             variant="contained" >
                             OK
                           </Button>
-                        </div>  
                         </div>
-                        
                     </Grid>                   
               ))}
               
@@ -192,10 +226,10 @@ const FormPsicologico = () => {
             Terminar
         </Button>       
         
-      </form>  
-    </Container>  
+        </Stack>
+      </FormControl>
 
-    )
+    );
 }
 
 export const TextButtons = () => {
