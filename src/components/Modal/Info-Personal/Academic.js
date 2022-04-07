@@ -5,7 +5,7 @@ import MenuBookIcon from '@mui/icons-material/MenuBook';
 import TodayIcon from '@mui/icons-material/Today';
 import LibraryBooksIcon from '@mui/icons-material/LibraryBooks';
 
-const Academic = ({ academics, applicant }) => {
+const Academic = ({ acade }) => {
     return(
         <>
             <div className="div">
@@ -14,7 +14,7 @@ const Academic = ({ academics, applicant }) => {
                     <h4 className="titulo-icon">Area Profesional:</h4>
                 </div>
                 <span>
-                    {academics.length > 0 && academics.find((academic) => academic.id_postulante === applicant.id_postulante)?.area_profesional}
+                    {acade?.area_profesional}
                 </span>
             </div>
 
@@ -24,7 +24,7 @@ const Academic = ({ academics, applicant }) => {
                     <h4 className="titulo-icon">Centro de estudios:</h4>
                 </div>
                 <span>
-                     {academics.length > 0 && academics.find((academic) => academic.id_postulante === applicant.id_postulante)?.centro_estudios}  
+                     {acade?.centro_estudios}  
                 </span>
             </div>
             <div className="div">
@@ -33,7 +33,7 @@ const Academic = ({ academics, applicant }) => {
                     <h4 className="titulo-icon">Curso Adicional: </h4>
                 </div>
                 <span>
-                     {academics.length > 0 && academics.find((academic) => academic.id_postulante === applicant.id_postulante)?.curso_adicional_1}  
+                     {acade?.curso_adicional_1}  
                 </span>
             </div>
             <div className="div">
@@ -42,25 +42,25 @@ const Academic = ({ academics, applicant }) => {
                     <h4 className="titulo-icon">Curso Adicional:</h4>
                 </div>
                 <span>
-                     {academics.length > 0 && academics.find((academic) => academic.id_postulante === applicant.id_postulante)?.curso_adicional_2}  
+                     {acade?.curso_adicional_2}  
                 </span>
             </div>
-            <div className="div">
+           {/** <div className="div">
                 <div className="container-icon-title">
                     <TodayIcon />
                     <h4 className="titulo-icon">Fecha de Egreso</h4>
                 </div>
                 <span>
-                     {academics.length > 0 && academics.find((academic) => academic.id_postulante === applicant.id_postulante)?.fecha_egreso}  
+                     {+acade.fecha_egreso}  
                 </span>
-            </div>
+            </div> */}
             <div className="div">
                 <div className="container-icon-title">
                     <SchoolIcon />
                     <h4 className="titulo-icon">Nivel Academico</h4>
                 </div>
                 <span>
-                     {academics.length > 0 && academics.find((academic) => academic.id_postulante === applicant.id_postulante)?.nivel_academico}  
+                     {acade?.nivel_academico}  
                 </span>
             </div>
             <div className="div">
@@ -69,7 +69,7 @@ const Academic = ({ academics, applicant }) => {
                     <h4 className="titulo-icon">Nivel de Ingles:</h4>
                 </div>
                 <span>
-                     {academics.length > 0 && academics.find((academic) => academic.id_postulante === applicant.id_postulante)?.nivel_ingles}  
+                     {acade?.nivel_ingles}  
                 </span>
             </div>
             <div className="div">
@@ -78,7 +78,7 @@ const Academic = ({ academics, applicant }) => {
                     <h4 className="titulo-icon">Profesion</h4>
                 </div>
                 <span>
-                     {academics.length > 0 && academics.find((academic) => academic.id_postulante === applicant.id_postulante)?.profesion}  
+                     {acade?.profesion}  
                 </span>
             </div>
         </>

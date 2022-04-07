@@ -24,15 +24,19 @@ export const ButtonModal = ({ applicant, qualifications, announcements, academic
     const [open, setOpen] = useState(false);
     const [psy, setPsy] = useState({});
     const [work, setWork] = useState({});
+    const [acade, setAcade] = useState({});
 
     const handleOpenDialog = () => {
-        if(psycho.length > 0 || trabajo.length > 0){
+        if(psycho.length > 0 || trabajo.length > 0 || academics.length > 0){
         const data = psycho.find((element) => element.id_postulante === applicant.id_postulante);
-        const result = trabajo.find((element) => element.id_postulante === applicant.id_postulante);;
+        const result = trabajo.find((element) => element.id_postulante === applicant.id_postulante);
+        const resultAcademic = academics.find((element) => element.id_postulante === applicant.id_postulante);
         setPsy(data);
+        setAcade(resultAcademic);
         setWork(result);
         }
         setOpen(!open);
+
     };
     
 
@@ -61,8 +65,8 @@ export const ButtonModal = ({ applicant, qualifications, announcements, academic
                             <Grid item md={4}>
                                 <Card>
                                     <CardContent className="card">
-                                        <Academic academics={academics} applicant={applicant}/>
-                                        <Psicologico psy={psy}/>
+                                        <Academic acade={acade}/>
+                                        <Psicologico psy={psy} />
                                     </CardContent>
                                 </Card>
                             </Grid>
@@ -70,7 +74,7 @@ export const ButtonModal = ({ applicant, qualifications, announcements, academic
                                 <Card>
                                     <CardContent className="card">
                                         <Calificacion applicant={applicant} qualifications={qualifications}/>
-                                        <Laboral work={work}/>
+                                        <Laboral work={work} />
                                     </CardContent>  
                                 </Card> 
                             </Grid>

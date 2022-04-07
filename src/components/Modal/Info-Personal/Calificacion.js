@@ -13,7 +13,7 @@ const Calificacion = ({applicant, qualifications}) => {
       <div className="div">
         <div className="container-icon-title">
             <NoteAltIcon/>
-            <h4 className="titulo-icon">Calificacion Academica</h4>
+            <h4 className="titulo-icon">Calificacion Academica:</h4>
         </div>
         <span>
           {qualifications.length > 0 && qualifications.find((qualification) => qualification.id_postulante === applicant.id_postulante)?.calif_academica}
@@ -23,7 +23,7 @@ const Calificacion = ({applicant, qualifications}) => {
       <div className="div">
         <div className="container-icon-title">
             <GroupAddIcon />
-            <h4 className="titulo-icon">Calificacion Asertividad</h4>
+            <h4 className="titulo-icon">Calificacion Asertividad:</h4>
         </div>
         <span>
           {qualifications.length > 0 && qualifications.find((qualification) => qualification.id_postulante === applicant.id_postulante)?.calif_asertividad}
@@ -32,7 +32,7 @@ const Calificacion = ({applicant, qualifications}) => {
       <div className="div">
         <div className="container-icon-title">
             <AccessibilityNewIcon />
-            <h4 className="titulo-icon">Calificacion Autoestima</h4>
+            <h4 className="titulo-icon">Calificacion Autoestima:</h4>
         </div>
         <span>
           {qualifications.length > 0 && qualifications.find((qualification) => qualification.id_postulante === applicant.id_postulante)?.calif_autoestima}
@@ -41,7 +41,7 @@ const Calificacion = ({applicant, qualifications}) => {
       <div className="div">
         <div className="container-icon-title">
             <SmsIcon />
-            <h4 className="titulo-icon">Calificacion Comunicacion</h4>
+            <h4 className="titulo-icon">Calificacion Comunicacion:</h4>
         </div>
         <span>
           {qualifications.length > 0 && qualifications.find((qualification) => qualification.id_postulante === applicant.id_postulante)?.calif_comunicacion}
@@ -50,7 +50,7 @@ const Calificacion = ({applicant, qualifications}) => {
       <div className="div">
         <div className="container-icon-title">
             <PsychologyIcon />
-            <h4 className="titulo-icon">Calificacion Psicologica</h4>
+            <h4 className="titulo-icon">Calificacion Psicologica:</h4>
         </div>
         <span>
           {qualifications.length > 0 && qualifications.find((qualification) => qualification.id_postulante === applicant.id_postulante)?.calif_psicologica}
