@@ -1,107 +1,119 @@
-// Importando Hooks
-import { useEffect, useState } from "react";
-// Immportando data chart
-import { lineDb } from "./../../assets/data/chartDb";
+//Importando Hooks
+import { useState, useEffect, useContext } from "react";
+// Importando ApexCharts
+import Chart from "react-apexcharts";
+//Importando de firestore
+import { getApplicants, getAnnouncements, getQualifications } from "../../service/firestore";
 // Importando estilos
 import "./../../styles/base/colours.scss";
 import "./../../styles/component/lineChart.scss";
-// Importando Chart JS
-import {
-  Chart as ChartJS,
-  CategoryScale,
-  LinearScale,
-  PointElement,
-  LineElement,
-  Title,
-  Tooltip,
-  Legend,
-  Filler,
-} from "chart.js";
-import { Line } from "react-chartjs-2";
-ChartJS.register(
-  CategoryScale,
-  LinearScale,
-  PointElement,
-  LineElement,
-  Title,
-  Tooltip,
-  Legend,
-  Filler
-);
 
-const options = {
-  responsive: true,
-  fill: true,
-  scales: {
-    y:{
-      ticks:{
-        color:"white",
-        beginAtZero: true,
-        stepSize: 1,
-        font:{
-          size:16
-        }
-      },
-      grid:{
-        color:"rgb(15, 57, 78, 1)"
-      }
-    },
-    x:{
-      ticks:{
-        color:"white",
-        font:{
-          size:16
-        }
-      },
-      grid:{
-        color:"rgba(128, 128, 128, 1)"
-      }
-    }
-  },
-  plugins: {
-    legend: {
-      display: false,
-    },
-    title: {
-      display: false,
-      text: "Line Chart",
-    }
-  },
-};
 
-const labels = ["January", "February", "March", "April", "May", "June", "July"];
-const score = [2, 2, 3, 5, 4, 8, 6];
+const LineChart = (props) => {
+  // Para utilizarlo con la base de datos tblPostulantes
+  const [applicants, setApplicants] = useState([]);
+  // Para utilizarlo con la base de datos tblConvocatoria
+  const [announcements, setAnnouncements] = useState([]);
+  // Para utilizarlo con la base de datos tblConvocatoria
+  const [qualifications, setQualifications] = useState([]);
 
-console.log(lineDb[0].labels);
-const LineChart = () => {
-  const data = {
-    labels,
-    datasets: [
+  // Obteniendo la base de datos tblPostulantes
+  const fetchApplicants = async () => {
+    const data = await getApplicants();
+    setApplicants(data);
+    // console.log(applicants);
+  };
+
+  // Obteniendo la base de datos tblConvocatoria
+  const fetchAnnouncements = async () => {
+    const data = await getAnnouncements();
+    setAnnouncements(data);
+  };
+
+  // Obteniendo la base de datos tblCalificacion
+  const fetchQualification = async () => {
+    const data = await getQualifications();
+    setQualifications(data);
+  };
+
+  //Inicializando los fetch
+  useEffect(() => {
+    fetchApplicants();
+    fetchAnnouncements();
+    fetchQualification()
+  }, []);
+
+  const chartData = {
+    series: [
       {
-        label: "dataset 1",
-        data: [3, 5, 3, 1, 8, 9, 4],
-        borderWidth: 3,
-        borderColor: "rgba(255 , 255, 255, 1)",
-        pointRadius: 6,
-        pointBackgroundColor: "rgba(255 , 255, 255, 1)",
-        backgroundColor: "rgba(36, 135, 177, 0.5)",
-        fill: true,
+        name: "Número de Postulantes",
+        data: [10, 30, 20, 43, 32, 16],
       },
     ],
+    options: {
+      xaxis: {
+        tickPlacement:'on',
+        categories: ["JS", "CSS", "HTML", "NodeJS", "React", "Vue"],
+        labels:{
+          style:{
+            colors:'#fff',
+            fontSize:'14'
+          },
+        }
+      },
+      yaxis: {
+        labels:{
+          style:{
+            colors:['#fff'],
+            fontSize:'14'
+          },
+        },
+        min: 0,
+      },
+      // theme:{
+      //   mode:'dark',
+      // },
+      colors: ['#ffffff90'], //para el color de la linea de la gráfica lineal
+      dataLabels: {
+        enabled: false, // para activar la data encima de los markers 
+      },
+      stroke: {
+        curve: 'straight',
+        width: 5,//para el grosor de la linea de la gráfica lineal
+      },
+      markers: {
+        size: 3,// son los circulos en la gráfica
+      },
+      fill: {
+        colors: ["#fff"], //para el color del sombreado debajo de la gráfica lineal
+      },
+      grid: {
+        borderColor: '#e7e7e7',
+        row: {
+          colors: ["transparent"],
+        },
+        column: {
+          colors: ["transparent"],
+        },
+      },
+    },
   };
 
   return (
-    <>
-      <div className='lineChart'>
-        <div className='lineChart__graphic'>
-          <Line data={data} options={options} />
-        </div>
-        <div className='lineChart__content'>
-          <h4>Website Views</h4>
-          <p>Last Campaign Performance</p>
-        </div>
+    <div className="lineChart">
+      <div className="lineChart__graphic" style={{background: `linear-gradient(195deg, ${props.color1}, ${props.color2})`}} >
+        <Chart
+          options={chartData.options}
+          series={chartData.series}
+          type="line"
+          height={250}
+        />
       </div>
-    </>
+      <div className="lineChart__content">
+        <h3>Postulantes por mes</h3>
+        <p>Last Campaign Performance</p>
+      </div>
+    </div>
   );
 };
 

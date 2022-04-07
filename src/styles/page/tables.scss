@@ -1,0 +1,26 @@
+@import "./../base/colours.scss";
+@import "./../base/variables.scss";
+
+.tables {
+  max-width: 100%;
+  // min-width: 20rem;
+  display: flex;
+  flex-direction: column;
+  margin-top: 4rem;
+  background: $tables-bg;
+  border-radius: 1rem;
+
+  // min-width: 0px;
+  // overflow-wrap: break-word;
+}
+
+.table-title {
+  background: $tablesTitle-bg;
+  padding: 3rem 2rem;
+  margin: -4rem 2rem 2rem;
+  border-radius: 1rem;
+
+  h3 {
+    text-align: left;
+  }
+}

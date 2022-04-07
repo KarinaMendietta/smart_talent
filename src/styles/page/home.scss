@@ -3,7 +3,7 @@
 @import './../base/mixins.scss';
 
 .header{
-    background-color: $header-bg;
+    background-color: black;
 
     .header__container{
         padding: $padding_elemt 0;
@@ -16,8 +16,5 @@
 }
 
 .btn--nav{
-    @include buttonSmall($buttonNav-bg, $buttonNavHover-bg, block);
-    &:hover {
-        color: $link-hover;
-    }
+    @include buttonSmall(transparent, transparent, block);
 }

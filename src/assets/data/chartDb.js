@@ -1,27 +1,16 @@
-const lineDb = [
+const chartDb= [
     {
-        title: 'Daily Sales',
-        labels: ["January", "February", "March", "April", "May", "June", "July"],
-        label:'dataset 1',
-        nombreData: 'Número de usuarios por meses',
-        data: [2, 2, 3, 5, 4, 8, 6],
+        nombre_convocatoria: 'Supervisor de Producción',
+        nombre_convocatoria_red: 'Supervisor Prod.',
     },
     {
-        title: 'Daily Sales',
-        labels: ["January", "February", "March", "April", "May", "June", "July"],
-        label:'dataset 2',
-        nombreData: 'Número de usuarios por meses',
-        data: [1, 8, 2, 4, 1, 5, 8],
-    }
-];
-
-const barDb = [
+        nombre_convocatoria: 'Jefe de Mantenimiento',
+        nombre_convocatoria_red: 'Jefe Mant.',
+    },
     {
-        labels: ["January", "February", "March", "April", "May", "June", "July"],
-        label:'dataset 1',
-        nombreData: 'Número de usuarios por meses',
-        data: [2, 2, 3, 5, 4, 8, 6],
-    }
+        nombre_convocatoria: 'Supervisor de Logística',
+        nombre_convocatoria_red: 'Supervisor Log.',
+    },
 ];
 
-export {lineDb, barDb};
+export {chartDb};
