@@ -71,7 +71,6 @@ h4 {
 p, span {
     font-family: $secondary-font;
     font-weight: $regular;
-    color: $paragraph;
     line-height: 1.8rem;
     font-size: 1.2rem;
     @include telefono{
@@ -113,7 +112,6 @@ li {
 a {
     font-family: $link-font;
     font-weight: $regular; 
-    color: $link;    
     text-align: center;
     text-decoration: none;
     transition-property: color;

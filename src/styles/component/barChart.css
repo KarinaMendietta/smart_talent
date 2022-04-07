@@ -1,0 +1,12 @@
+/** Media Queries **/
+.barChart {
+  background: #1f283e;
+  border-radius: 0.5rem;
+  padding: 2rem;
+}
+
+.barChart__graphic {
+  background: linear-gradient(195deg, #66bb6a, #43a047);
+  border-radius: 0.5rem;
+}
+/*# sourceMappingURL=barChart.css.map */

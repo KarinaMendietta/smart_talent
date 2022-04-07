@@ -1,0 +1,77 @@
+/** Media Queries **/
+.navBar {
+  background-color: #1a2035;
+  border-radius: 1rem;
+}
+
+.navBar .navBar__container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding: 2rem;
+}
+
+.navBar.fijo {
+  background-color: rgba(31, 40, 62, 0.7);
+  width: 70%;
+  position: fixed;
+  z-index: 1;
+  top: 2rem;
+  backdrop-filter: blur(1rem);
+  -webkit-backdrop-filter: blur(1rem);
+  -o-filter-backdrop-filter: blur(1rem);
+  -ms-filter-backdrop-filter: blur(1rem);
+  -moz-backdrop-filter: blur(1rem);
+}
+
+@media only screen and (min-width: 768px) {
+  .navBar.fijo {
+    background-color: rgba(31, 40, 62, 0.7);
+  }
+}
+
+.navBar__item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.navBar__item--page {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.navBar__item--page .page {
+  margin-bottom: 2rem;
+}
+
+.navBar__item--icon {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.navBar__item--icon .icon--navBar:hover {
+  background-color: rgba(255, 255, 255, 0.4);
+  padding: 1rem;
+  border-radius: 50%;
+}
+/*# sourceMappingURL=navBar.css.map */
