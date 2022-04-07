@@ -8,16 +8,16 @@ import CloseIcon from '@mui/icons-material/Close';
 import { Dialog, DialogContent,Card, CardContent, Grid, Container } from '@mui/material';
 import './ButtonModal.css';
 //importando informacion
-import Personal from "./../../info-Personal/Personal";
-import Calificacion from "./../../info-Personal/Calificacion";
-import Academic from "./../../info-Personal/Academic";
-import Psicologico from "./../../info-Personal/Psicologico";
-import Laboral from "./../../info-Personal/Laboral";
+import Personal from "./Info-Personal/Personal";
+import Calificacion from "./Info-Personal/Calificacion";
+import Academic from "./Info-Personal/Academic";
+import Psicologico from "./Info-Personal/Psicologico";
+import Laboral from "./Info-Personal/Laboral";
 
 
-{/* <Academic academics={academics} applicant={applicant}/>
-<Psicologico pyscho={psycho} applicant={applicant}/>
-<Laboral trabajo={trabajo} applicant={applicant}/> */}
+//<Academic academics={academics} applicant={applicant}/>
+//<Psicologico pyscho={psycho} applicant={applicant}/>
+//<Laboral trabajo={trabajo} applicant={applicant}/>
 
 
 export const ButtonModal = ({ applicant, qualifications, announcements, academics, psycho, trabajo }) => {
@@ -41,13 +41,12 @@ export const ButtonModal = ({ applicant, qualifications, announcements, academic
     
 
     return(
-        <>
-        
-            <IconButton color="primary" onClick={handleOpenDialog} aria-label="modal" variant="contained">
-                <FontAwesomeIcon  className="icon" icon={faEye} />
+        <>        
+            <IconButton color="primary" onClick={handleOpenDialog} aria-label="modal" variant="contained" className="icon--modal">
+                <FontAwesomeIcon icon={faEye} className="icon" onClick={handleOpenDialog} />
             </IconButton>
         
-            <Dialog open={open} onClose={handleOpenDialog} fullWidth={"xl"} maxWidth={"xl"}>
+            <Dialog open={open} onClose={handleOpenDialog} fullWidth maxWidth={"xl"}>
                 <DialogContent className="modal">
                     <IconButton onClick={handleOpenDialog} classname="button-close">
                         <CloseIcon className="icon-exit" color="error" variant="contained" fontSize="large"/>

@@ -1,10 +1,23 @@
-.modal--icons .icon {
+.modal {
+    background-color: gray;
+
+}
+
+.card-container {
+    display: flex;
+    justify-content: space-around;
+    background: linear-gradient(195deg, rgb(73, 163, 241), rgb(26, 115, 232));
+    padding-bottom: 15px;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.icon--modal .icon{
     color: black;
 }
 
-.modal--icons .icon-exit {
-    height: 14px;
-    color: black;
+.container-icon{
+    padding-right: 8px;
 }
 
 .img-user {
@@ -12,33 +25,35 @@
     width: 250px;
     border-radius: 50%;
     object-fit: cover;
-    margin-bottom: 15px;
+    margin-bottom: 30px;
+    border: 1px solid black;
 }
 
-.modal--icons .border {
-    border: 2px solid black;
+.texto {
     color: black;
 }
 
-.modal--icons .texto {
-    color: black;
+h4 {
+    padding-left:  9px;
 }
 
-.modal {
-    background-color: gray;
+.container-icon-title {
+    display: flex;
+    flex-direction: row;
 }
 
-.modal--icons .container-cards {
-   border: solid;
-}
-
-.modal--icons p {
+.div {
     display: flex;
     justify-content: space-between;
-    border-bottom: 1px solid black;
+    padding: 5px;
 }
 
-.modal--icons span {
+.titulo-icon {
+    font-size: 16px;
+    color: black;
+}
+
+span {
     font-weight: bold;
 }
 /*

@@ -89,10 +89,10 @@ export default function SignIn() {
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get("email"),
-      password: data.get("password"),
-    });
+    // console.log({
+    //   email: data.get("email"),
+    //   password: data.get("password"),
+    // });
   };
 
   return (
@@ -100,7 +100,7 @@ export default function SignIn() {
       {/* maxWidth="xs"  */}
       <Container
         className="containerlogin"
-        sx={{ backgroundColor: "#fff", height: "100vh", paddingTop:'5rem', width:'100%' }}
+        sx={{ backgroundColor: "#fff", height: "100vh", width:'100%', paddingTop:'3rem' }}
       >
         <Box
           sx={{            
@@ -108,11 +108,12 @@ export default function SignIn() {
             flexDirection: "column",
             alignItems: "center",
             margin:'0 auto',
-            minWidth: "300px",
-            maxWidth: "700px",
+            minWidth: "200px",
+            maxWidth: "400px",
             backgroundColor: "rgb(220, 232, 254)",
             padding:'0 3rem 1rem',
             borderRadius:'1rem',
+            boxShadow: '10px 10px 5px -2px rgba(163, 162, 162, 0.75)',
           }}
         >
           <Avatar
@@ -137,7 +138,7 @@ export default function SignIn() {
             sx={{ mt: 2 }}
           >
             <TextField
-              sx={{ backgroundColor: "#1abc9c", height: "65px" }}
+              sx={{ backgroundColor: "#1abc9c"}}
               margin="normal"
               required
               fullWidth
@@ -148,8 +149,9 @@ export default function SignIn() {
               autoFocus
               onChange={handleChangeInput}
             />
+
             <TextField
-              sx={{ backgroundColor: "#1abc9c", height: "65px" }}
+              sx={{ backgroundColor: "#1abc9c" }}
               margin="normal"
               required
               fullWidth
@@ -160,40 +162,27 @@ export default function SignIn() {
               autoComplete="current-password"
               onChange={handleChangeInput}
             />
-            <FormControlLabel
-              control={<Checkbox value="remember" color="primary" />}
-              label="Recordar Contraseña"
-            />
+
             <Button
               type="submit"
               fullWidth
               variant="contained"
               sx={{
-                mt: 3,
-                mb: 2,
-                width: "300px",
+                width: "auto",
                 height: "40px",
                 borderRadius: "10px",
                 fontSize: "14px",
                 fontFamily: "opensans-regular",
+                margin:'3rem auto',
+                textAlign:'center'
               }}
               onClick={handleClickLogin}
             >
               Iniciar Sesión
-            </Button>
-            <Grid container>
-              <Grid item xs>
-                <Link
-                  href="#"
-                  sx={{ fontFamily: "opensans-regular", fontSize: "13px" }}
-                >
-                  Has olvidado tu contraseña?
-                </Link>
-              </Grid>
-            </Grid>
+            </Button>        
           </Box>
         </Box>
-        <Copyright sx={{ mt: 8, mb: 4 }} />
+        <Copyright sx={{ mt: 4 }} />
       </Container>
     </ThemeProvider>
   );

@@ -26,7 +26,7 @@ const Laboral = ({ work }) => {
                     <h4 className="titulo-icon">Cargo Desempeñado:</h4>
                 </div>
                 <span>
-                        {work.cargo_desempenho}   
+                        {work?.cargo_desempenho}   
                 </span>
             </div>
             <div className="div">
@@ -35,10 +35,10 @@ const Laboral = ({ work }) => {
                     <h4 className="titulo-icon">Dirreccion del Trabajo:</h4>
                 </div>
                 <span>
-                        {work.direccion}   
+                        {work?.direccion}   
                 </span>
             </div>
-            <div className="div">
+             {/**<div className="div">
                 <div className="container-icon-title">
                     <DateRangeIcon />
                     <h4 className="titulo-icon">Fecha de Inicio:</h4>
@@ -47,7 +47,7 @@ const Laboral = ({ work }) => {
                         {+work.fecha_inicio}   
                 </span>
             </div>
-            <div className="div">
+           <div className="div">
                 <div className="container-icon-title">
                     <DateRangeIcon />
                     <h4 className="titulo-icon">Fecha de Culminacion</h4>
@@ -55,14 +55,14 @@ const Laboral = ({ work }) => {
                 <span>
                         {work.fecha_termmino}   
                 </span>
-            </div>
+            </div> */}
             <div className="div">
                 <div className="container-icon-title">
                     <CorporateFareIcon />
                     <h4 className="titulo-icon">Nombre de la empresa: </h4>
                 </div>
                 <span>
-                        {work.nombre_empresa}   
+                        {work?.nombre_empresa}   
                 </span>
             </div>
             <div className="div">
@@ -71,7 +71,7 @@ const Laboral = ({ work }) => {
                 <h4 className="titulo-icon">R.U.C:</h4>
                 </div>
                 <span>
-                        {work.ruc}   
+                        {work?.ruc}   
                 </span>
             </div>
             <div className="div">
@@ -80,7 +80,7 @@ const Laboral = ({ work }) => {
                     <h4 className="titulo-icon">Telefono:</h4>
                 </div>
                 <span>
-                        {work.telefono}   
+                        {work?.telefono}   
                 </span>
             </div>
             <div className="div">
@@ -89,7 +89,7 @@ const Laboral = ({ work }) => {
                     <h4 className="titulo-icon">Tiempo:</h4>
                 </div>
                 <span>
-                        {work.tiempo}   
+                        {work?.tiempo}   
                 </span>
             </div>
         </>

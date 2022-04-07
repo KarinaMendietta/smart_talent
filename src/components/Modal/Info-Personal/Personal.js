@@ -23,7 +23,7 @@ const Personal = ({ applicant }) => {
           <h4 className="titulo-icon">Nombre y Apellido:</h4>
         </div>
         <span>
-          {applicant.nombre_postulante} {applicant.apellido_postulante}
+          {applicant?.nombre_postulante} {applicant?.apellido_postulante}
         </span>
       </div>
 
@@ -32,58 +32,58 @@ const Personal = ({ applicant }) => {
           <AssignmentIndIcon />
           <h4  className="titulo-icon">DNI:</h4>
         </div>
-        <span>{applicant.dni_postulante}</span>
+        <span>{applicant?.dni_postulante}</span>
       </div>
       <div className="div">
         <div className="container-icon-title">
           <LocationOnIcon />
           <h4  className="titulo-icon">Direccion:</h4>
         </div>
-        <span>{applicant.direccion}</span>
+        <span>{applicant?.direccion}</span>
       </div>
       <div className="div">
         <div className="container-icon-title">
           <LocationCityIcon />
           <h4  className="titulo-icon">Provincia:</h4>
         </div>
-        <span>{applicant.provincia}</span>
+        <span>{applicant?.provincia}</span>
       </div>
       <div className="div">
         <div className="container-icon-title">
           <SouthAmericaIcon />
           <h4  className="titulo-icon">Departamento:</h4>
         </div>
-        <span>{applicant.departamento}</span>
+        <span>{applicant?.departamento}</span>
       </div>
       <div className="div">
         <div className="container-icon-title">
           <PhoneIphoneIcon />
           <h4  className="titulo-icon">Celular</h4>
         </div>
-        <span>{applicant.numero_celular}</span>
+        <span>{applicant?.numero_celular}</span>
       </div>
       <div className="div">
         <div className="container-icon-title">
           <LocalPhoneIcon />
           <h4  className="titulo-icon">Telefono:</h4>
         </div>
-        <span>{applicant.telefono_fijo}</span>
+        <span>{applicant?.telefono_fijo}</span>
       </div>
       <div className="div">
         <div className="container-icon-title">
           <AlternateEmailIcon />
           <h4  className="titulo-icon">Correo:</h4>
         </div>
-        <span>{applicant.correo_electronico}</span>
+        <span>{applicant?.correo_electronico}</span>
       </div>
       <div className="div">
         <div className="container-icon-title">
           <ToggleOnIcon />
           <h4  className="titulo-icon"> Estado:</h4>
         </div>
-        <span>{applicant.estado}</span>
+        <span>{applicant?.estado}</span>
       </div>
-      <div className="div">
+      {/**<div className="div">
         <div className="container-icon-title">
           <ChildFriendlyIcon />
           <h4  className="titulo-icon">F. nacimiento:</h4>
@@ -96,13 +96,13 @@ const Personal = ({ applicant }) => {
           <h4  className="titulo-icon">F. postulacion:</h4>
         </div>
         <span>{}</span>
-      </div>
+      </div> */}
       <div className="div">
         <div className="container-icon-title">
           <LanguageIcon />
           <h4  className="titulo-icon">Pais:</h4>
         </div>
-        <span>{applicant.pais_nacimiento}</span>
+        <span>{applicant?.pais_nacimiento}</span>
       </div>
     </>
   );

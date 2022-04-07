@@ -1,9 +1,9 @@
 //Importando Hooks
 import { useState, useEffect, useContext } from "react";
 //Importando de firestore
-import { getApplicants, getAnnouncements, getQualifications } from "../../service/firestore";
-// Importando Modal
-import {ButtonModal} from "./../../components/Modal/ButtonModal"
+import { getApplicants, getAnnouncements, getQualifications, getAcademics, getPsychological, getLabor } from "../../service/firestore";
+// Importando Componente
+import { ButtonModal } from "./../../components/Modal/ButtonModal";
 // Importando Font Awesome
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
@@ -30,6 +30,12 @@ const Tables = () => {
   const [announcements, setAnnouncements] = useState([]);
   // Para utilizarlo con la base de datos tblCalificaciones
   const [qualifications, setQualifications] = useState([]);
+  // Para utilizar con la base de datos tbAcademics
+  const [academics, setAcademics] = useState([]);
+  // Para utilizar la base de datos de psicologico
+  const [ psycho, setPsycho] = useState([]);
+  // Para utilizaar la base de datos de laboral.
+  const [ trabajo, setTrabajo] = useState([]);
 
   // Obteniendo la base de datos tblPostulantes
   const fetchApplicants = async () => {
@@ -52,11 +58,32 @@ const Tables = () => {
     // console.log(data)
   };
 
+  // Obtner la base de datos tbAcademico
+  const fetchAcademics = async() => {
+    const data = await getAcademics();
+    setAcademics(data);
+  }
+
+  //Obtener la base de datos de tbPsicologico
+  const fetchPsycho = async() => {
+    const data = await getPsychological();
+    setPsycho(data);
+  }
+
+  //Obtener la base de datos de tbLaboral
+  const fetchLabor = async() => {
+    const data = await getLabor();
+    setTrabajo(data);
+  }
+
   //Inicializando los fetch
   useEffect(() => {
     fetchApplicants();
     fetchAnnouncements();
     fetchQualifications();
+    fetchAcademics();
+    fetchPsycho();
+    fetchLabor();
   }, []);
 
   return (
@@ -170,17 +197,28 @@ const Tables = () => {
                   <TableCell
                     align="right"
                     style={{ fontSize: "1.4rem", color: "rgb(52, 71, 103)" }}
+                  >
+                    <ButtonModal applicant={applicant} announcements={announcements} qualifications={qualifications} academics={academics} psycho={psycho} trabajo={trabajo}/>
+                  </TableCell>
+
+
+                  {/* <TableCell
+                    align="right"
+                    style={{ fontSize: "1.4rem", color: "rgb(52, 71, 103)" }}
                     className="modal--icons"
                   >
-                    {/* <p>{announcements.map((announcement)=>announcement)}</p> */}
-                    {/* <FontAwesomeIcon icon={faEye} className="icon" onClick={handleOpenDialog} /> */}
+                    <p>{announcements.map((announcement)=>announcement)}</p>
+                    <FontAwesomeIcon icon={faEye} className="icon" onClick={handleOpenDialog} />
                     <ButtonModal 
                       applicant={applicant}
                       announcements={announcements}
                       qualifications={qualifications}
                     />
-                  </TableCell>
-                  <TableCell align="right" style={{fontSize:'1.4rem', color:'#fff'}}><FontAwesomeIcon icon={faEye} className="icon"/></TableCell>
+                  </TableCell> */}
+
+                  {/* <TableCell align="right" style={{fontSize:'1.4rem', color:'#fff'}}>
+                    <FontAwesomeIcon icon={faEye} className="icon"/>
+                  </TableCell> */}
                 </TableRow>
               ))}
           </TableBody>
@@ -192,4 +230,4 @@ const Tables = () => {
   );
 };
 
-export default Tables;
+export default Tables
