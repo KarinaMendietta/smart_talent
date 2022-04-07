@@ -1,16 +1,16 @@
 import React from "react";
 import EngineeringIcon from '@mui/icons-material/Engineering';
 
-const Psicologico = ({ psycho, applicant }) => {
+const Psicologico = ({ psy }) => {
     return(
         <>
             <div className="div">
                 <div className="container-icon-title">
                     <EngineeringIcon />
-                    Calificacion Psicologica:
+                    <h4 className="titulo-icon">Calificacion Psicologica:</h4>
                 </div>
                 <span>
-                    {psycho.length > 0 && psycho.find((psy) => psy.id_postulante === applicant.id_postulante)?.calificacion}
+                    {psy.calificacion}
                 </span>
             </div>
         </>

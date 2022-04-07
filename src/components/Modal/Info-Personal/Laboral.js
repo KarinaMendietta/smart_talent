@@ -1,87 +1,95 @@
 import React from "react";
+import WorkIcon from '@mui/icons-material/Work';
+import WorkHistoryIcon from '@mui/icons-material/WorkHistory';
+import EmojiTransportationIcon from '@mui/icons-material/EmojiTransportation';
+import PendingActionsIcon from '@mui/icons-material/PendingActions';
+import DateRangeIcon from '@mui/icons-material/DateRange';
+import CorporateFareIcon from '@mui/icons-material/CorporateFare';
+import AccountTreeIcon from '@mui/icons-material/AccountTree';
+import PhoneIphoneIcon from '@mui/icons-material/PhoneIphone';
 
-const Laboral = ({ trabajo, applicant }) => {
+const Laboral = ({ work }) => {
     return(
         <>
             <div className="div">
                 <div className="container-icon-title">
-                    <></>
-                    <h4>Breve Descripcion de la actividad:</h4>
+                    <PendingActionsIcon />
+                    <h4  className="titulo-icon">Descripcion de la actividad:</h4>
                 </div>
                 <span>
-                        {trabajo.length > 0 && trabajo.find((work) => work.id_postulante === applicant.id_postulante)?.breve_descripcion_actividad}   
+                        {work.breve_descripcion_actividad}   
                 </span>
             </div>
             <div className="div">
                 <div className="container-icon-title">
-                    <></>
-                    <h4>Cargo Desempeñado:</h4>
+                    <WorkIcon />
+                    <h4 className="titulo-icon">Cargo Desempeñado:</h4>
                 </div>
                 <span>
-                        {trabajo.length > 0 && trabajo.find((work) => work.id_postulante === applicant.id_postulante)?.cargo_desempenho}   
+                        {work.cargo_desempenho}   
                 </span>
             </div>
             <div className="div">
                 <div className="container-icon-title">
-                    <></>
-                    <h4>Dirreccion del Trabajo:</h4>
+                    <EmojiTransportationIcon />
+                    <h4 className="titulo-icon">Dirreccion del Trabajo:</h4>
                 </div>
                 <span>
-                        {trabajo.length > 0 && trabajo.find((work) => work.id_postulante === applicant.id_postulante)?.direccion}   
+                        {work.direccion}   
                 </span>
             </div>
             <div className="div">
                 <div className="container-icon-title">
-                    <></>
-                    <h4>Fecha de Inicio:</h4>
+                    <DateRangeIcon />
+                    <h4 className="titulo-icon">Fecha de Inicio:</h4>
                 </div>
                 <span>
-                        {trabajo.length > 0 && trabajo.find((work) => work.id_postulante === applicant.id_postulante)?.fecha_inicio}   
+                        {+work.fecha_inicio}   
                 </span>
             </div>
             <div className="div">
                 <div className="container-icon-title">
-                    <></>
-                    <h4>Fecha de Culminacion</h4>
+                    <DateRangeIcon />
+                    <h4 className="titulo-icon">Fecha de Culminacion</h4>
                 </div>
                 <span>
-                        {trabajo.length > 0 && trabajo.find((work) => work.id_postulante === applicant.id_postulante)?.fecha_termmino}   
+                        {+work.fecha_termmino}   
                 </span>
             </div>
             <div className="div">
                 <div className="container-icon-title">
-                    <></>
-                    <h4>Nombre de la empresa: </h4>
+                    <CorporateFareIcon />
+                    <h4 className="titulo-icon">Nombre de la empresa: </h4>
                 </div>
                 <span>
-                        {trabajo.length > 0 && trabajo.find((work) => work.id_postulante === applicant.id_postulante)?.nombre_empresa}   
+                        {work.nombre_empresa}   
                 </span>
             </div>
             <div className="div">
                 <div className="container-icon-title">
-                    <></>
-                <h4>R.U.C:</h4>
+                    <AccountTreeIcon />
+                <h4 className="titulo-icon">R.U.C:</h4>
                 </div>
                 <span>
-                        {trabajo.length > 0 && trabajo.find((work) => work.id_postulante === applicant.id_postulante)?.ruc}   
+                        {work.ruc}   
                 </span>
             </div>
             <div className="div">
                 <div className="container-icon-title">
-                    <></>
-                    <h4>Telefono:</h4>
+                    <PhoneIphoneIcon />
+                    <h4 className="titulo-icon">Telefono:</h4>
                 </div>
                 <span>
-                        {trabajo.length > 0 && trabajo.find((work) => work.id_postulante === applicant.id_postulante)?.telefono}   
+                        {work.telefono}   
                 </span>
             </div>
             <div className="div">
                 <div className="container-icon-title">
-                    <></>
-                    <h4>Tiempo:</h4>
+                    <WorkHistoryIcon />
+                    <h4 className="titulo-icon">Tiempo:</h4>
                 </div>
                 <span>
-                        {trabajo.length > 0 && trabajo.find((work) => work.id_postulante === applicant.id_postulante)?.tiempo}   
+                        {work.tiempo}   
                 </span>
             </div>
         </>
