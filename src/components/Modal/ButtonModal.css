@@ -1,30 +1,22 @@
 
 .modal {
-    background-image: url(../../assets/bg-modal.jpg);
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-attachment: fixed;
-    background-size: cover;
+    background-color: gray;
 
 }
 
 .card-container {
-    background-color: rgba(225,225,225,0.4);
+    background: linear-gradient(195deg, rgb(73, 163, 241), rgb(26, 115, 232));
     padding-bottom: 15px;
     border-radius: 5px;
-}
-
-.card {
-    background-color: black;
+    padding: 10px;
 }
 
 .icon {
     color: black;
 }
 
-.icon-exit {
-    height: 14px;
-    color: black;
+.container-icon{
+    padding-right: 8px;
 }
 
 .img-user {
@@ -36,24 +28,28 @@
     border: 1px solid black;
 }
 
-.border {
-    border: 2px solid black;
+.texto {
     color: black;
 }
 
-.texto {
-    color: rgb(202, 58, 40);
+.div {
+    display: flex;
+
+    justify-content: space-between;
+}
+
+.titulo-icon {
+    font-size: 18   px;
+    color: black;
 }
 
 p {
     display: flex;
     justify-content: space-between;
-    border-bottom: 1px solid whitesmoke;
     padding-top: 7px;
 }
 
 span {
-    color: rgb(99, 243, 242);
     font-weight: bold;
 }
 /*

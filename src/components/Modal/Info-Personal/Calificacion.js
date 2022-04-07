@@ -1,10 +1,20 @@
 import React from "react";
+//icons
+import NoteAltIcon from '@mui/icons-material/NoteAlt';
+import GroupAddIcon from '@mui/icons-material/GroupAdd';
+import AccessibilityNewIcon from '@mui/icons-material/AccessibilityNew';
+import SmsIcon from '@mui/icons-material/Sms';
+import PsychologyIcon from '@mui/icons-material/Psychology';
+import AltRouteIcon from '@mui/icons-material/AltRoute';
 
 const Calificacion = ({applicant, qualifications}) => {
   return (
     <>
       <p className="texto">
-        Calificacion Academica:
+        <div>
+            <NoteAltIcon/>
+            Calificacion Academica:
+        </div>
         <span>
           {qualifications.length > 0 &&
             qualifications.find(
@@ -14,7 +24,10 @@ const Calificacion = ({applicant, qualifications}) => {
         </span>
       </p>
       <p className="texto">
-        Calificacion de Aserividad:
+        <div>
+            <GroupAddIcon />
+            Calificacion de Aserividad:
+        </div>
         <span>
           {qualifications.length > 0 &&
             qualifications.find(
@@ -24,7 +37,10 @@ const Calificacion = ({applicant, qualifications}) => {
         </span>
       </p>
       <p className="texto">
-        Calificacion de Autoestima:
+        <div>
+            <AccessibilityNewIcon />
+            Calificacion de Autoestima:
+        </div>
         <span>
           {qualifications.length > 0 &&
             qualifications.find(
@@ -34,7 +50,10 @@ const Calificacion = ({applicant, qualifications}) => {
         </span>
       </p>
       <p className="texto">
-        Calificacion de Comunicacion:
+        <div>
+            <SmsIcon />
+            Calificacion de Comunicacion:
+        </div>
         <span>
           {qualifications.length > 0 &&
             qualifications.find(
@@ -44,7 +63,10 @@ const Calificacion = ({applicant, qualifications}) => {
         </span>
       </p>
       <p className="texto">
-        Calificacion Psicologica:
+        <div>
+            <PsychologyIcon />
+            Calificacion Psicologica:
+        </div>
         <span>
           {qualifications.length > 0 &&
             qualifications.find(
@@ -54,7 +76,10 @@ const Calificacion = ({applicant, qualifications}) => {
         </span>
       </p>
       <p className="texto">
-        Calificacion Toma de Decision:
+        <div>
+            <AltRouteIcon />
+            Calificacion Toma de Decision:
+        </div>
         <span>
           {qualifications.length > 0 &&
             qualifications.find(

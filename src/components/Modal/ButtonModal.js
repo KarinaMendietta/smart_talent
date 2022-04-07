@@ -10,16 +10,21 @@ import './ButtonModal.css';
 //importando informacion
 import Personal from "./Info-Personal/Personal";
 import Calificacion from "./Info-Personal/Calificacion";
+import Academic from "./Info-Personal/Academic";
+//import Psicologico from "./Info-Personal/Psicologico";
+//import Laboral from "./Info-Personal/Laboral";
 
 
-export const ButtonModal = ({ applicant, qualifications, announcements, academics }) => {
+//<Academic academics={academics} applicant={applicant}/>
+//<Psicologico pyscho={psycho} applicant={applicant}/>
+//<Laboral trabajo={trabajo} applicant={applicant}/>
+
+
+export const ButtonModal = ({ applicant, qualifications, announcements, academics, psycho, trabajo }) => {
     const [open, setOpen] = useState(false);
 
     const handleOpenDialog = () => {
         setOpen(!open);
-        console.log(qualifications);
-        console.log(announcements);
-        console.log(academics);
     };
 
     
@@ -47,15 +52,18 @@ export const ButtonModal = ({ applicant, qualifications, announcements, academic
                                 </Card>
                             </Grid>
                             <Grid item md={4}>
-                                <h1>{qualifications.length > 0 && qualifications.find((qualification) => qualification.id_postulante === applicant.id_postulante).calif_laboral}</h1>
-                                <CardContent className="card">
-                                        
-                                </CardContent>
+                                <Card>
+                                    <CardContent className="card">
+                                        <Academic academics={academics} applicant={applicant}/>
+                                    </CardContent>
+                                </Card>
                             </Grid>
-                            <Grid item md={4}>+
-                                <CardContent className="card">
-                                    <Calificacion applicant={applicant} qualifications={qualifications}/>
-                                </CardContent>   
+                            <Grid item md={4}>
+                                <Card>
+                                    <CardContent className="card">
+                                        <Calificacion applicant={applicant} qualifications={qualifications}/>
+                                    </CardContent>  
+                                </Card> 
                             </Grid>
                         </Grid>
                     </Container>

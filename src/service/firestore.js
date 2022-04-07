@@ -73,6 +73,20 @@ export const getAcademics = async () => {
   return usersAcademic;
 };
 
+export const getPsychological = async() => {
+  const collectionPsychological = collection(db, "psicologico");
+  const documentPsychological = await getDocs(collectionPsychological);
+  const usersPsychological = documentPsychological.docs.map((doc) => doc.data());
+  return usersPsychological;
+}
+
+export const getLabor = async() => {
+  const collectionLabor = collection(db, "laboral");
+  const documentLabor = await getDocs(collectionLabor);
+  const usersLabor = documentLabor.docs.map((doc) => doc.data());
+  return usersLabor;
+}
+
 
 
 // const firebaseConfig = {

@@ -15,89 +15,92 @@ import LanguageIcon from '@mui/icons-material/Language';
 const Personal = ({ applicant }) => {
   return (
     <>
-      <p className="texto">
-        Nombre y Apellido:
+      <div className="div">
+        <div>
+          <LocationCityIcon/>
+          <h4 className="titulo-icon">Nombre y Apellido:</h4>
+        </div>
         <span>
           {applicant.nombre_postulante} {applicant.apellido_postulante}
         </span>
-      </p>
-      <p className="texto">
+      </div>
+      <div className="div">
         <div>
           <AssignmentIndIcon />
-          DNI:
+          <h4  className="titulo-icon">DNI:</h4>
         </div>
         <span>{applicant.dni_postulante}</span>
-      </p>
-      <p className="texto">
+      </div>
+      <div className="div">
         <div>
           <LocationOnIcon />
-          Direccion:
+          <h4  className="titulo-icon">Direccion:</h4>
         </div>
         <span>{applicant.direccion}</span>
-      </p>
-      <p className="texto">
+      </div>
+      <div className="div">
         <div>
           <LocationCityIcon />
-          Provincia:
+          <h4  className="titulo-icon">Provincia:</h4>
         </div>
         <span>{applicant.provincia}</span>
-      </p>
-      <p className="texto">
+      </div>
+      <div className="div">
         <div>
           <SouthAmericaIcon />
-          Departamento:
+          <h4  className="titulo-icon">Departamento:</h4>
         </div>
         <span>{applicant.departamento}</span>
-      </p>
-      <p className="texto">
+      </div>
+      <div className="div">
         <div>
           <PhoneIphoneIcon />
-          Celular:
+          <h4  className="titulo-icon">Celular</h4>
         </div>
         <span>{applicant.numero_celular}</span>
-      </p>
-      <p className="texto">
+      </div>
+      <div className="div">
         <div>
           <LocalPhoneIcon />
-          Telefono:
+          <h4  className="titulo-icon">Telefono:</h4>
         </div>
         <span>{applicant.telefono_fijo}</span>
-      </p>
-      <p className="texto">
+      </div>
+      <div className="div">
         <div>
           <AlternateEmailIcon />
-          Correo:
+          <h4  className="titulo-icon">Correo:</h4>
         </div>
         <span>{applicant.correo_electronico}</span>
-      </p>
-      <p className="texto">
+      </div>
+      <div className="div">
         <div>
           <ToggleOnIcon />
-          Estado:
+          <h4  className="titulo-icon"> Estado:</h4>
         </div>
         <span>{applicant.estado}</span>
-      </p>
-      <p className="texto">
+      </div>
+      <div className="div">
         <div>
           <ChildFriendlyIcon />
-          F. nacimiento:
+          <h4  className="titulo-icon">F. nacimiento:</h4>
         </div>
         <span>{+applicant.fecha_nacimiento}</span>
-      </p>
-      <p className="texto">
+      </div>
+      <div className="div">
         <div>
           <TodayIcon />
-          F. postulacion:
+          <h4  className="titulo-icon">F. postulacion:</h4>
         </div>
         <span>{+applicant.fecha_postulacion}</span>
-      </p>
-      <p className="texto">
+      </div>
+      <div className="div">
         <div>
           <LanguageIcon />
-          Pais:
+          <h4  className="titulo-icon">Pais:</h4>
         </div>
         <span>{applicant.pais_nacimiento}</span>
-      </p>
+      </div>
     </>
   );
 };

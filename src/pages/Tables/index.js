@@ -1,7 +1,7 @@
 //Importando Hooks
 import { useState, useEffect, useContext } from "react";
 //Importando de firestore
-import { getApplicants, getAnnouncements, getQualifications, getAcademics } from "../../service/firestore";
+import { getApplicants, getAnnouncements, getQualifications, getAcademics, getPsychological, getLabor } from "../../service/firestore";
 import { ButtonModal } from "../../components/Modal/ButtonModal";
 // Importando Font Awesome
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -31,6 +31,10 @@ const Tables = () => {
   const [qualifications, setQualifications] = useState([]);
   // Para utilizar con la base de datos tbAcademics
   const [academics, setAcademics] = useState([]);
+  // Para utilizar la base de datos de psicologico
+  const [ psycho, setPsycho] = useState([]);
+  // Para utilizaar la base de datos de laboral.
+  const [ trabajo, setTrabajo] = useState([]);
 
   // Obteniendo la base de datos tblPostulantes
   const fetchApplicants = async () => {
@@ -57,6 +61,16 @@ const Tables = () => {
     const data = await getAcademics();
     setAcademics(data);
   }
+  //Obtener la base de datos de tbPsicologico
+  const fetchPsycho = async() => {
+    const data = await getPsychological();
+    setPsycho(data);
+  }
+
+  const fetchLabor = async() => {
+    const data = await getLabor();
+    setTrabajo(data);
+  }
 
   //Inicializando los fetch
   useEffect(() => {
@@ -64,6 +78,8 @@ const Tables = () => {
     fetchAnnouncements();
     fetchQualifications();
     fetchAcademics();
+    fetchPsycho();
+    fetchLabor();
   }, []);
 
   return (
@@ -177,7 +193,7 @@ const Tables = () => {
                     align="right"
                     style={{ fontSize: "1.4rem", color: "rgb(52, 71, 103)" }}
                   >
-                    <ButtonModal applicant={applicant} announcements={announcements} qualifications={qualifications} academics={academics}/>
+                    <ButtonModal applicant={applicant} announcements={announcements} qualifications={qualifications} academics={academics} psycho={psycho} trabajo={trabajo}/>
                   </TableCell>
                 </TableRow>
               ))}
