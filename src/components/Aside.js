@@ -1,5 +1,7 @@
 // Importando react-router-dom
 import { Link } from "react-router-dom";
+// Importando componentes
+import SignOutButton from "./../components/SignOutButton"
 // Importando Font Awesome
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -30,11 +32,8 @@ const Aside = (props) => {
               <FontAwesomeIcon icon={faUser} className="icon icon--menu" />
               <p>Profile</p>
             </Link>
-          
-            <Link to={"/"} className="menu__link">
-              <FontAwesomeIcon icon={faRightFromBracket} className="icon icon--menu" />
-              <p>Sign out</p>
-            </Link>
+        
+            <SignOutButton/>
           </div>
         </div>
       </aside>

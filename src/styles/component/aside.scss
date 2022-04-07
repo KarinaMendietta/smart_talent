@@ -30,13 +30,19 @@
   align-items: center;
   padding: calc($padding_elemt/2) $padding_elemt;
   margin-bottom: 2rem;
+  cursor: pointer;
 
   &:last-child{
     margin-bottom: 0;
   }
 
-  p{
+  .icon--menu{
+    color: $neutral-2;
+  }
+
+  p, span{
     margin-bottom: 0;
+    color: $neutral-2;
   }
 
   &:hover {

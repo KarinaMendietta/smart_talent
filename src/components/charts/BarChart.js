@@ -5,7 +5,7 @@ import { getApplicants, getAnnouncements } from "../../service/firestore";
 // Importando ApexCharts
 import Chart from "react-apexcharts";
 // Importando Lodash
-import _ from "lodash";
+import _, { sortBy } from "lodash";
 // Importando estilos
 import "./../../styles/component/barChart.scss";
 
@@ -38,9 +38,12 @@ const BarChart = (props) => {
       .value();
 
     // Obteniendo el nombre de la convocatoria por el id_convocatoria
-    const names = groupedResult.map(
-      (_announcement, index) => announcements[index].nombre_convocatoria
+    const names = sortBy(announcements, "id_convocatoria").map(
+      (item) => item.nombre_convocatoria
     );
+    // const names = groupedResult.map(
+    //   (_announcement, index) => announcements[index].nombre_convocatoria
+    // );
 
     // Obteniendo el número de postulantes por id_convocatoria
     const counts = groupedResult.map(

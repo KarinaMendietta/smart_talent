@@ -5,7 +5,7 @@ import { getAnnouncements, getQualifications } from "../../service/firestore";
 // Importando ApexCharts
 import Chart from "react-apexcharts";
 // Importando Lodash
-import _ from "lodash";
+import _, { sortBy } from "lodash";
 // Importando estilos
 import "./../../styles/component/barChart.scss";
 
@@ -37,17 +37,13 @@ const BarChart2 = (props) => {
       })
       .map((value, key) => ({ key, items: value }))
       .value();
-    console.log('groupedResult', groupedResult);
 
     // Obteniendo el nombre de la convocatoria por el id_convocatoria
-    const names = groupedResult.map(
-      (_announcement, index) => announcements[index].nombre_convocatoria
+    const names = sortBy(announcements, "id_convocatoria").map(
+      (item) => item.nombre_convocatoria
     );
-    console.log('names',names);
 
-    const names2 = groupedResult.map((announc) => announc.key); 
-    console.log('names2',names2);
-
+    // const names2 = groupedResult.map((announc) => announc.key); 
     // Obteniendo la cantidad de postulantes aceptados por la sumatoria de calificaciones
     const counts = groupedResult.map(
       (applicant) => applicant.items.filter((qualification) => (qualification.calif_academica + qualification.calif_laboral + qualification.calif_psicologica) > 50 ).length

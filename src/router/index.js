@@ -1,8 +1,5 @@
 // Importando react-router-dom
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-// Importando react-router-dom
-import { Link, useParams } from "react-router-dom";
-// Importando Componentes
 // Importando Pages
 import Home from "./../pages/Home";
 import SignIn from "./../pages/SignIn";
