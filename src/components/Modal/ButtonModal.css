@@ -1,3 +1,23 @@
+
+.modal {
+    background-image: url(../../assets/bg-modal.jpg);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
+    background-size: cover;
+
+}
+
+.card-container {
+    background-color: rgba(225,225,225,0.4);
+    padding-bottom: 15px;
+    border-radius: 5px;
+}
+
+.card {
+    background-color: black;
+}
+
 .icon {
     color: black;
 }
@@ -12,7 +32,8 @@
     width: 250px;
     border-radius: 50%;
     object-fit: cover;
-    margin-bottom: 15px;
+    margin-bottom: 30px;
+    border: 1px solid black;
 }
 
 .border {
@@ -21,24 +42,18 @@
 }
 
 .texto {
-    color: black;
-}
-
-.modal {
-    background-color: gray;
-}
-
-.container-cards {
-   border: solid;
+    color: rgb(202, 58, 40);
 }
 
 p {
     display: flex;
     justify-content: space-between;
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid whitesmoke;
+    padding-top: 7px;
 }
 
 span {
+    color: rgb(99, 243, 242);
     font-weight: bold;
 }
 /*

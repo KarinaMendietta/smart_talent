@@ -1,7 +1,8 @@
 //Importando Hooks
 import { useState, useEffect, useContext } from "react";
 //Importando de firestore
-import { getApplicants, getAnnouncements, getQualifications } from "../../service/firestore";
+import { getApplicants, getAnnouncements, getQualifications, getAcademics } from "../../service/firestore";
+import { ButtonModal } from "../../components/Modal/ButtonModal";
 // Importando Font Awesome
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
@@ -19,8 +20,6 @@ import {
 } from "@mui/material";
 // Importando estilos
 import "./../../styles/page/tables.scss";
-//import modal
-import { ButtonModal } from "../../components/Modal/ButtonModal";
 
 
 const Tables = () => {
@@ -28,8 +27,10 @@ const Tables = () => {
   const [applicants, setApplicants] = useState([]);
   // Para utilizarlo con la base de datos tblConvocatoria
   const [announcements, setAnnouncements] = useState([]);
-  // Para utilizarlo con la base de datos tblConvocatoria
+  // Para utilizarlo con la base de datos tblCalificaciones
   const [qualifications, setQualifications] = useState([]);
+  // Para utilizar con la base de datos tbAcademics
+  const [academics, setAcademics] = useState([]);
 
   // Obteniendo la base de datos tblPostulantes
   const fetchApplicants = async () => {
@@ -42,21 +43,27 @@ const Tables = () => {
   const fetchAnnouncements = async () => {
     const data = await getAnnouncements();
     setAnnouncements(data);
-    console.log(data)
+    // console.log(data)
   };
 
   // Obteniendo la base de datos tblCalificacion
-  const fetchQualification = async () => {
+  const fetchQualifications = async () => {
     const data = await getQualifications();
     setQualifications(data);
-    console.log(data)
+    // console.log(data)
   };
+  // Obtner la base de datos tbAcademico
+  const fetchAcademics = async() => {
+    const data = await getAcademics();
+    setAcademics(data);
+  }
 
   //Inicializando los fetch
   useEffect(() => {
     fetchApplicants();
     fetchAnnouncements();
-    fetchQualification()
+    fetchQualifications();
+    fetchAcademics();
   }, []);
 
   return (
@@ -156,38 +163,21 @@ const Tables = () => {
                   >
                     <Slider
                       defaultValue={+(qualifications.find((qualification) => qualification.id_postulante === applicant.id_postulante).calif_academica) + +(qualifications.find((qualification) => qualification.id_postulante === applicant.id_postulante).calif_laboral) + +(qualifications.find((qualification) => qualification.id_postulante === applicant.id_postulante).calif_psicologica)}
+
                       aria-label="Always visible"
                       valueLabelDisplay="on"
+                      max={300}
                       disabled
                       style={{
                         color: "rgb(67, 160, 71)",
                       }}
                     />
                   </TableCell>
-
                   <TableCell
                     align="right"
                     style={{ fontSize: "1.4rem", color: "rgb(52, 71, 103)" }}
                   >
-                    <FontAwesomeIcon icon={faEye} className="icon" />
-                  </TableCell>
-                  <TableCell align="right" style={{fontSize:'1.4rem', color:'#fff'}}><ButtonModal 
-                  applicantPhoto={applicant.photo}
-                  applicantNombre={applicant.nombre_postulante}
-                  applicantApellido={applicant.apellido_postulante}
-                  applicantCelular={applicant.numero_celular}
-                  applicantFijo={applicant.telefono_fijo}
-                  applicantProvincia={applicant.provincia}
-                  applicantDireccion={applicant.direccion}
-                  applicantDepartamento={applicant.departamento}
-                  applicantCorreo={applicant.correo_electronico}
-                  applicantDni={applicant.dni_postulante}
-                  applicantEstado={applicant.estado}
-                  applicantNacimiento={applicant.fecha_nacimiento}
-                  applicantPostulacion={applicant.fecha_postulacion}
-                  applicantPais={applicant.pais_nacimiento}
-
-                   />
+                    <ButtonModal applicant={applicant} announcements={announcements} qualifications={qualifications} academics={academics}/>
                   </TableCell>
                 </TableRow>
               ))}

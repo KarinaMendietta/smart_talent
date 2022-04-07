@@ -62,6 +62,16 @@ export const getQualifications = async () => {
   return usersQualification;
 };
 
+// Peticion de la tabla Academicos
+export const getAcademics = async () => {
+  // paso 1: Traer la coleccion de datos
+  const collectionAcademic = collection(db, "academico");
+  // paso 2: Traer los documentos
+  const documentAcademic = await getDocs(collectionAcademic);
+  // paso 3: Crear un arreglo que guarde los documentos que estamos obteniendo
+  const usersAcademic = documentAcademic.docs.map((doc) => doc.data());
+  return usersAcademic;
+};
 
 
 
