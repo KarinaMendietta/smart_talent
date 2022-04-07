@@ -4,9 +4,7 @@ import { Link } from "react-router-dom";
 import SignOutButton from "./../components/SignOutButton"
 // Importando Font Awesome
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faHouse, faTableList, faUser, faRightFromBracket
-} from "@fortawesome/free-solid-svg-icons";
+import { faHouse, faTableList, faUser } from "@fortawesome/free-solid-svg-icons";
 // Importando estilos SASS
 import "./../styles/component/aside.scss";
 
@@ -26,11 +24,6 @@ const Aside = (props) => {
             <Link to={"/tables/tables"} className="menu__link" >
               <FontAwesomeIcon icon={faTableList}  className="icon icon--menu" />
               <p>Tables</p>
-            </Link>
-            
-            <Link to={"/profile/profile"} className="menu__link">
-              <FontAwesomeIcon icon={faUser} className="icon icon--menu" />
-              <p>Profile</p>
             </Link>
         
             <SignOutButton/>

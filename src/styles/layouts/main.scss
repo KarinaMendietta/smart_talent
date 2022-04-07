@@ -3,6 +3,7 @@
 @import './../base/mixins.scss';
 
 .main{
+    background-color: $main-bg;
     .main__container{
         padding: $padding-elemt 0;
     }

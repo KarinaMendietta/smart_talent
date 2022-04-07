@@ -1,12 +1,10 @@
 //* Fonts
-$main-font: 'Playfair Display', serif; // font-weight: 400, 600, 700
-$secondary-font: 'Roboto', sans-serif; // font-weight: 400, 500
-$link-font: 'Redressed', serif; // font-weight: 400
+$main-font: 'opensans-bold', sans-serif;
+$secondary-font: 'opensans-regular', sans-serif;
+$link-font: 'opensans-regular', sans-serif;
 //* Font weight
-$regular: 400; // utilizado
-$medium: 500; 
-$semi-bold: 600; 
-$bold: 700; // utilizado
+$regular: 400; 
+$bold: 700; 
 
 //* Media Queries
 $telefono: 480px;

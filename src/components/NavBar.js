@@ -36,6 +36,7 @@ const NavBar = (props) => {
 
   // Obteniendo los parámetros de la url para el navbar
   const { name } = useParams();
+
   return (
     <>
       <div className={classNavBar}>
@@ -51,17 +52,17 @@ const NavBar = (props) => {
           </div>
 
           <div className="navBar__item navBar__item--icon">
-            <button href="/" className="icon icon--navBar">
+            {/* <button href="/" className="icon icon--navBar">
               <FontAwesomeIcon icon={faUser} />
-            </button>
+            </button> */}
 
             <button href="/" className="icon icon--navBar icon--bar" onClick={props.funcion}>
               <FontAwesomeIcon icon={faBars}/>
             </button>
             
-            <button href="/" className="icon icon--navBar">
+            {/* <button href="/" className="icon icon--navBar">
               <FontAwesomeIcon icon={faCog} />
-            </button>
+            </button> */}
           </div>
         </div>
       </div>

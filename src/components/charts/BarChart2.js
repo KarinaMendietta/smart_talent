@@ -28,7 +28,6 @@ const BarChart2 = (props) => {
   const buildChart = async () => {
     const announcements = await fetchAnnouncements();
     const qualifications = await fetchQualifications();
-    console.log(announcements);
     
     // Agrupando la data de calificaciones por id_convocatoria
     const groupedResult = _.chain(qualifications)

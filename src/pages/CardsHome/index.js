@@ -20,7 +20,7 @@ import {
   Button,
 } from "@mui/material";
 // Importando SASS
-import "./../../styles/component/cardsHome.scss";
+import "./../../styles/page/cardsHome.scss";
 
 const CardsHome = () => {
   // Para utilizarlo con la base de datos tblConvocatoria
