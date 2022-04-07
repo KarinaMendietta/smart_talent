@@ -10,84 +10,61 @@ import AltRouteIcon from '@mui/icons-material/AltRoute';
 const Calificacion = ({applicant, qualifications}) => {
   return (
     <>
-      <p className="texto">
-        <div>
+      <div className="div">
+        <div className="container-icon-title">
             <NoteAltIcon/>
-            Calificacion Academica:
+            <h4 className="titulo-icon">Calificacion Academica</h4>
         </div>
         <span>
-          {qualifications.length > 0 &&
-            qualifications.find(
-              (qualification) =>
-                qualification.id_postulante === applicant.id_postulante
-            ).calif_academica}
+          {qualifications.length > 0 && qualifications.find((qualification) => qualification.id_postulante === applicant.id_postulante)?.calif_academica}
         </span>
-      </p>
-      <p className="texto">
-        <div>
+      </div>
+
+      <div className="div">
+        <div className="container-icon-title">
             <GroupAddIcon />
-            Calificacion de Aserividad:
+            <h4 className="titulo-icon">Calificacion Asertividad</h4>
         </div>
         <span>
-          {qualifications.length > 0 &&
-            qualifications.find(
-              (qualification) =>
-                qualification.id_postulante === applicant.id_postulante
-            ).calif_asertividad}
+          {qualifications.length > 0 && qualifications.find((qualification) => qualification.id_postulante === applicant.id_postulante)?.calif_asertividad}
         </span>
-      </p>
-      <p className="texto">
-        <div>
+      </div>
+      <div className="div">
+        <div className="container-icon-title">
             <AccessibilityNewIcon />
-            Calificacion de Autoestima:
+            <h4 className="titulo-icon">Calificacion Autoestima</h4>
         </div>
         <span>
-          {qualifications.length > 0 &&
-            qualifications.find(
-              (qualification) =>
-                qualification.id_postulante === applicant.id_postulante
-            ).calif_autoestima}
+          {qualifications.length > 0 && qualifications.find((qualification) => qualification.id_postulante === applicant.id_postulante)?.calif_autoestima}
         </span>
-      </p>
-      <p className="texto">
-        <div>
+      </div>
+      <div className="div">
+        <div className="container-icon-title">
             <SmsIcon />
-            Calificacion de Comunicacion:
+            <h4 className="titulo-icon">Calificacion Comunicacion</h4>
         </div>
         <span>
-          {qualifications.length > 0 &&
-            qualifications.find(
-              (qualification) =>
-                qualification.id_postulante === applicant.id_postulante
-            ).calif_comunicacion}
+          {qualifications.length > 0 && qualifications.find((qualification) => qualification.id_postulante === applicant.id_postulante)?.calif_comunicacion}
         </span>
-      </p>
-      <p className="texto">
-        <div>
+      </div>
+      <div className="div">
+        <div className="container-icon-title">
             <PsychologyIcon />
-            Calificacion Psicologica:
+            <h4 className="titulo-icon">Calificacion Psicologica</h4>
         </div>
         <span>
-          {qualifications.length > 0 &&
-            qualifications.find(
-              (qualification) =>
-                qualification.id_postulante === applicant.id_postulante
-            ).calif_psicologica}
+          {qualifications.length > 0 && qualifications.find((qualification) => qualification.id_postulante === applicant.id_postulante)?.calif_psicologica}
         </span>
-      </p>
-      <p className="texto">
-        <div>
+      </div>
+      <div className="div">
+        <div className="container-icon-title">
             <AltRouteIcon />
-            Calificacion Toma de Decision:
+            <h4 className="titulo-icon">Calificacion Toma de Decision:</h4>
         </div>
         <span>
-          {qualifications.length > 0 &&
-            qualifications.find(
-              (qualification) =>
-                qualification.id_postulante === applicant.id_postulante
-            ).calif_toma_desicion}
+          {qualifications.length > 0 && qualifications.find((qualification) =>qualification.id_postulante === applicant.id_postulante)?.calif_toma_desicion}
         </span>
-      </p>
+      </div>
     </>
   );
 };

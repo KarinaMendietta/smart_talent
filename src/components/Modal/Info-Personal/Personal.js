@@ -16,7 +16,7 @@ const Personal = ({ applicant }) => {
   return (
     <>
       <div className="div">
-        <div>
+        <div className="container-icon-title">
           <LocationCityIcon/>
           <h4 className="titulo-icon">Nombre y Apellido:</h4>
         </div>
@@ -24,78 +24,79 @@ const Personal = ({ applicant }) => {
           {applicant.nombre_postulante} {applicant.apellido_postulante}
         </span>
       </div>
+
       <div className="div">
-        <div>
+        <div className="container-icon-title">
           <AssignmentIndIcon />
           <h4  className="titulo-icon">DNI:</h4>
         </div>
         <span>{applicant.dni_postulante}</span>
       </div>
       <div className="div">
-        <div>
+        <div className="container-icon-title">
           <LocationOnIcon />
           <h4  className="titulo-icon">Direccion:</h4>
         </div>
         <span>{applicant.direccion}</span>
       </div>
       <div className="div">
-        <div>
+        <div className="container-icon-title">
           <LocationCityIcon />
           <h4  className="titulo-icon">Provincia:</h4>
         </div>
         <span>{applicant.provincia}</span>
       </div>
       <div className="div">
-        <div>
+        <div className="container-icon-title">
           <SouthAmericaIcon />
           <h4  className="titulo-icon">Departamento:</h4>
         </div>
         <span>{applicant.departamento}</span>
       </div>
       <div className="div">
-        <div>
+        <div className="container-icon-title">
           <PhoneIphoneIcon />
           <h4  className="titulo-icon">Celular</h4>
         </div>
         <span>{applicant.numero_celular}</span>
       </div>
       <div className="div">
-        <div>
+        <div className="container-icon-title">
           <LocalPhoneIcon />
           <h4  className="titulo-icon">Telefono:</h4>
         </div>
         <span>{applicant.telefono_fijo}</span>
       </div>
       <div className="div">
-        <div>
+        <div className="container-icon-title">
           <AlternateEmailIcon />
           <h4  className="titulo-icon">Correo:</h4>
         </div>
         <span>{applicant.correo_electronico}</span>
       </div>
       <div className="div">
-        <div>
+        <div className="container-icon-title">
           <ToggleOnIcon />
           <h4  className="titulo-icon"> Estado:</h4>
         </div>
         <span>{applicant.estado}</span>
       </div>
       <div className="div">
-        <div>
+        <div className="container-icon-title">
           <ChildFriendlyIcon />
           <h4  className="titulo-icon">F. nacimiento:</h4>
         </div>
         <span>{+applicant.fecha_nacimiento}</span>
       </div>
       <div className="div">
-        <div>
+        <div className="container-icon-title">
           <TodayIcon />
           <h4  className="titulo-icon">F. postulacion:</h4>
         </div>
         <span>{+applicant.fecha_postulacion}</span>
       </div>
       <div className="div">
-        <div>
+        <div className="container-icon-title">
           <LanguageIcon />
           <h4  className="titulo-icon">Pais:</h4>
         </div>

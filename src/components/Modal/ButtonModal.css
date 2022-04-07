@@ -5,6 +5,8 @@
 }
 
 .card-container {
+    display: flex;
+    justify-content: space-around;
     background: linear-gradient(195deg, rgb(73, 163, 241), rgb(26, 115, 232));
     padding-bottom: 15px;
     border-radius: 5px;
@@ -32,21 +34,24 @@
     color: black;
 }
 
+h4 {
+    padding-left:  9px;
+}
+
+.container-icon-title {
+    display: flex;
+    flex-direction: row;
+}
+
 .div {
     display: flex;
-
     justify-content: space-between;
+    padding: 5px;
 }
 
 .titulo-icon {
-    font-size: 18   px;
+    font-size: 16px;
     color: black;
-}
-
-p {
-    display: flex;
-    justify-content: space-between;
-    padding-top: 7px;
 }
 
 span {

@@ -3,60 +3,87 @@ import React from "react";
 const Laboral = ({ trabajo, applicant }) => {
     return(
         <>
-            <p className="texto">
-                Breve Descripcion de la actividad:
+            <div className="div">
+                <div className="container-icon-title">
+                    <></>
+                    <h4>Breve Descripcion de la actividad:</h4>
+                </div>
                 <span>
-                    <h1>{trabajo.length > 0 && trabajo.find((work) => work.id_postulante === applicant.id_postulante).breve_descripcion_actividad}</h1>
+                        {trabajo.length > 0 && trabajo.find((work) => work.id_postulante === applicant.id_postulante)?.breve_descripcion_actividad}   
                 </span>
-            </p>
-            <p className="texto">
-                Cargo de desempeño:
+            </div>
+            <div className="div">
+                <div className="container-icon-title">
+                    <></>
+                    <h4>Cargo Desempeñado:</h4>
+                </div>
                 <span>
-                    <h1>{trabajo.length > 0 && trabajo.find((work) => work.id_postulante === applicant.id_postulante).cargo_desempenho}</h1>
+                        {trabajo.length > 0 && trabajo.find((work) => work.id_postulante === applicant.id_postulante)?.cargo_desempenho}   
                 </span>
-            </p>
-            <p className="texto">
-                Direccion:
+            </div>
+            <div className="div">
+                <div className="container-icon-title">
+                    <></>
+                    <h4>Dirreccion del Trabajo:</h4>
+                </div>
                 <span>
-                    <h1>{trabajo.length > 0 && trabajo.find((work) => work.id_postulante === applicant.id_postulante).direccion}</h1>
+                        {trabajo.length > 0 && trabajo.find((work) => work.id_postulante === applicant.id_postulante)?.direccion}   
                 </span>
-            </p>
-            <p className="texto">
-                Fecha de Inicio:
+            </div>
+            <div className="div">
+                <div className="container-icon-title">
+                    <></>
+                    <h4>Fecha de Inicio:</h4>
+                </div>
                 <span>
-                    <h1>{trabajo.length > 0 && trabajo.find((work) => work.id_postulante === applicant.id_postulante).fecha_inicio}</h1>
+                        {trabajo.length > 0 && trabajo.find((work) => work.id_postulante === applicant.id_postulante)?.fecha_inicio}   
                 </span>
-            </p>
-            <p className="texto">
-                Fecha de Termino:
+            </div>
+            <div className="div">
+                <div className="container-icon-title">
+                    <></>
+                    <h4>Fecha de Culminacion</h4>
+                </div>
                 <span>
-                    <h1>{trabajo.length > 0 && trabajo.find((work) => work.id_postulante === applicant.id_postulante).fecha_termmino}</h1>
+                        {trabajo.length > 0 && trabajo.find((work) => work.id_postulante === applicant.id_postulante)?.fecha_termmino}   
                 </span>
-            </p>
-            <p className="texto">
-                Nombre de la Empresa:
+            </div>
+            <div className="div">
+                <div className="container-icon-title">
+                    <></>
+                    <h4>Nombre de la empresa: </h4>
+                </div>
                 <span>
-                    <h1>{trabajo.length > 0 && trabajo.find((work) => work.id_postulante === applicant.id_postulante).nombre_empresa}</h1>
+                        {trabajo.length > 0 && trabajo.find((work) => work.id_postulante === applicant.id_postulante)?.nombre_empresa}   
                 </span>
-            </p>
-            <p className="texto">
-                R.U.C:
+            </div>
+            <div className="div">
+                <div className="container-icon-title">
+                    <></>
+                <h4>R.U.C:</h4>
+                </div>
                 <span>
-                    <h1>{trabajo.length > 0 && trabajo.find((work) => work.id_postulante === applicant.id_postulante).ruc}</h1>
+                        {trabajo.length > 0 && trabajo.find((work) => work.id_postulante === applicant.id_postulante)?.ruc}   
                 </span>
-            </p>
-            <p className="texto">
-                Numero de Telefono:
+            </div>
+            <div className="div">
+                <div className="container-icon-title">
+                    <></>
+                    <h4>Telefono:</h4>
+                </div>
                 <span>
-                    <h1>{trabajo.length > 0 && trabajo.find((work) => work.id_postulante === applicant.id_postulante).telefono}</h1>
+                        {trabajo.length > 0 && trabajo.find((work) => work.id_postulante === applicant.id_postulante)?.telefono}   
                 </span>
-            </p>
-            <p className="texto">
-                Tiempo de Trabajo:
+            </div>
+            <div className="div">
+                <div className="container-icon-title">
+                    <></>
+                    <h4>Tiempo:</h4>
+                </div>
                 <span>
-                    <h1>{trabajo.length > 0 && trabajo.find((work) => work.id_postulante === applicant.id_postulante).tiempo}</h1>
+                        {trabajo.length > 0 && trabajo.find((work) => work.id_postulante === applicant.id_postulante)?.tiempo}   
                 </span>
-            </p>
+            </div>
         </>
     );
 }

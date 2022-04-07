@@ -43,7 +43,7 @@ export const ButtonModal = ({ applicant, qualifications, announcements, academic
                     </IconButton>
                     <img className="img-user" src={applicant.photo} alt=""/>
                     <Container maxWidth="xl">
-                        <Grid container spacing={3} className="card-container">
+                        <Grid container spacing={2} className="card-container" fullWidth>
                             <Grid item md={4}>
                                 <Card>
                                     <CardContent className="card">

@@ -8,78 +8,79 @@ import LibraryBooksIcon from '@mui/icons-material/LibraryBooks';
 const Academic = ({ academics, applicant }) => {
     return(
         <>
-            <p className="texto">
-                <div className="container-icon">
+            <div className="div">
+                <div className="container-icon-title">
                     <ContactPageIcon />
                     <h4 className="titulo-icon">Area Profesional:</h4>
                 </div>
                 <span>
-                    <h1>{academics.length > 0 && academics.find((academic) => academic.id_postulante === applicant.id_postulante)?.area_profesional}</h1>
+                    {academics.length > 0 && academics.find((academic) => academic.id_postulante === applicant.id_postulante)?.area_profesional}
                 </span>
-            </p>
-            <p className="texto">
-                <div>
+            </div>
+
+            <div className="div">
+                <div className="container-icon-title">
                     <SchoolIcon />
-                    Centro de Estudios:
+                    <h4 className="titulo-icon">Centro de estudios:</h4>
                 </div>
                 <span>
-                    <h1>{academics.length > 0 && academics.find((academic) => academic.id_postulante === applicant.id_postulante)?.centro_estudios}</h1>
+                     {academics.length > 0 && academics.find((academic) => academic.id_postulante === applicant.id_postulante)?.centro_estudios}  
                 </span>
-            </p>
-            <p className="texto">
-                <div>
+            </div>
+            <div className="div">
+                <div className="container-icon-title">
                     <MenuBookIcon />
-                    Curso Adicional:
+                    <h4 className="titulo-icon">Curso Adicional: </h4>
                 </div>
                 <span>
-                    <h1>{academics.length > 0 && academics.find((academic) => academic.id_postulante === applicant.id_postulante)?.curso_adicional_1}</h1>
+                     {academics.length > 0 && academics.find((academic) => academic.id_postulante === applicant.id_postulante)?.curso_adicional_1}  
                 </span>
-            </p>
-            <p className="texto">
-                <div>
+            </div>
+            <div className="div">
+                <div className="container-icon-title">
                     <MenuBookIcon />
-                    Curso Adicional:
+                    <h4 className="titulo-icon">Curso Adicional:</h4>
                 </div>
                 <span>
-                    <h1>{academics.length > 0 && academics.find((academic) => academic.id_postulante === applicant.id_postulante)?.curso_adicional_2}</h1>
+                     {academics.length > 0 && academics.find((academic) => academic.id_postulante === applicant.id_postulante)?.curso_adicional_2}  
                 </span>
-            </p>
-            <p className="texto">
-                <div>
+            </div>
+            <div className="div">
+                <div className="container-icon-title">
                     <TodayIcon />
-                    Fecha de Egreso:
+                    <h4 className="titulo-icon">Fecha de Egreso</h4>
                 </div>
                 <span>
-                    <h1>{academics.length > 0 && academics.find((academic) => academic.id_postulante === applicant.id_postulante)?.fecha_egreso}</h1>
+                     {academics.length > 0 && academics.find((academic) => academic.id_postulante === applicant.id_postulante)?.fecha_egreso}  
                 </span>
-            </p>
-            <p className="texto">
-                <div>
+            </div>
+            <div className="div">
+                <div className="container-icon-title">
                     <SchoolIcon />
-                    Nivel Academico:
+                    <h4 className="titulo-icon">Nivel Academico</h4>
                 </div>
                 <span>
-                    <h1>{academics.length > 0 && academics.find((academic) => academic.id_postulante === applicant.id_postulante)?.nivel_academico}</h1>
+                     {academics.length > 0 && academics.find((academic) => academic.id_postulante === applicant.id_postulante)?.nivel_academico}  
                 </span>
-            </p>
-            <p className="texto">
-                <div>
+            </div>
+            <div className="div">
+                <div className="container-icon-title">
                     <LibraryBooksIcon />
-                    Nivel Ingles:
+                    <h4 className="titulo-icon">Nivel de Ingles:</h4>
                 </div>
                 <span>
-                    <h1>{academics.length > 0 && academics.find((academic) => academic.id_postulante === applicant.id_postulante)?.nivel_ingles}</h1>
+                     {academics.length > 0 && academics.find((academic) => academic.id_postulante === applicant.id_postulante)?.nivel_ingles}  
                 </span>
-            </p>
-            <p className="texto">
-                <div>
+            </div>
+            <div className="div">
+                <div className="container-icon-title">
                     <SchoolIcon />
-                    Profesion:
+                    <h4 className="titulo-icon">Profesion</h4>
                 </div>
                 <span>
-                    <h1>{academics.length > 0 && academics.find((academic) => academic.id_postulante === applicant.id_postulante)?.profesion}</h1>
+                     {academics.length > 0 && academics.find((academic) => academic.id_postulante === applicant.id_postulante)?.profesion}  
                 </span>
-            </p>
+            </div>
         </>
 
     );
