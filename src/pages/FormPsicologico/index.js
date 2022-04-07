@@ -81,23 +81,23 @@ const FormPsicologico = () => {
     console.log("tomadecisi",sumaTomaDesicion)
   };
 
-  const[isDisable, serIsDisable] = useSate({
-    
-  })
-
+  const [isDisabled, setIsDisabled] = useState(null);
   const handleClickRegisterCalificacion = async (index) => {
+    await registerPsicologico(idPostulante, values);
 
-
-
-    await registerPsicologico(idPostulante,values)
-
-   
-    swal({
-      icon: "success",
-      title: "Success",
-      text: "Se creo correctamente el Postulante",
+    setIsDisabled({
+      ...isDisabled,
+      [index]: true,
     });
-  }
+
+    console.log("isDisabled", isDisabled);
+
+    //swal({
+    //  icon: "success",
+    //  title: "Success",
+    //  text: "Se creo correctamente el Postulante",
+    //});
+  };
 
   
   const handleClickRegisterCalificaciones = async () => {
@@ -148,6 +148,7 @@ const FormPsicologico = () => {
                         <FormControl sx={{display: 'flex', justifyContent:"center"}}>
                           <FormLabel id="label-radio"></FormLabel>
                           <RadioGroup
+                            row
                             aria-labelledby="label-radio"
                             name={test.id_test}
                             onChange={handleChangeCalificacion}
@@ -184,13 +185,17 @@ const FormPsicologico = () => {
                         
                         </div>
                         <div>
-                          <Button
-                            className={`btnEnviar-${index+1}`}
-                            disabled={true}
-                            onClick={handleClickRegisterCalificacion}  
-                            variant="contained" >
-                            OK
-                          </Button>
+                        <Button
+                          disabled={
+                          isDisabled !== null && isDisabled[index + 1]
+                            ? true
+                            : false
+                          }
+                          onClick={() => handleClickRegisterCalificacion(index + 1)}
+                          variant="contained"
+                        >
+                    OK
+                  </Button>
                         </div>
                     </Grid>                   
               ))}
