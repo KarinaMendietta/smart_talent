@@ -265,7 +265,7 @@ export const TextButtons = () => {
           }}
           href="#text-buttons"
         >
-          Finalizar formulario
+          Finalizar
         </Button>
       </Stack>
     </Link>
