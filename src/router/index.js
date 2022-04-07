@@ -1,5 +1,6 @@
 // Importando react-router-dom
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+
 // Importando Componentes
 // Importando Pages
 import Home from "./../pages/Home";
@@ -8,6 +9,7 @@ import SignUp from "./../pages/SignUp";
 import Dashboard from "./../pages/Dashboard";
 import Tables from "./../pages/Tables";
 import Profile from "./../pages/Profile";
+import CardsHome from "./../pages/CardsHome";
 import FormPostulante from "../pages/FormPostulante";
 import FormAcademico from "../pages/FormAcademico";
 import FormLaboral from "../pages/FormLaboral";
@@ -24,6 +26,7 @@ const Router = () => {
         {/* Route (Públicas) */}
         {/* Route para el usuario  */}
         <Route path="/" element={<Home />} />
+        <Route path="/cards-home" element={<CardsHome />} />
         <Route path="/form-postulante" element={<FormPostulante />} />
         <Route path="/form-academico" element={<FormAcademico />} />
         <Route path="/form-laboral" element={<FormLaboral />} />
@@ -31,6 +34,7 @@ const Router = () => {
         {/* Route para la empresa  */}
         <Route path="/sign-in" element={<SignIn />} />
         <Route path="/sign-up" element={<SignUp />} />
+
 
         {/* Route (Privadas) */}
         {/* Route del usuario RRHH logeado*/}
