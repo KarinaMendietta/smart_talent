@@ -180,6 +180,7 @@ const Tables = () => {
                       qualifications={qualifications}
                     />
                   </TableCell>
+                  <TableCell align="right" style={{fontSize:'1.4rem', color:'#fff'}}><FontAwesomeIcon icon={faEye} className="icon"/></TableCell>
                 </TableRow>
               ))}
           </TableBody>
