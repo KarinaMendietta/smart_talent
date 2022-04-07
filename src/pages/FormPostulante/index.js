@@ -20,6 +20,7 @@ import { getPostulantes, registerPostulante } from "../../service/firestore";
 import swal from "sweetalert";
 import { getMonth } from "date-fns";
 import "../../styles/page/formEstilo.scss";
+import SendIcon from '@mui/icons-material/Send';
 
 const FormPostulante = () => {
   const [values, setValues] = useState({
@@ -104,16 +105,17 @@ const FormPostulante = () => {
     <FormControl
       container
       className="formEstilo"
-      sx={{ display: "flex", justifyContent: "center" }}
+      mt={2}
     >
       <Stack
         component="form"
         sx={{
-          width: "500px",
-          margin: "0 auto",
+          width: "auto",       
+          margin: "20px auto",
           background: "#fff",
           padding: "2rem",
           borderRadius: "1rem",
+          
         }}
         spacing={2}
         noValidate
@@ -125,6 +127,7 @@ const FormPostulante = () => {
           label="Nombre"
           type="text"
           variant="filled"
+          onChange={handleInputChange}
         />
         <TextField
           name="apellido_postulante"
@@ -308,16 +311,20 @@ const FormPostulante = () => {
 export const TextButtons = () => {
   return (
     <Link to="/form-academico">
-      <Stack direction="row" spacing={2}>
-        <Button
-            sx={{
-                display: "flex",
-                justifycontent: "center",
-                size: "large",
-                backgroundColor: "#000",
+      <Stack direction="row" spacing={2} display="flex">
+        <Button className="botonEstilo" 
+            sx={{     
+                width: "auto",       
+                margin: "20px auto",        
+                background:"#022251",
+                color:"#fff",
+                fontSize:"10px",
+                                
             }} 
+            size="large"
+            hover={true}           
             href="#text-buttons"
-            >
+            endIcon={<SendIcon />}>
             Siguiente
         </Button>
       </Stack>

@@ -9,7 +9,7 @@
     height: auto;
     min-height: 100vh;
     width: 100%;
-    background: linear-gradient(90deg, #159957 0%, #155799 100%);
+    background:linear-gradient(90deg, #43c6ac 0%, #191654 100%);
     // margin: 0px;
 //     width: auto,       
 //     margin: 20px auto,
@@ -18,3 +18,7 @@
 //     borderRadius: "1rem",
 }
 
+.botonEstilo:hover{
+    background-color: #35b89e !important;
+    color: #191654;
+}

@@ -22,6 +22,7 @@ import { LocalizationProvider, DatePicker } from "@mui/lab";
 import { getPostulantes, registerAcademico } from "../../service/firestore";
 import swal from "sweetalert";
 import "../../styles/page/formEstilo.scss";
+import SendIcon from '@mui/icons-material/Send';
 
 const FormAcademico = () => {
   const [idPostulante, setIDPostulante] = useState(
@@ -82,16 +83,6 @@ const FormAcademico = () => {
     }
     console.log("academico", academ);
 
-    if (values.curso_adicional_1 !== "") {
-      curso1 = 7;
-    }
-    console.log("curso1", curso1);
-
-    if (values.curso_adicional_2 !== "") {
-      curso2 = 8;
-    }
-    console.log("curso2", curso2);
-
     if (values.nivel_ingles === "ninguno") {
       ingles = 0;
     } else if (values.nivel_ingles === "basico") {
@@ -105,6 +96,16 @@ const FormAcademico = () => {
     }
     console.log("que dice", values.nivel_ingles);
     console.log("ingles", ingles);
+
+    if (values.curso_adicional_1 !== "") {
+      curso1 = 7;
+    }
+    console.log("curso1", curso1);
+
+    if (values.curso_adicional_2 !== "") {
+      curso2 = 8;
+    }
+    console.log("curso2", curso2);
 
     const suma = academ + ingles + curso1 + curso2;
     console.log("sumaAcadmico", suma);
@@ -140,13 +141,14 @@ const FormAcademico = () => {
     <FormControl 
     container 
     className="formEstilo"
-    sx={{ display: "flex", justifyContent: "center" }}>
+    mt={2}
+    >
       
       <Stack
         component="form"
         sx={{
-          width: "500px",
-          margin: "0 auto",
+          width: "auto",       
+          margin: "20px auto",
           background: "#fff",
           padding: "2rem",
           borderRadius: "1rem",
@@ -289,22 +291,7 @@ const FormAcademico = () => {
               renderInput={(params) => <TextField {...params} />}
             />
           </LocalizationProvider>
-        </Box>
-        <TextField
-          name="curso_adicional_1"
-          label="Curso adicional 1"
-          type="text"
-          variant="filled"
-          onChange={handleInputChange}
-        />
-        <TextField
-          name="curso_adicional_2"
-          label="Curso adicional 2"
-          type="text"
-          variant="filled"
-          onChange={handleInputChange}
-        />
-
+        </Box>        
         <Box fullWidth>
           <InputLabel
             fullWidth
@@ -330,6 +317,20 @@ const FormAcademico = () => {
             <MenuItem value={"nativo"}>Nativo</MenuItem>
           </Select>
         </Box>
+        <TextField
+          name="curso_adicional_1"
+          label="Curso adicional 1"
+          type="text"
+          variant="filled"
+          onChange={handleInputChange}
+        />
+        <TextField
+          name="curso_adicional_2"
+          label="Curso adicional 2"
+          type="text"
+          variant="filled"
+          onChange={handleInputChange}
+        />
         <Button onClick={handleClickRegisterAcademico} variant="contained">
           Guardar
         </Button>
@@ -343,7 +344,20 @@ export const TextButtons = () => {
   return (
     <Link to="/form-laboral">
       <Stack direction="row" spacing={2}>
-        <Button href="#text-buttons">Siguiente</Button>
+        <Button className="botonEstilo" 
+          sx={{     
+            width: "auto",       
+            margin: "20px auto",        
+            background:"#022251",
+            color:"#fff",
+            fontSize:"10px",
+            padding:"10px",
+            
+        }} 
+          href="#text-buttons"
+          endIcon={<SendIcon />}>
+            Siguiente
+        </Button>
       </Stack>
     </Link>
   );

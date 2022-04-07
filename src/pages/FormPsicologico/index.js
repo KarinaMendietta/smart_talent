@@ -83,18 +83,6 @@ const FormPsicologico = () => {
     console.log("tomadecisi",sumaTomaDesicion)
   };
 
-  //Para crear el objeto completo de la calificacion
-  const [todasCalif,setTodasCalif] = useState({
-    calif_academica:"",
-    calif_laboral:"",
-    calif_psicologica:"",
-    calif_asertividad:"",
-    calif_comunicacion:"",
-    calif_autoestima:"",
-    calif_toma_decision:"",
-   
-  })
-
 
   const handleClickRegisterCalificacion = async () => {
 
@@ -112,8 +100,11 @@ const FormPsicologico = () => {
      //aqui pongo los valores
 
      const sumaP = sumaAsertividad + sumaComunicacion + sumaAutoestima + sumaTomaDesicion
-    
-     setTodasCalif({ 
+     console.log("sumaA",sumaAsertividad)
+     console.log("sumaC",sumaComunicacion)
+     console.log("sumaP",sumaP)
+
+     const calificaciones = {
       calif_academica:califAcademica,
       calif_laboral:califLaboral,
       calif_psicologica:sumaP,
@@ -121,14 +112,11 @@ const FormPsicologico = () => {
       calif_comunicacion:sumaComunicacion,
       calif_autoestima:sumaAutoestima,
       calif_toma_decision:sumaTomaDesicion,
-    })
+  }
 
-    await registerCalificacion(idPostulante,idConvocatoria,todasCalif)
-    swal({
-      icon: "success",
-      title: "Success",
-      text: "Se creo correctamente",
-    });
+  await registerCalificacion(idPostulante,idConvocatoria,calificaciones)
+  console.log("todas califica", calificaciones)
+    
 }
 
   return (
@@ -140,7 +128,7 @@ const FormPsicologico = () => {
         sx={{ alignItems:"center", 
         width: "100%",  
         height:"auto",
-        background: "linear-gradient(90deg, #159957 0%, #155799 100%)"
+        background: "linear-gradient(90deg, #43c6ac 0%, #191654 100%)"
        }}
       >
   
@@ -169,13 +157,14 @@ const FormPsicologico = () => {
                     <Grid item xs={12}> 
                                             
                         <div >
-                            <p >{test.id_test} &nbsp;&nbsp;{test.pregunta}</p>                       
+                            <p >{test.pregunta}</p>                       
                         </div>
                         <div>
                          
                         <FormControl sx={{display: 'flex', justifyContent:"center"}}>
                           <FormLabel id="label-radio"></FormLabel>
-                          <RadioGroup
+                          <RadioGroup   
+                            row                         
                             aria-labelledby="label-radio"
                             name={test.id_test}
                             onChange={handleChangeCalificacion}
@@ -222,9 +211,12 @@ const FormPsicologico = () => {
               ))}
               
         </Grid>
-        <Button onClick={handleClickRegisterCalificaciones} variant="contained" fullWidth>
+        <Link to="/fin-registro">
+        <Button onClick={handleClickRegisterCalificaciones} variant="contained" 
+        fullWidth href="#text-buttons">
             Terminar
-        </Button>       
+        </Button>   
+        </Link>    
         
         </Stack>
       </FormControl>
@@ -236,7 +228,17 @@ export const TextButtons = () => {
     return (
       <Link to="/fin-registro">
         <Stack direction="row" spacing={2} mt={5}>
-          <Button variant="contained" size="large" href="#text-buttons">Siguiente</Button>
+          <Button 
+          variant="contained" size="large" 
+          sx={{     
+            width: "auto",       
+            margin: "20px auto",        
+            background:"#022251",
+            color:"#fff",
+            fontSize:"10px",
+            padding:"10px",
+            
+        }} href="#text-buttons">Finalizar formulario</Button>
         </Stack>
       </Link>
     );
@@ -253,46 +255,5 @@ export const TextButtons = () => {
         </Stack>    
     );
   };
-
-  export const RadioRespuesta = () => {
-    return (
-      <FormControl sx={{display: 'flex', justifyContent:"center"}}>
-      <FormLabel id="label-radio">Rspuestas</FormLabel>
-      <RadioGroup
-        aria-labelledby="label-radio"
-        name="calificacion"
-      >
-         <FormControlLabel
-          value={test.nunca}
-          control={<Radio />}
-          label="NUNCA"
-        />
-        
-        <FormControlLabel
-          value={test.rara_vez}
-          control={<Radio />}
-          label="RARA VEZ"
-        />
-        <FormControlLabel
-          value={test.a_veces}
-          control={<Radio />}
-          label="A VECES"
-        />
-        <FormControlLabel
-          value={test.a_menudo}
-          control={<Radio />}
-          label="A MENUDO"
-        />
-        <FormControlLabel
-          value={test.siempre}
-          control={<Radio />}
-          label="SIEMPRE"
-        />
-       
-      </RadioGroup>
-    </FormControl>
-    )
-
-  }
   
 export default FormPsicologico;

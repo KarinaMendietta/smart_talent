@@ -21,6 +21,7 @@ import { LocalizationProvider, DatePicker } from "@mui/lab";
 import { getPostulantes, registerLaboral } from "../../service/firestore";
 import swal from "sweetalert";
 import "../../styles/page/formEstilo.scss";
+import SendIcon from '@mui/icons-material/Send';
 
 const FormLaboral = () => {
   const [idPostulante, setIDPostulante] = useState(
@@ -222,15 +223,18 @@ export const TextButtons = () => {
   return (
     <Link to="/form-psicologico">
       <Stack direction="row" spacing={2}>
-        <Button 
-        sx={{
-          display: "flex",
-          justifycontent: "center",
-          size: "large",
-          backgroundColor: "#000",
-        }}
+        <Button variant="contained" className="botonEstilo" 
+        
+        sx={{     
+          width: "auto",       
+          margin: "20px auto",        
+          background:"#022251",
+          color:"#fff",
+          fontSize:"10px",
+          padding:"10px",
+        }} 
         href="#text-buttons"
-        >
+        endIcon={<SendIcon />}>
           Siguiente
         </Button>
       </Stack>
