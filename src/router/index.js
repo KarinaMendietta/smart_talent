@@ -38,6 +38,7 @@ const Router = () => {
             <Route path="/dashboard/:name" element={<Dashboard />} />
             <Route path="/tables/:name" element={<Tables />} />
             <Route path="/profile/:name" element={<Profile />} />
+            
           </Route>
         </Route>
       </Routes>
