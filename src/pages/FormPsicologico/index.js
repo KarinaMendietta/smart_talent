@@ -81,8 +81,13 @@ const FormPsicologico = () => {
     console.log("tomadecisi",sumaTomaDesicion)
   };
 
-  
-  const handleClickRegisterCalificacion = async () => {
+  const[isDisable, serIsDisable] = useSate({
+    
+  })
+
+  const handleClickRegisterCalificacion = async (index) => {
+
+
 
     await registerPsicologico(idPostulante,values)
 
@@ -132,11 +137,11 @@ const FormPsicologico = () => {
         <Divider />
         <Grid container spacing={3} mt={5}>
              {tests.length > 0 &&
-                    tests.map((test) => (
+                    tests.map((test,index) => (
                     <Grid item xs={12}> 
                                             
                         <div >
-                            <p >{test.id_test} &nbsp;&nbsp;{test.pregunta}</p>                       
+                            <p>{test.pregunta}</p>                       
                         </div>
                         <div>
                          
@@ -180,6 +185,8 @@ const FormPsicologico = () => {
                         </div>
                         <div>
                           <Button
+                            className={`btnEnviar-${index+1}`}
+                            disabled={true}
                             onClick={handleClickRegisterCalificacion}  
                             variant="contained" >
                             OK
