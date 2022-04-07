@@ -30,14 +30,14 @@ const BarChart2 = (props) => {
     const qualifications = await fetchQualifications();
     console.log(announcements);
     
-    // Agrupando la data de calificaciones y convocatoria
+    // Agrupando la data de calificaciones por id_convocatoria
     const groupedResult = _.chain(qualifications)
       .groupBy((item) => {
         return item.id_convocatoria;
       })
       .map((value, key) => ({ key, items: value }))
       .value();
-    console.log('groupedResult',groupedResult);
+    console.log('groupedResult', groupedResult);
 
     // Obteniendo el nombre de la convocatoria por el id_convocatoria
     const names = groupedResult.map(
@@ -48,28 +48,9 @@ const BarChart2 = (props) => {
     const names2 = groupedResult.map((announc) => announc.key); 
     console.log('names2',names2);
 
-    // const names4 = groupedResult.map((announc) => {
-    //     announcements.map((announcement) => {
-    //         if(announc.key===announcement.id_convocatoria){
-    //             return announcement.nombre_convocatoria;
-    //         }
-    //     })
-    // }); 
-    // console.log('names4',names4);
-
-    // const names3 = groupedResult.map(
-    //     (announc) => announcements.find((announcement) => announcement.id_convocatoria === announc.key)
-    //   );
-    // console.log('names3',names3);
-
-    const names5 = groupedResult.map(
-        (announc) => announc.find((announcement) => announcement.key === announcements.id_convocatoria))
-
-    console.log('names5',names5);
-
     // Obteniendo la cantidad de postulantes aceptados por la sumatoria de calificaciones
     const counts = groupedResult.map(
-      (applicant) => applicant.items.filter((qualification) => (qualification.calif_academica + qualification.calif_laboral + qualification.calif_psicologica)> 50 ).length
+      (applicant) => applicant.items.filter((qualification) => (qualification.calif_academica + qualification.calif_laboral + qualification.calif_psicologica) > 50 ).length
     );
 
     // Declarando la data para el apexChart

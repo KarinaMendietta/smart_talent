@@ -1,0 +1,54 @@
+.modal--icons .icon {
+    color: black;
+}
+
+.modal--icons .icon-exit {
+    height: 14px;
+    color: black;
+}
+
+.img-user {
+    height: 250px;
+    width: 250px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 15px;
+}
+
+.modal--icons .border {
+    border: 2px solid black;
+    color: black;
+}
+
+.modal--icons .texto {
+    color: black;
+}
+
+.modal {
+    background-color: gray;
+}
+
+.modal--icons .container-cards {
+   border: solid;
+}
+
+.modal--icons p {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid black;
+}
+
+.modal--icons span {
+    font-weight: bold;
+}
+/*
+1. Combinación de negro con blanco
+2. Combinación de negro con gris
+3. Combinación de negro con rojo
+4. Combinación de negro con rosa
+5. Combinación de negro con amarillo
+6. Combinación de negro con naranja
+7. Combinación de negro con dorado
+8. Combinación de negro con morado
+9. Combinación de negro con azul 
+*/

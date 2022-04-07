@@ -29,7 +29,7 @@ const BarChart = (props) => {
     const applicants = await fetchApplicants();
     const announcements = await fetchAnnouncements();
 
-    // Agrupando la data de postulantes y convocatoria
+    // Agrupando la data de postulantes por id_convocatoria
     const groupedResult = _.chain(applicants)
       .groupBy((item) => {
         return item.id_convocatoria;

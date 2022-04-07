@@ -2,6 +2,8 @@
 import { useState, useEffect, useContext } from "react";
 //Importando de firestore
 import { getApplicants, getAnnouncements, getQualifications } from "../../service/firestore";
+// Importando Modal
+import {ButtonModal} from "./../../components/Modal/ButtonModal"
 // Importando Font Awesome
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
@@ -168,8 +170,15 @@ const Tables = () => {
                   <TableCell
                     align="right"
                     style={{ fontSize: "1.4rem", color: "rgb(52, 71, 103)" }}
+                    className="modal--icons"
                   >
-                    <FontAwesomeIcon icon={faEye} className="icon" />
+                    {/* <p>{announcements.map((announcement)=>announcement)}</p> */}
+                    {/* <FontAwesomeIcon icon={faEye} className="icon" onClick={handleOpenDialog} /> */}
+                    <ButtonModal 
+                      applicant={applicant}
+                      announcements={announcements}
+                      qualifications={qualifications}
+                    />
                   </TableCell>
                 </TableRow>
               ))}
