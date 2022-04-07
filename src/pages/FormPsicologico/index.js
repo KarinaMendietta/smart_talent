@@ -81,19 +81,7 @@ const FormPsicologico = () => {
     console.log("tomadecisi",sumaTomaDesicion)
   };
 
-  //Para crear el objeto completo de la calificacion
-  const [todasCalif,setTodasCalif] = useState({
-    calif_academica:"",
-    calif_laboral:"",
-    calif_psicologica:"",
-    calif_asertividad:"",
-    calif_comunicacion:"",
-    calif_autoestima:"",
-    calif_toma_decision:"",
-   
-  })
-
-
+  
   const handleClickRegisterCalificacion = async () => {
 
     await registerPsicologico(idPostulante,values)
@@ -106,12 +94,16 @@ const FormPsicologico = () => {
     });
   }
 
+  
   const handleClickRegisterCalificaciones = async () => {
      //aqui pongo los valores
 
      const sumaP = sumaAsertividad + sumaComunicacion + sumaAutoestima + sumaTomaDesicion
-    
-     setTodasCalif({ 
+     console.log("sumaA",sumaAsertividad)
+     console.log("sumaC",sumaComunicacion)
+     console.log("sumaP",sumaP)
+
+     const calificaciones = {
       calif_academica:califAcademica,
       calif_laboral:califLaboral,
       calif_psicologica:sumaP,
@@ -119,15 +111,17 @@ const FormPsicologico = () => {
       calif_comunicacion:sumaComunicacion,
       calif_autoestima:sumaAutoestima,
       calif_toma_decision:sumaTomaDesicion,
-    })
+     }
+      
 
-    await registerCalificacion(idPostulante,idConvocatoria,todasCalif)
+    await registerCalificacion(idPostulante,idConvocatoria,calificaciones)
+    console.log("todas califica", calificaciones)
     swal({
       icon: "success",
       title: "Success",
       text: "Se creo correctamente",
     });
-}
+  }
 
   return (
     <Container maxWidth="lg">
@@ -227,45 +221,6 @@ export const TextButtons = () => {
     );
   };
 
-  export const RadioRespuesta = () => {
-    return (
-      <FormControl sx={{display: 'flex', justifyContent:"center"}}>
-      <FormLabel id="label-radio">Rspuestas</FormLabel>
-      <RadioGroup
-        aria-labelledby="label-radio"
-        name="calificacion"
-      >
-         <FormControlLabel
-          value={test.nunca}
-          control={<Radio />}
-          label="NUNCA"
-        />
-        
-        <FormControlLabel
-          value={test.rara_vez}
-          control={<Radio />}
-          label="RARA VEZ"
-        />
-        <FormControlLabel
-          value={test.a_veces}
-          control={<Radio />}
-          label="A VECES"
-        />
-        <FormControlLabel
-          value={test.a_menudo}
-          control={<Radio />}
-          label="A MENUDO"
-        />
-        <FormControlLabel
-          value={test.siempre}
-          control={<Radio />}
-          label="SIEMPRE"
-        />
-       
-      </RadioGroup>
-    </FormControl>
-    )
-
-  }
+  
   
 export default FormPsicologico;
