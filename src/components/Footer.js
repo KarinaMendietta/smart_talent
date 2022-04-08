@@ -16,9 +16,9 @@ class Footer extends Component {
               
               </ul>
             </div>
-            <a href={"https://github.com/vborjas"} >
-                 <img className="github-btn" src="../images/GitHub-logo2.png"></img>
-                </a>
+            <a href={"https://github.com/KarinaMendietta/smart_talent.git"} >
+                 <img className="github-btn" src="../assets/img/GitHub-logo2.png"></img>
+            </a>
           </Fade>
 
           <div id="go-top">

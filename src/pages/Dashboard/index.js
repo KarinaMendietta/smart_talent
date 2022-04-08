@@ -1,8 +1,8 @@
 // Importando Hooks
 import { useEffect, useState } from "react";
 // Importando componentes
-import LineChart from "./../../components/charts/LineChart" 
-import BarChart from "./../../components/charts/BarChart" 
+// import LineChart from "./../../components/charts/LineChart" 
+// import BarChart from "./../../components/charts/BarChart" 
 // Importando estilos
 import "./../../styles/page/dashboard.scss";
 
@@ -11,9 +11,9 @@ const Dashboard = () => {
     <>
       <div className='dashboard'>
         <div className='charts'>
-          <LineChart/>
+          {/* <LineChart/>
           <BarChart/>
-          <LineChart/>
+          <LineChart/> */}
         </div>
       </div>
     </>

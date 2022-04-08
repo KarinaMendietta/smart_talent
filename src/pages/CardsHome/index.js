@@ -1,9 +1,9 @@
 //Importando Hooks
-import {useState, useEffect} from "react";
+import { useState, useEffect } from "react";
 //Importando de firestore
-import {getAnnouncements} from "../../service/firestore";
+import { getAnnouncements } from "../../service/firestore";
 // Importando Font Awesome
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faLocationDot,
   faUser,
@@ -19,6 +19,8 @@ import {
   Grid,
   Button,
 } from "@mui/material";
+// Importando react-router-dom
+import { Link } from "react-router-dom";
 // Importando SASS
 import "./../../styles/component/cardsHome.scss";
 
@@ -36,7 +38,7 @@ const CardsHome = () => {
   // Para enviar el ID al localstorage
   const handleClickPostulate = (id) => {
     console.log(id);
-    localStorage.setItem("id_convocatoria", id);
+    localStorage.setItem("idConvocatoria", id);
   };
 
   //Inicializando los fetch
@@ -56,14 +58,14 @@ const CardsHome = () => {
               lg={6}
               sm={12}
               xs={12}
-              style={{minHeight: "730px"}}
+              style={{ minHeight: "730px" }}
             >
-              <Card className="card" sx={{borderRadius: "2rem"}}>
+              <Card className="card" sx={{ borderRadius: "2rem" }}>
                 <CardMedia
                   component="img"
                   className="img-pokemon"
                   image={announcement.photo_convocatoria}
-                  sx={{height: "25rem"}}
+                  sx={{ height: "25rem" }}
                 />
                 <CardContent
                   className="card__content"
@@ -93,10 +95,7 @@ const CardsHome = () => {
                     </Grid>
 
                     <Grid item md={6} lg={6} sm={4} xs={6} mb={2}>
-                      <FontAwesomeIcon
-                        icon={faUser}
-                        className="icon--card"
-                      />
+                      <FontAwesomeIcon icon={faUser} className="icon--card" />
                       <span className="card__span">12 Vacantes</span>
                     </Grid>
 
@@ -120,19 +119,19 @@ const CardsHome = () => {
                   </Grid>
 
                   {/* Para enviar el ID al localstorage */}
-                  <Button
-                    fullWidth
-                    variant="contained"
-                    color="primary"
-                    onClick={() =>
-                      handleClickPostulate(
-                        announcement.id_convocatoria
-                      )
-                    }
-                    sx={{fontSize: "1.6rem", borderRadius: "1rem"}}
-                  >
-                    Postular
-                  </Button>
+                  <Link to={"/form-postulante"}>
+                    <Button
+                      fullWidth
+                      variant="contained"
+                      color="primary"
+                      onClick={() =>
+                        handleClickPostulate(announcement.id_convocatoria)
+                      }
+                      sx={{ fontSize: "1.6rem", borderRadius: "1rem" }}
+                    >
+                      Postular
+                    </Button>
+                  </Link>
                 </CardContent>
               </Card>
             </Grid>

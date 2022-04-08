@@ -2,27 +2,73 @@
 import { Link } from "react-router-dom";
 // Importando estilos
 import "./../../styles/page/home.scss";
-import { ButtonModal } from "../../components/ButtonModal";
+import "./../../styles/page/home/default.css"
+import "./../../styles/page/home/layout.css"
+import "./../../styles/page/home/media-queries.css"
 
-const Home = () => {
-  return (
-    <>
-      <header className="header">
-        <div className="bar header__container">
-          <nav className="nav">
-            <ul className="nav-link">
-              <li className="nav-link__item">
-                <Link to={"/sign-in"} className="btn--nav">
-                  Login
-                </Link>
-              </li>
-            </ul>
-            <ButtonModal/>
-          </nav>
-        </div>
-      </header>
-    </>
-  );
-};
+import { ButtonModal } from "../../components/ButtonModal";
+import Header from "../../components/Header";
+import Footer from "../../components/Footer";
+import About from "../../components/About";
+import Contact from "../../components/Contact";
+
+import React, { Component } from "react";
+import ReactGA from "react-ga";
+import $ from "jquery";
+
+class Home extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      foo: "bar",
+      resumeData: {}
+    };
+
+    ReactGA.initialize("UA-110570651-1");
+    ReactGA.pageview(window.location.pathname);
+  }
+
+  getResumeData() {
+    $.ajax({
+      url: "./resumeData.json",
+      dataType: "json",
+      cache: false,
+      success: function(data) {
+        this.setState({ resumeData: data });
+      }.bind(this),
+      error: function(xhr, status, err) {
+        console.log(err);
+        alert(err);
+      }
+    });
+  }
+
+  componentDidMount() {
+    this.getResumeData();
+  }  
+
+  render(){
+    return (
+      <>
+        <Header data={this.state.resumeData.main} />
+        <About data={this.state.resumeData.main} />
+        <Contact data={this.state.resumeData.main} />
+        <Footer data={this.state.resumeData.main} />        
+      </>
+    );
+  }
+}
+
+// const Home = () => {
+  
+//   return (
+//     <>
+//       <Header data={this.state.resumeData.main} />
+//       <About data={this.state.resumeData.main} />
+//       <Contact data={this.state.resumeData.main} />
+//       <Footer data={this.state.resumeData.main} />        
+//     </>
+//   );
+// };
 
 export default Home;

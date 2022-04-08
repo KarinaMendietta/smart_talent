@@ -132,11 +132,7 @@ const FormPsicologico = () => {
 
     await registerCalificacion(idPostulante, idConvocatoria, calificaciones);
     console.log("todas califica", calificaciones);
-    swal({
-      icon: "success",
-      title: "Success",
-      text: "Se creo correctamente",
-    });
+    
   };
 
   return (

@@ -82,7 +82,6 @@ const FormPostulante = () => {
     await registerPostulante(idPostulante, values);
 
     localStorage.setItem("idPostulante", idPostulante);
-    localStorage.setItem("idConvocatoria", 3);
 
     swal({
       icon: "success",

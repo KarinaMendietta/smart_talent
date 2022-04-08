@@ -1,9 +1,13 @@
 import React from "react";
+import Finalizo from "../../components/Finalizo";
+
 
 const FinRegistro = () => {
-    return (
-<h1>Fin de registro poner burbujas coloridas</h1>
-    );
+  return (
+      <>
+        <Finalizo />
+      </>
+  );
 };
 
 export default FinRegistro;
