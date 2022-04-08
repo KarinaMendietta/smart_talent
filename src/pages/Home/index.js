@@ -1,12 +1,11 @@
 // Importando react-router
 import { Link } from "react-router-dom";
 // Importando estilos
-import "./../../styles/page/home.scss";
 import "./../../styles/page/home/default.css"
 import "./../../styles/page/home/layout.css"
 import "./../../styles/page/home/media-queries.css"
 
-import { ButtonModal } from "../../components/ButtonModal";
+// import { ButtonModal } from "../../components/ButtonModal";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import About from "../../components/About";

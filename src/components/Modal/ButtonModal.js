@@ -1,81 +1,86 @@
 import { React, useState } from "react";
-import MoreRoundedIcon from '@mui/icons-material/MoreRounded';
-import { Button, Dialog, DialogContent, Slider, Chip, Avatar } from '@mui/material';
-import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
+//icon
+import IconButton from '@mui/material/IconButton';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEye } from "@fortawesome/free-solid-svg-icons";
+import CloseIcon from '@mui/icons-material/Close';
+//material
+import { Dialog, DialogContent,Card, CardContent, Grid, Container } from '@mui/material';
 import './ButtonModal.css';
-import LocationOnRoundedIcon from '@mui/icons-material/LocationOnRounded';
-import AlternateEmailRoundedIcon from '@mui/icons-material/AlternateEmailRounded';
-import MaleRoundedIcon from '@mui/icons-material/MaleRounded';
-import PhoneIphoneRoundedIcon from '@mui/icons-material/PhoneIphoneRounded';
-import LocalPhoneRoundedIcon from '@mui/icons-material/LocalPhoneRounded';
-import AssignmentIndRoundedIcon from '@mui/icons-material/AssignmentIndRounded';
-import FlagCircleRoundedIcon from '@mui/icons-material/FlagCircleRounded';
+//importando informacion
+import Personal from "./Info-Personal/Personal";
+import Calificacion from "./Info-Personal/Calificacion";
+import Academic from "./Info-Personal/Academic";
+import Psicologico from "./Info-Personal/Psicologico";
+import Laboral from "./Info-Personal/Laboral";
 
-export const ButtonModal = () => {
 
+//<Academic academics={academics} applicant={applicant}/>
+//<Psicologico pyscho={psycho} applicant={applicant}/>
+//<Laboral trabajo={trabajo} applicant={applicant}/>
+
+
+export const ButtonModal = ({ applicant, qualifications, announcements, academics, psycho, trabajo }) => {
     const [open, setOpen] = useState(false);
+    const [psy, setPsy] = useState({});
+    const [work, setWork] = useState({});
+    const [acade, setAcade] = useState({});
 
     const handleOpenDialog = () => {
-        console.log(open)
+        if(psycho.length > 0 || trabajo.length > 0 || academics.length > 0){
+        const data = psycho.find((element) => element.id_postulante === applicant.id_postulante);
+        const result = trabajo.find((element) => element.id_postulante === applicant.id_postulante);
+        const resultAcademic = academics.find((element) => element.id_postulante === applicant.id_postulante);
+        setPsy(data);
+        setAcade(resultAcademic);
+        setWork(result);
+        }
         setOpen(!open);
+
     };
+    
 
     return(
-        <>
-        <Button onClick={handleOpenDialog} variant='contained'>
-            <MoreRoundedIcon/>
-        </Button>
+        <>        
+            <IconButton color="primary" onClick={handleOpenDialog} aria-label="modal" variant="contained" className="icon--modal">
+                <FontAwesomeIcon icon={faEye} className="icon" onClick={handleOpenDialog} />
+            </IconButton>
         
-        <Dialog open={open} onClose={handleOpenDialog} fullWidth={"md"} maxWidth={"md"} >
-            <DialogContent className="modal">
-                <div className="container-button">
-                <Button onClick={handleOpenDialog} variant="contained" size="large" color="error">
-                    <CloseRoundedIcon />
-                </Button>
-                </div>
-                <div className="contenido-modal">
-                    <img src={"https://www.dzoom.org.es/wp-content/uploads/2010/09/mirada-ojos-encuadre-primer-plano-sexy-810x540.jpg"} alt="" className="img-modal"/>
-                    <div className="container-text-name">
-                        <h1 className="titulo-nombre">JUAN RAMOS</h1>
-                    </div>
-                    <div className="container-information">
-                        <h3>Informacion Personal:</h3>
-
-                        <p>Pais: Peru <FlagCircleRoundedIcon/></p>
-                        <Chip variant="outlined" avatar={<Avatar><FlagCircleRoundedIcon/></Avatar>} label="Peru" />
-                        <p>Departamento: Arequipa <LocationOnRoundedIcon /></p>
-                        <p>Email: ramos@gmail.com<AlternateEmailRoundedIcon/></p>
-                        <p>Genero: Masculino <MaleRoundedIcon/></p>
-                        <p>Numero de celular: 998-887-478<PhoneIphoneRoundedIcon/></p>
-                        <p>Numero telefonico: 054 326444<LocalPhoneRoundedIcon/></p>
-                        <p>DNI: 40101245 <AssignmentIndRoundedIcon/></p>
-                    </div>
-                    <div className="container-information">
-                        <h3>Calificacion: </h3>
-                        <p>Calificacion Academica: 18/20
-                            <Slider size="small" defaultValue={18 * 5} valueLabelDisplay="off" disabled />
-                        </p>
-                        <p>Calificacion Laboral: 11/20
-                            <Slider size="small" defaultValue={11 * 5} valueLabelDisplay="off" disabled />
-                        </p>
-                        <p>Calificacion psicologica: 14/20
-                            <Slider size="small" defaultValue={12 * 5} valueLabelDisplay="off" disabled/>
-                        </p>
-                    </div>
-                    <div className="container-information">
-                        <h4>Academico: </h4>
-                        <p>vacio</p>
-                    </div>
-                    <div className="container-information">
-                        <h4>Laboral:</h4>
-                        <p>Cargo: Supervisor</p>
-                        <p>Nombre de la empresa: Taiceria Delia</p>
-                        <p>RUC: 1526521210021</p>
-                    </div>
-                </div>
-                
-            </DialogContent>
-        </Dialog>
+            <Dialog open={open} onClose={handleOpenDialog} fullWidth maxWidth={"xl"}>
+                <DialogContent className="modal">
+                    <IconButton onClick={handleOpenDialog} classname="button-close">
+                        <CloseIcon className="icon-exit" color="error" variant="contained" fontSize="large"/>
+                    </IconButton>
+                    <img className="img-user" src={applicant.photo} alt=""/>
+                    <Container maxWidth="xl">
+                        <Grid container spacing={2} className="card-container" fullWidth>
+                            <Grid item md={4}>
+                                <Card>
+                                    <CardContent className="card">
+                                        <Personal applicant={applicant}/>
+                                    </CardContent>
+                                </Card>
+                            </Grid>
+                            <Grid item md={4}>
+                                <Card>
+                                    <CardContent className="card">
+                                        <Academic acade={acade}/>
+                                        <Psicologico psy={psy} />
+                                    </CardContent>
+                                </Card>
+                            </Grid>
+                            <Grid item md={4}>
+                                <Card>
+                                    <CardContent className="card">
+                                        <Calificacion applicant={applicant} qualifications={qualifications}/>
+                                        <Laboral work={work} />
+                                    </CardContent>  
+                                </Card> 
+                            </Grid>
+                        </Grid>
+                    </Container>
+                </DialogContent>
+            </Dialog>
         </>
     );
 }

@@ -63,7 +63,7 @@ class Header extends Component {
                 <a href={"/cards-home"} className="button btn postula-btn">
                   <i className="fa fa-book"></i>Postulantes
                 </a>
-                <a href={"/cards-home"} target="_self" className="button btn empresa-btn">
+                <a href={"/sign-in"} target="_self" className="button btn empresa-btn">
                   <i className="fa fa-check-circle"></i>Empresas
                 </a>
                 

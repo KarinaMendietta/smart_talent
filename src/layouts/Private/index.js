@@ -1,17 +1,23 @@
-// import { useContext } from "react";
-// import { UserContext } from "../../Context/UserContext";
-import { Navigate, Outlet } from "react-router-dom";
+// Importando Hooks
+import { useContext } from "react";
+// Importando Context
+import { UserContext } from "../../context/UserContext";
+// Importando react-router-dom
+import { Navigate, Outlet} from "react-router-dom";
 
 const Private = () => {
-//   const { user } = useContext(UserContext);
+  const { user } = useContext(UserContext);
 
-  // Estamos validando si el usuario no existe entonces hacemos
-  // que auotmaticamente la pagina lo redirija al login
-//   if (!user) {
-//     return <Navigate to="/login" />;
-//   }
+  // Validamos si el usuario existe, si no existe se redirige automáticamente la página al login
+  if (!user) {
+    return <Navigate to="/sign-in" />;
+  }
 
-  return <Outlet />;
+  return (
+    <>
+      <Outlet />
+    </>
+  );
 };
 
 export default Private;

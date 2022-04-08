@@ -15,7 +15,6 @@ h1, h2, h3, h4 {
 }
 
 h1 {
-    color: $main-title;
     font-size: 2rem;
     @include telefono{
         font-size: 3rem;
@@ -29,7 +28,6 @@ h1 {
 }
 
 h2 {
-    color: $secondary-title;
     font-size: 2.6rem;
     @include telefono{
         font-size: 2.8rem;
@@ -71,16 +69,12 @@ h4 {
 p, span {
     font-family: $secondary-font;
     font-weight: $regular;
+    // color: $paragraph;
     line-height: 1.8rem;
-    font-size: 1.2rem;
-    @include telefono{
-        font-size: 1.3rem;
-    }
-    @include tablet{
-        font-size: 1.5rem;
-    }
+    font-size: 1.6rem;
+    
     @include desktop{
-        font-size: 1.6rem;
+        font-size: 1.7rem;
     }
 }
 
@@ -112,6 +106,7 @@ li {
 a {
     font-family: $link-font;
     font-weight: $regular; 
+    color: $link;    
     text-align: center;
     text-decoration: none;
     transition-property: color;
@@ -138,6 +133,7 @@ a svg, button svg {
     text-decoration: none;
     transition-property: color;
     transition-duration: .5s;
+    cursor: pointer;
     &:hover {
         color: $icon-hover;
     } 

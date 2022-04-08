@@ -8,6 +8,10 @@ import {
   updateDoc,
   deleteDoc,
 } from "firebase/firestore/lite";
+import {
+  getAuth,
+  signInWithEmailAndPassword,
+} from "firebase/auth";
 import { v4 as uuidv4 } from "uuid";
 
 const firebaseConfig = {
@@ -38,15 +42,17 @@ export const getUsersAdmin = async () => {
 };
 
 // Hacer la petición para poder traer datos de tblPostulantes
-export const getApplicants = async () => {
+export const getPostulantes= async () => {
   // paso 1: Traer la coleccion de datos
-  const collectionApplicants = collection(db, "postulante");
+  const collectionPostulantes = collection(db, "postulante");
   // paso 2: Traer los documentos
-  const documentApplicants = await getDocs(collectionApplicants);
+  const documentPostulantes = await getDocs(collectionPostulantes);
   // paso 3: Crear un arreglo que guarde los documentos que estamos obteniendo
-  const usersApplicants = documentApplicants.docs.map((doc) => doc.data());
-  return usersApplicants;
-};
+  const postulantes = documentPostulantes.docs.map((doc) => doc.data());
+  //console.log("postulantes",postulantes)
+  //solo enviamos el numero de postulantes
+  return postulantes.length;
+}
 
 // Hacer la petición para poder traer datos de tblConvocatoria
 export const getAnnouncements = async () => {
@@ -70,6 +76,23 @@ export const getQualifications = async () => {
   return usersQualification;
 };
 
+// Peticion de la tabla Academicos
+export const getAcademics = async () => {
+  // paso 1: Traer la coleccion de datos
+  const collectionAcademic = collection(db, "academico");
+  // paso 2: Traer los documentos
+  const documentAcademic = await getDocs(collectionAcademic);
+  // paso 3: Crear un arreglo que guarde los documentos que estamos obteniendo
+  const usersAcademic = documentAcademic.docs.map((doc) => doc.data());
+  return usersAcademic;
+};
+
+export const getPsychological = async() => {
+  const collectionPsychological = collection(db, "psicologico");
+  const documentPsychological = await getDocs(collectionPsychological);
+  const usersPsychological = documentPsychological.docs.map((doc) => doc.data());
+  return usersPsychological;
+}
 
   // Hacer la peticion para poder traer las preguntas
   export const getTests= async () => {
@@ -83,17 +106,14 @@ export const getQualifications = async () => {
     return tests;
   };
 
-  export const getPostulantes= async () => {
-    // paso 1: Traer la coleccion de datos
-    const collectionPostulantes = collection(db, "postulante");
-    // paso 2: Traer los documentos
-    const documentPostulantes = await getDocs(collectionPostulantes);
-    // paso 3: Crear un arreglo que guarde los documentos que estamos obteniendo
-    const postulantes = documentPostulantes.docs.map((doc) => doc.data());
-    //console.log("postulantes",postulantes)
-    //solo enviamos el numero de postulantes
-    return postulantes.length;
+  export const getLabor = async() => {
+    const collectionLabor = collection(db, "laboral");
+    const documentLabor = await getDocs(collectionLabor);
+    const usersLabor = documentLabor.docs.map((doc) => doc.data());
+    return usersLabor;
   }
+
+  
 
   export const registerPostulante = async (idPostulante,postulante) => {
     const id = uuidv4().replaceAll("-", "");
@@ -135,4 +155,23 @@ export const getQualifications = async () => {
  export const updateCalificacion = async (calificacion) => {
   const calificacionRef = doc(db, "calificacion", calificacion.id);
   await updateDoc(calificacionRef, calificacion);
+};
+
+// vamos a crear una funcion qu reciba un email y password y cree un cuenta en firebase
+export const auth = getAuth();
+
+export const loginUser = async (email, password) => {
+  try {
+    const user = await signInWithEmailAndPassword(auth, email, password);
+
+    return {
+      ok: true,
+      data: user,
+    };
+  } catch (error) {
+    return {
+      ok: false,
+      data: error.message,
+    };
+  }
 };

@@ -1,15 +1,14 @@
-import Router from './router'
-import "./App.css";
-
+import Router from "./router";
+import { UserProvider } from "./context/UserContext";
 
 const App = () => {
   return (
-    <div>
-        <Router/>
-    </div>
+    <UserProvider>
+      <div>
+        <Router />
+      </div>
+    </UserProvider>
   )
 }
-
-
 
 export default App

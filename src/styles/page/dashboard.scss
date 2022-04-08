@@ -3,19 +3,15 @@
 @import './../base/mixins.scss';
 
 .dashboard{
+    width: 100%;
     background-color: transparent;
     padding: $padding-elemt 0;
-    overflow: hidden;
-    &::-webkit-scrollbar {
-        -webkit-appearance: none;
-    }
 }
 
-.charts{
+.dashboard__charts{
     display: flex;
     flex-wrap: wrap;  
-    // flex-flow: row wrap;
     gap: 2rem;
     align-items: center;
-    justify-content: center;
+    justify-content: space-evenly;
 }

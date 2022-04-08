@@ -1,5 +1,5 @@
 //Importando Hooks
-import { useState, useEffect } from "react";
+import { useState, useEffect} from "react";
 //Importando de firestore
 import { getAnnouncements } from "../../service/firestore";
 // Importando Font Awesome
@@ -19,10 +19,8 @@ import {
   Grid,
   Button,
 } from "@mui/material";
-// Importando react-router-dom
-import { Link } from "react-router-dom";
 // Importando SASS
-import "./../../styles/component/cardsHome.scss";
+import "./../../styles/page/cardsHome.scss";
 
 const CardsHome = () => {
   // Para utilizarlo con la base de datos tblConvocatoria
@@ -32,13 +30,7 @@ const CardsHome = () => {
   const fetchAnnouncements = async () => {
     const data = await getAnnouncements();
     setAnnouncements(data);
-    console.log(data);
-  };
-
-  // Para enviar el ID al localstorage
-  const handleClickPostulate = (id) => {
-    console.log(id);
-    localStorage.setItem("idConvocatoria", id);
+    console.log(data)
   };
 
   //Inicializando los fetch
@@ -46,44 +38,25 @@ const CardsHome = () => {
     fetchAnnouncements();
   }, []);
   return (
-    <Container>
+    <Container >
       <h2 className="cards-title">Ofertas Laborales</h2>
       <Grid container spacing={3}>
         {announcements.length > 0 &&
           announcements.map((announcement, index) => (
-            <Grid
-              key={index}
-              item
-              md={6}
-              lg={6}
-              sm={12}
-              xs={12}
-              style={{ minHeight: "730px" }}
-            >
-              <Card className="card" sx={{ borderRadius: "2rem" }}>
+            <Grid key={index} item md={6} lg={6} sm={12} xs={12} style={{minHeight:'730px'}}>
+              <Card className="card" sx={{ borderRadius: "2rem" }} >
                 <CardMedia
                   component="img"
                   className="img-pokemon"
                   image={announcement.photo_convocatoria}
-                  sx={{ height: "25rem" }}
+                  sx={{height:'25rem'}}
                 />
-                <CardContent
-                  className="card__content"
-                  sx={{
-                    display: "flex",
-                    flexDirection: "column",
-                    justifyContent: "space-between",
-                  }}
-                >
-                  <h3 className="card__name">
-                    {announcement.nombre_convocatoria}
-                  </h3>
+                <CardContent className="card__content" sx={{display:'flex', flexDirection:'column', justifyContent:'space-between'}}>
+                  <h3 className="card__name">{announcement.nombre_convocatoria}</h3>
 
                   <Grid container spacing={3} mb={2}>
                     <Grid item md={12} lg={12} sm={12} xs={12} mb={2}>
-                      <p className="card__description">
-                        {announcement.descripcion}
-                      </p>
+                        <p className="card__description">{announcement.descripcion}</p>
                     </Grid>
 
                     <Grid item md={6} lg={6} sm={4} xs={6} mb={2}>
@@ -105,7 +78,7 @@ const CardsHome = () => {
                         className="icon--card"
                       />
                       <span className="card__span">
-                        01/01/2022 al 20/01/2022
+                        01/01/2022 - 20/01/2022
                       </span>
                     </Grid>
 
@@ -118,20 +91,14 @@ const CardsHome = () => {
                     </Grid>
                   </Grid>
 
-                  {/* Para enviar el ID al localstorage */}
-                  <Link to={"/form-postulante"}>
-                    <Button
-                      fullWidth
-                      variant="contained"
-                      color="primary"
-                      onClick={() =>
-                        handleClickPostulate(announcement.id_convocatoria)
-                      }
-                      sx={{ fontSize: "1.6rem", borderRadius: "1rem" }}
-                    >
-                      Postular
-                    </Button>
-                  </Link>
+                  <Button
+                    fullWidth
+                    variant="contained"
+                    color="primary"
+                    sx={{ fontSize: "1.6rem", borderRadius: "1rem" }}
+                  >
+                    Postular
+                  </Button>
                 </CardContent>
               </Card>
             </Grid>
