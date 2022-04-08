@@ -132,7 +132,7 @@ export const getPsychological = async() => {
   export const registerPostulante = async (idPostulante,postulante) => {
     const id = uuidv4().replaceAll("-", "");
     postulante.id = id;
-    postulante.id_Postulante = idPostulante;
+    postulante.id_postulante = idPostulante;
     await setDoc(doc(db, "postulante", id), postulante);
   };
 

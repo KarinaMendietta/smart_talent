@@ -45,7 +45,7 @@ const BarChart2 = (props) => {
     // const names2 = groupedResult.map((announc) => announc.key); 
     // Obteniendo la cantidad de postulantes aceptados por la sumatoria de calificaciones
     const counts = groupedResult.map(
-      (applicant) => applicant.items.filter((qualification) => (qualification.calif_academica + qualification.calif_laboral + qualification.calif_psicologica) > 50 ).length
+      (applicant) => applicant.items.filter((qualification) => (qualification.calif_academica + qualification.calif_laboral + qualification.calif_psicologica) > 140 ).length
     );
 
     // Declarando la data para el apexChart

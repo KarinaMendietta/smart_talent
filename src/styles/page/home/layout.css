@@ -22,31 +22,31 @@
 /* a. General Styles
 /* ------------------------------------------------------------------ */
 
-/*body { background: hsl(228, 62%, 21%); }*/
-
-body {
-   background-image: url("./../../../assets/img/Trabajacon-1.jpg");
-
-   background-repeat: no-repeat;
-   background-size: contain;
-}
 
 /* SmartTalent-removebg-preview 1 */
-
-
-
 
 
 /* ------------------------------------------------------------------ */
 /* b. Header Styles
 /* ------------------------------------------------------------------ */
 
-header {
+/* .header {
    position: relative;
    height: 800px;
    min-height: 500px;
    width: 100%;
-   background-color: rgba(5, 5, 5, 0.5);
+   text-align: center;
+   overflow: hidden;
+} */
+.baner-inicio{
+   background-image: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.5) 0%,
+      rgba(0, 0, 0, 0.5) 49%,
+      rgba(0, 0, 0, 0.5) 100%
+    ), url("./../../../assets/img/Trabajacon-1.jpg");
+   background-repeat: no-repeat;
+   background-size: cover;
    text-align: center;
    overflow: hidden;
 }
@@ -276,6 +276,7 @@ ul#nav li.current a {
    width: 80px;
    height: 42px;
    filter: invert();
+   margin: 0 auto;
 }
 
 #about .contact-details {
@@ -608,14 +609,11 @@ call-to-action .button {
 
 #contact {
    background-image: url("./../../../assets/img/Fondo.jpg");
-
-
+   background-size: cover;
    background-repeat: no-repeat;
    width: 100%;
-   height: 800px;
-
+   height: auto;
 }
-
 
 
 .section-head {
@@ -660,12 +658,14 @@ call-to-action .button {
    font: 16px/24px 'opensans-bold', sans-serif;
    color: #EBEEEE;
    margin-bottom: 6px;
+   text-align: center;
 }
 
 #contact p.lead {
    font: 18px/36px 'opensans-light', sans-serif;
    padding-right: 3%;
    color: #ffffff;
+   text-align: center;
 }
 
 #contact .header-col {
@@ -792,7 +792,7 @@ call-to-action .button {
 
 footer {
    padding-top: 48px;
-   margin-bottom: 48px;
+   padding-bottom: 48px;
    color: #303030;
    font-size: 14px;
    text-align: center;
@@ -905,10 +905,30 @@ footer .social-links li:first-child {
 
 .postula-btn {
    background-color: #1abc9c !important;
+   min-width: 190px;
+}
+
+.contact-btn {
+   display: block;
+   background-color: #1abc9c !important;
+   margin: 0 auto 2rem;
+   min-width: 190px;
+   font: 16px/30px 'opensans-bold', sans-serif;
+   background: #11ABB0;
+   text-decoration: none;
+   letter-spacing: 0;
+   color: #fff;
+   padding: 12px 20px;
+   border: none;
+   cursor: pointer;
+   height: auto;
+   transition: all .2s ease-in-out;
+   border-radius: 0px;
 }
 
 .empresa-btn {
    background-color: #34495e !important;
+   min-width: 190px;
 }
 
 .containerlogin {

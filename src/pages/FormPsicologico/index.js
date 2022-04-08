@@ -171,13 +171,14 @@ const FormPsicologico = () => {
             tests.map((test, index) => (
               <Grid item xs={12}>
                 <div>
-                  <p>{test.id_test}{test.pregunta}</p>
+                {/* {test.id_test} */}
+                  <p className="test-preguta-psicologico">{test.pregunta}</p>
                 </div>
                 <div>
                   <FormControl
                     sx={{ display: "flex", justifyContent: "center" }}
                   >
-                    <FormLabel id="label-radio"></FormLabel>
+                    {/* <FormLabel id="label-radio"></FormLabel> */}
                     <RadioGroup
                       row
                       aria-labelledby="label-radio"
@@ -235,6 +236,15 @@ const FormPsicologico = () => {
             variant="contained"
             fullWidth
             href="#text-buttons"
+            sx={{
+              // width: "auto",
+              height: "40px",
+              borderRadius: "10px",
+              fontSize: "14px",
+              fontFamily: "opensans-regular",
+              margin: "3rem auto",
+              textAlign: "center",
+            }}
           >
             Terminar
           </Button>
@@ -251,13 +261,22 @@ export const TextButtons = () => {
         <Button
           variant="contained"
           size="large"
+          // sx={{
+          //   width: "auto",
+          //   margin: "20px auto",
+          //   background: "#022251",
+          //   color: "#fff",
+          //   fontSize: "10px",
+          //   padding: "10px",
+          // }}
           sx={{
             width: "auto",
-            margin: "20px auto",
-            background: "#022251",
-            color: "#fff",
-            fontSize: "10px",
-            padding: "10px",
+            height: "40px",
+            borderRadius: "10px",
+            fontSize: "14px",
+            fontFamily: "opensans-regular",
+            margin:'3rem auto',
+            textAlign:'center'
           }}
           href="#text-buttons"
         >

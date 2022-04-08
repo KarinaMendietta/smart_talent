@@ -1,19 +1,14 @@
 import React, { Component } from "react";
 import { Fade, Slide } from "react-reveal";
+import dataset from "./../../assets/data/resumeData.json";
+import imageLoader from "./../../assets/img/loader.gif" ;
 
 
 
 class Contact extends Component {
+  
   render() {
     if (!this.props.data) return null;
-
-    const name = this.props.data.name;
-    const street = this.props.data.address.street;
-    const city = this.props.data.address.city;
-    const state = this.props.data.address.state;
-  
-    const email = this.props.data.email;
-    const message = this.props.data.contactmessage;
 
     return (
       <section id="contact" >
@@ -26,7 +21,7 @@ class Contact extends Component {
             </div>
 
             <div className="ten columns">
-              <p className="lead ">{message}</p>
+              <p className="lead ">{dataset.main.contactmessage}</p>
             </div>
           </div>
         </Fade>
@@ -88,10 +83,10 @@ class Contact extends Component {
                     ></textarea>
                   </div>
 
-                  <div>
-                    <button className="postula-btn">Enviar</button>
+                  <div >
+                    <button className="contact-btn">Enviar</button>
                     <span id="image-loader">
-                      <img alt="" src="images/loader.gif" />
+                      <img alt="" src={imageLoader}/>
                     </span>
                   </div>
                 </fieldset>
@@ -110,16 +105,14 @@ class Contact extends Component {
               <div className="widget widget_contact">
                 <h4>Datos de Contacto:</h4>
                 <p className="lead">
-                  {name}
+                  {dataset.main.name}
                   <br />
-                  {street} <br />
-                  {city}, {state} 
+                  {dataset.main.address.street} <br />
+                  {dataset.main.address.city}, {dataset.main.address.state} 
                   <br />
-                  <span>{email}</span>
+                  <span>{dataset.main.email}</span>
                 </p>
-              </div>
-
-         
+              </div>         
             </aside>
           </Slide>
         </div>

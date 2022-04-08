@@ -54,9 +54,9 @@ export const ButtonModal = ({ applicant, qualifications, announcements, academic
                     <img className="img-user" src={applicant.photo} alt=""/>
                     <Container maxWidth="xl">
                         <Grid container spacing={2} className="card-container" fullWidth>
-                            <Grid item md={4}>
+                            <Grid item md={4} sx={{borderRadius:"1rem"}}>
                                 <Card>
-                                    <CardContent className="card">
+                                    <CardContent className="card" sx={{borderRadius:"2rem !important"}}>
                                         <Personal applicant={applicant}/>
                                     </CardContent>
                                 </Card>

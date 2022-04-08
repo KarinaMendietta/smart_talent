@@ -20,10 +20,9 @@ import { getPostulantes, registerPostulante } from "../../service/firestore";
 import swal from "sweetalert";
 import { getMonth } from "date-fns";
 import "../../styles/page/formEstilo.scss";
-import SendIcon from '@mui/icons-material/Send';
+import SendIcon from "@mui/icons-material/Send";
 
 const FormPostulante = () => {
-
   const [idConvocatoria, setIDConvocatoria] = useState(
     localStorage.getItem("idConvocatoria")
   );
@@ -108,20 +107,17 @@ const FormPostulante = () => {
   }, [idPostulante]);
 
   return (
-    <FormControl
-      container
-      className="formEstilo"
-      mt={2}
-    >
+    <FormControl container className="formEstilo" mt={2}>
       <Stack
         component="form"
         sx={{
-          width: "auto",       
+          // width: "auto",
+          width: "80%",
+          maxWidth: "600px",
           margin: "20px auto",
           background: "#fff",
           padding: "2rem",
           borderRadius: "1rem",
-          
         }}
         spacing={2}
         noValidate
@@ -134,6 +130,7 @@ const FormPostulante = () => {
           type="text"
           variant="filled"
           onChange={handleInputChange}
+          sx={{fontSize:"1.4rem", width:"100%"}}
         />
         <TextField
           name="apellido_postulante"
@@ -141,6 +138,7 @@ const FormPostulante = () => {
           type="text"
           variant="filled"
           onChange={handleInputChange}
+          sx={{fontSize:"1.4rem"}}
         />
         <TextField
           name="dni_postulante"
@@ -148,6 +146,7 @@ const FormPostulante = () => {
           type="text"
           variant="filled"
           onChange={handleInputChange}
+          sx={{fontSize:"1.4rem"}}
         />
         <TextField
           name="correo_electronico"
@@ -155,12 +154,13 @@ const FormPostulante = () => {
           type="mail"
           variant="filled"
           onChange={handleInputChange}
+          sx={{fontSize:"1.4rem"}}
         />
 
         <Box>
           <LocalizationProvider dateAdapter={DateAdapter}>
             <DatePicker
-              sx={{ color: "gray", position: "relative", top: "15px" }}
+              sx={{ color: "gray", position: "relative", top: "15px", fontSize:"1.4rem" }}              
               label="Fecha de nacimiento"
               value={Fecha}
               onChange={(newFecha) => {
@@ -175,7 +175,7 @@ const FormPostulante = () => {
             fullWidth
             id="select-genero-label"
             variant="filled"
-            sx={{ color: "gray", position: "relative", top: "15px" }}
+            sx={{ color: "gray", position: "relative", top: "15px", fontSize:"1.4rem" }}
           >
             Genero
           </InputLabel>
@@ -187,6 +187,7 @@ const FormPostulante = () => {
             label="Genero"
             onChange={handleChangeGenero}
             variant="filled"
+            sx={{fontSize:"1.4rem"}}
           >
             <MenuItem value={"Femenino"}>Femenino</MenuItem>
             <MenuItem value={"Masculino"}>Masculino</MenuItem>
@@ -198,6 +199,7 @@ const FormPostulante = () => {
           type="text"
           variant="filled"
           onChange={handleInputChange}
+          sx={{fontSize:"1.4rem"}}
         />
         <TextField
           name="numero_celular"
@@ -205,13 +207,14 @@ const FormPostulante = () => {
           type="text"
           variant="filled"
           onChange={handleInputChange}
+          sx={{fontSize:"1.4rem"}}
         />
         <Box fullWidth>
           <InputLabel
             fullWidth
             id="select-departamento-label"
             variant="filled"
-            sx={{ color: "gray", position: "relative", top: "15px" }}
+            sx={{ color: "gray", position: "relative", top: "15px", fontSize:"1.4rem" }}            
           >
             Departamento
           </InputLabel>
@@ -256,7 +259,7 @@ const FormPostulante = () => {
             fullWidth
             id="select-provincia-label"
             variant="filled"
-            sx={{ color: "gray", position: "relative", top: "15px" }}
+            sx={{ color: "gray", position: "relative", top: "15px", fontSize:"1.4rem" }}            
           >
             Provincia
           </InputLabel>
@@ -304,8 +307,21 @@ const FormPostulante = () => {
           type="text"
           variant="filled"
           onChange={handleInputChange}
+          sx={{fontSize:"1.4rem"}}
         />
-        <Button onClick={handleClickRegisterPostulante} variant="contained">
+        <Button
+          onClick={handleClickRegisterPostulante}
+          variant="contained"
+          sx={{
+            // width: "auto",
+            height: "40px",
+            borderRadius: "10px",
+            fontSize: "14px",
+            fontFamily: "opensans-regular",
+            margin: "3rem auto",
+            textAlign: "center",
+          }}
+        >
           Guardar
         </Button>
       </Stack>
@@ -318,20 +334,21 @@ export const TextButtons = () => {
   return (
     <Link to="/form-academico">
       <Stack direction="row" spacing={2} display="flex">
-        <Button className="botonEstilo" 
-            sx={{     
-                width: "auto",       
-                margin: "20px auto",        
-                background:"#022251",
-                color:"#fff",
-                fontSize:"10px",
-                                
-            }} 
-            size="large"
-            hover={true}           
-            href="#text-buttons"
-            endIcon={<SendIcon />}>
-            Siguiente
+        <Button
+          className="botonEstilo"
+          sx={{
+            width: "auto",
+            margin: "20px auto",
+            background: "#022251",
+            color: "#fff",
+            fontSize: "10px",
+          }}
+          size="large"
+          hover={true}
+          href="#text-buttons"
+          endIcon={<SendIcon />}
+        >
+          Siguiente
         </Button>
       </Stack>
     </Link>

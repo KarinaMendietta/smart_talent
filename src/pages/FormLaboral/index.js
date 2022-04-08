@@ -21,7 +21,7 @@ import { LocalizationProvider, DatePicker } from "@mui/lab";
 import { getPostulantes, registerLaboral } from "../../service/firestore";
 import swal from "sweetalert";
 import "../../styles/page/formEstilo.scss";
-import SendIcon from '@mui/icons-material/Send';
+import SendIcon from "@mui/icons-material/Send";
 
 const FormLaboral = () => {
   const [idPostulante, setIDPostulante] = useState(
@@ -61,7 +61,7 @@ const FormLaboral = () => {
   };
 
   const handleClickRegisterLaboral = async () => {
-    await registerLaboral(idPostulante, values);
+    await registerLaboral(+idPostulante, values);
 
     let califLaboral = 0;
     console.log("dice tiempo", values.tiempo);
@@ -77,7 +77,7 @@ const FormLaboral = () => {
 
     console.log("milaboral", califLaboral);
 
-    localStorage.setItem("califLaboral", califLaboral);
+    localStorage.setItem("califLaboral", +califLaboral);
 
     swal({
       icon: "success",
@@ -98,124 +98,133 @@ const FormLaboral = () => {
   };
 
   return (
-      <FormControl
-        container
-        className="formEstilo"
-        mt={2}
-      >        
-        <Stack
-          component="form"
-          sx={{
-            width: "auto",       
-            margin: "20px auto",
-            background: "#fff",
-            padding: "2rem",
-            borderRadius: "1rem",
-          }}
-          spacing={2}
-          noValidate
-          autoComplete="off"
-        >
-          <h1>Formulario Laboral</h1>
-          <TextField
-            name="nombre_empresa"
-            label="Nombre Empresa"
-            type="text"
-            variant="filled"
-            onChange={handleInputChange}
-          />
-          <TextField
-            name="ruc"
-            label="RUC"
-            type="text"
-            variant="filled"
-            onChange={handleInputChange}
-          />
-          <TextField
-            name="telefono"
-            label="Telefono"
-            type="text"
-            variant="filled"
-            onChange={handleInputChange}
-          />
-          <TextField
-            name="direccion"
-            label="Direccion"
-            type="text"
-            variant="filled"
-            onChange={handleInputChange}
-          />
-          <TextField
-            name="cargo_desempenho"
-            label="Cargo que Desempeño"
-            type="text"
-            variant="filled"
-            onChange={handleInputChange}
-          />
-          <Box>
-            <LocalizationProvider dateAdapter={DateAdapter}>
-              <DatePicker
-                sx={{ color: "gray", position: "relative", top: "15px" }}
-                label="Fecha Inicio"
-                value={FechaInicio}
-                onChange={(newFechaInicio) => {
-                  setFechaInicio(newFechaInicio);
-                }}
-                renderInput={(params) => <TextField {...params} />}
-              />
-            </LocalizationProvider>
-          </Box>
-          <Box>
-            <LocalizationProvider dateAdapter={DateAdapter}>
-              <DatePicker
-                sx={{ color: "gray", position: "relative", top: "15px" }}
-                label="Fecha Termino"
-                value={FechaFinal}
-                onChange={(newFechaFin) => {
-                  setFechaFinal(newFechaFin);
-                }}
-                renderInput={(params) => <TextField {...params} />}
-              />
-            </LocalizationProvider>
-          </Box>
-          <Box fullWidth>
-            <InputLabel
-              fullWidth
-              id="select-genero-label"
-              variant="filled"
+    <FormControl container className="formEstilo" mt={2}>
+      <Stack
+        component="form"
+        sx={{
+          // width: "auto",
+          width: "80%",
+          maxWidth: "600px",
+          margin: "20px auto",
+          background: "#fff",
+          padding: "2rem",
+          borderRadius: "1rem",
+        }}
+        spacing={2}
+        noValidate
+        autoComplete="off"
+      >
+        <h1>Formulario Laboral</h1>
+        <TextField
+          name="nombre_empresa"
+          label="Nombre Empresa"
+          type="text"
+          variant="filled"
+          onChange={handleInputChange}
+        />
+        <TextField
+          name="ruc"
+          label="RUC"
+          type="text"
+          variant="filled"
+          onChange={handleInputChange}
+        />
+        <TextField
+          name="telefono"
+          label="Telefono"
+          type="text"
+          variant="filled"
+          onChange={handleInputChange}
+        />
+        <TextField
+          name="direccion"
+          label="Direccion"
+          type="text"
+          variant="filled"
+          onChange={handleInputChange}
+        />
+        <TextField
+          name="cargo_desempenho"
+          label="Cargo que Desempeño"
+          type="text"
+          variant="filled"
+          onChange={handleInputChange}
+        />
+        <Box>
+          <LocalizationProvider dateAdapter={DateAdapter}>
+            <DatePicker
               sx={{ color: "gray", position: "relative", top: "15px" }}
-            >
-              Tiempo Laboral
-            </InputLabel>
-            <Select
-              fullWidth
-              labelId="select-tiempo-label"
-              id="select-tiempo"
-              value={Tiempo}
-              label="tiempo"
-              onChange={handleChangeTiempo}
-              variant="filled"
-            >
-              <MenuItem value={"De 0 a 1 anho"}>De 0 a 1 año</MenuItem>
-              <MenuItem value={"De 1 a 2 anhos"}>De 1 a 2 años</MenuItem>
-              <MenuItem value={"De 2 a 3 anhos"}>De 2 a 3 años</MenuItem>
-              <MenuItem value={"3 anhos a mas"}>3 años a mas</MenuItem>
-            </Select>
-          </Box>
-          <TextField
-            name="breve_descripcion_actividad"
-            label="Descripcion Actividad (Breve)"
-            type="text"
+              label="Fecha Inicio"
+              value={FechaInicio}
+              onChange={(newFechaInicio) => {
+                setFechaInicio(newFechaInicio);
+              }}
+              renderInput={(params) => <TextField {...params} />}
+            />
+          </LocalizationProvider>
+        </Box>
+        <Box>
+          <LocalizationProvider dateAdapter={DateAdapter}>
+            <DatePicker
+              sx={{ color: "gray", position: "relative", top: "15px" }}
+              label="Fecha Termino"
+              value={FechaFinal}
+              onChange={(newFechaFin) => {
+                setFechaFinal(newFechaFin);
+              }}
+              renderInput={(params) => <TextField {...params} />}
+            />
+          </LocalizationProvider>
+        </Box>
+        <Box fullWidth>
+          <InputLabel
+            fullWidth
+            id="select-genero-label"
             variant="filled"
-            onChange={handleInputChange}
-          />
-          <Button onClick={handleClickRegisterLaboral} variant="contained">
-            Guardar
-          </Button>
-        </Stack>
-        <TextButtons />
-      </FormControl>
-    
+            sx={{ color: "gray", position: "relative", top: "15px" }}
+          >
+            Tiempo Laboral
+          </InputLabel>
+          <Select
+            fullWidth
+            labelId="select-tiempo-label"
+            id="select-tiempo"
+            value={Tiempo}
+            label="tiempo"
+            onChange={handleChangeTiempo}
+            variant="filled"
+          >
+            <MenuItem value={"De 0 a 1 anho"}>De 0 a 1 año</MenuItem>
+            <MenuItem value={"De 1 a 2 anhos"}>De 1 a 2 años</MenuItem>
+            <MenuItem value={"De 2 a 3 anhos"}>De 2 a 3 años</MenuItem>
+            <MenuItem value={"3 anhos a mas"}>3 años a mas</MenuItem>
+          </Select>
+        </Box>
+        <TextField
+          name="breve_descripcion_actividad"
+          label="Descripcion Actividad (Breve)"
+          type="text"
+          variant="filled"
+          onChange={handleInputChange}
+        />
+        <Button
+          onClick={handleClickRegisterLaboral}
+          variant="contained"
+          sx={{
+            // width: "auto",
+            height: "40px",
+            borderRadius: "10px",
+            fontSize: "14px",
+            fontFamily: "opensans-regular",
+            margin: "3rem auto",
+            textAlign: "center",
+          }}
+        >
+          Guardar
+        </Button>
+      </Stack>
+      <TextButtons />
+    </FormControl>
   );
 };
 
@@ -223,18 +232,20 @@ export const TextButtons = () => {
   return (
     <Link to="/form-psicologico">
       <Stack direction="row" spacing={2}>
-        <Button variant="contained" className="botonEstilo" 
-        
-        sx={{     
-          width: "auto",       
-          margin: "20px auto",        
-          background:"#022251",
-          color:"#fff",
-          fontSize:"10px",
-          padding:"10px",
-        }} 
-        href="#text-buttons"
-        endIcon={<SendIcon />}>
+        <Button
+          variant="contained"
+          className="botonEstilo"
+          sx={{
+            width: "auto",
+            margin: "20px auto",
+            background: "#022251",
+            color: "#fff",
+            fontSize: "10px",
+            padding: "10px",
+          }}
+          href="#text-buttons"
+          endIcon={<SendIcon />}
+        >
           Siguiente
         </Button>
       </Stack>

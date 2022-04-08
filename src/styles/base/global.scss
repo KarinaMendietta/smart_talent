@@ -24,7 +24,7 @@ html{
     max-width: 1300px;
     margin:0 auto;
     @include macbook_air{
-        max-width: 1900px;;
+        max-width: 1900px;
     }
     @include macbook_pro_13{
         max-width: 2800px;

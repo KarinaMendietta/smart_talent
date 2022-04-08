@@ -6,10 +6,10 @@ import "./../../styles/page/home/layout.css"
 import "./../../styles/page/home/media-queries.css"
 
 // import { ButtonModal } from "../../components/ButtonModal";
-import Header from "../../components/Header";
-import Footer from "../../components/Footer";
-import About from "../../components/About";
-import Contact from "../../components/Contact";
+import Header from "./../../components/Home/Header";
+import Footer from "./../../components/Home/Footer";
+import About from "./../../components/Home/About";
+import Contact from "./../../components/Home/Contact";
 
 import React, { Component } from "react";
 import ReactGA from "react-ga";
@@ -49,10 +49,10 @@ class Home extends Component {
   render(){
     return (
       <>
-        <Header data={this.state.resumeData.main} />
-        <About data={this.state.resumeData.main} />
+        <Header />
+        <About />
         <Contact data={this.state.resumeData.main} />
-        <Footer data={this.state.resumeData.main} />        
+        <Footer />        
       </>
     );
   }

@@ -22,7 +22,7 @@ import { LocalizationProvider, DatePicker } from "@mui/lab";
 import { getPostulantes, registerAcademico } from "../../service/firestore";
 import swal from "sweetalert";
 import "../../styles/page/formEstilo.scss";
-import SendIcon from '@mui/icons-material/Send';
+import SendIcon from "@mui/icons-material/Send";
 
 const FormAcademico = () => {
   const [idPostulante, setIDPostulante] = useState(
@@ -138,16 +138,13 @@ const FormAcademico = () => {
   };
 
   return (
-    <FormControl 
-    container 
-    className="formEstilo"
-    mt={2}
-    >
-      
+    <FormControl container className="formEstilo" mt={2}>
       <Stack
         component="form"
         sx={{
-          width: "auto",       
+          // width: "auto",
+          width: "80%",
+          maxWidth: "600px",
           margin: "20px auto",
           background: "#fff",
           padding: "2rem",
@@ -157,7 +154,7 @@ const FormAcademico = () => {
         noValidate
         autoComplete="off"
       >
-          <h1>Formulario academico</h1>
+        <h1>Formulario academico</h1>
         <TextField
           name="profesion"
           label="Profesión"
@@ -291,7 +288,7 @@ const FormAcademico = () => {
               renderInput={(params) => <TextField {...params} />}
             />
           </LocalizationProvider>
-        </Box>        
+        </Box>
         <Box fullWidth>
           <InputLabel
             fullWidth
@@ -331,7 +328,19 @@ const FormAcademico = () => {
           variant="filled"
           onChange={handleInputChange}
         />
-        <Button onClick={handleClickRegisterAcademico} variant="contained">
+        <Button
+          onClick={handleClickRegisterAcademico}
+          variant="contained"
+          sx={{
+            // width: "auto",
+            height: "40px",
+            borderRadius: "10px",
+            fontSize: "14px",
+            fontFamily: "opensans-regular",
+            margin: "3rem auto",
+            textAlign: "center",
+          }}
+        >
           Guardar
         </Button>
       </Stack>
@@ -344,19 +353,20 @@ export const TextButtons = () => {
   return (
     <Link to="/form-laboral">
       <Stack direction="row" spacing={2}>
-        <Button className="botonEstilo" 
-          sx={{     
-            width: "auto",       
-            margin: "20px auto",        
-            background:"#022251",
-            color:"#fff",
-            fontSize:"10px",
-            padding:"10px",
-            
-        }} 
+        <Button
+          className="botonEstilo"
+          sx={{
+            width: "auto",
+            margin: "20px auto",
+            background: "#022251",
+            color: "#fff",
+            fontSize: "10px",
+            padding: "10px",
+          }}
           href="#text-buttons"
-          endIcon={<SendIcon />}>
-            Siguiente
+          endIcon={<SendIcon />}
+        >
+          Siguiente
         </Button>
       </Stack>
     </Link>
@@ -364,4 +374,3 @@ export const TextButtons = () => {
 };
 
 export default FormAcademico;
-
