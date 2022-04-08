@@ -19,7 +19,7 @@
     margin: $margin_elemt;
     padding: calc($padding_elemt*2) calc($padding_elemt/2) $padding_elemt;
     overflow-wrap: break-word;
-    min-height: 12rem;
+    min-height: 14rem;
     
     .cardDash__container{
         display: flex;
@@ -43,6 +43,7 @@
     }
     &.dos{
         background: linear-gradient(195deg, $color-1, $color-2);
+        margin-top: -12rem;
     }
 
     svg{

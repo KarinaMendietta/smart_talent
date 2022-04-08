@@ -10,6 +10,7 @@ import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 // Importando material
 import {
   Grid,
+  Box,
   Table,
   TableBody,
   TableCell,
@@ -25,17 +26,17 @@ import "./../../styles/page/tables.scss";
 
 const Tables = () => {
   // Para utilizarlo con la base de datos tblPostulantes
-  const [applicants, setApplicants] = useState([]);
+  const [ applicants, setApplicants ] = useState([]);
   // Para utilizarlo con la base de datos tblConvocatoria
-  const [announcements, setAnnouncements] = useState([]);
+  const [ announcements, setAnnouncements ] = useState([]);
   // Para utilizarlo con la base de datos tblCalificaciones
-  const [qualifications, setQualifications] = useState([]);
+  const [ qualifications, setQualifications ] = useState([]);
   // Para utilizar con la base de datos tbAcademics
-  const [academics, setAcademics] = useState([]);
+  const [ academics, setAcademics ] = useState([]);
   // Para utilizar la base de datos de psicologico
-  const [ psycho, setPsycho] = useState([]);
+  const [ psycho, setPsycho ] = useState([]);
   // Para utilizaar la base de datos de laboral.
-  const [ trabajo, setTrabajo] = useState([]);
+  const [ trabajo, setTrabajo ] = useState([]);
 
   // Obteniendo la base de datos tblPostulantes
   const fetchApplicants = async () => {
@@ -93,10 +94,9 @@ const Tables = () => {
       <div className="table-title">
         <h3>Tabla de Postulantes</h3>
       </div>
-
       <TableContainer component={Paper}>
         {/* sx={{ maxWidth: '100%', background: "rgb(32, 41, 64)" }} */}
-        <Table role="table" aria-label="simple table">
+        <Table role="table" aria-label="simple table" sx={{ width: '100%' }}>
           <TableHead>
             <TableRow>
               <TableCell
@@ -182,11 +182,11 @@ const Tables = () => {
                     align="right"
                   >
                     <Slider
-                      defaultValue={+(qualifications.find((qualification) => qualification.id_postulante === applicant.id_postulante).calif_academica) + +(qualifications.find((qualification) => qualification.id_postulante === applicant.id_postulante).calif_laboral) + +(qualifications.find((qualification) => qualification.id_postulante === applicant.id_postulante).calif_psicologica)}
+                      defaultValue={+(qualifications.find((qualification) => qualification.id_postulante === applicant.id_postulante)?.calif_academica) + +(qualifications.find((qualification) => qualification.id_postulante === applicant.id_postulante)?.calif_laboral) + +(qualifications.find((qualification) => qualification.id_postulante === applicant.id_postulante)?.calif_psicologica)}
 
                       aria-label="Always visible"
                       valueLabelDisplay="on"
-                      max={300}
+                      max={200}
                       disabled
                       style={{
                         color: "rgb(67, 160, 71)",
@@ -223,9 +223,7 @@ const Tables = () => {
               ))}
           </TableBody>
         </Table>
-      </TableContainer>
-      {/* </Grid>
-      </Grid> */}
+      </TableContainer>      
     </div>
   );
 };

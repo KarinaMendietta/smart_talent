@@ -21,8 +21,8 @@
 }
 
 .img-user {
-    height: 250px;
-    width: 250px;
+    height: 150px;
+    width: 150px;
     border-radius: 50%;
     object-fit: cover;
     margin-bottom: 30px;
@@ -56,6 +56,11 @@ h4 {
 span {
     font-weight: bold;
 }
+
+.css-bhp9pd-MuiPaper-root-MuiCard-root{
+    border-radius: 1.5rem !important;
+}
+
 /*
 1. Combinación de negro con blanco
 2. Combinación de negro con gris

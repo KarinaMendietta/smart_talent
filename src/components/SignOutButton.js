@@ -1,7 +1,7 @@
 // Importando Hooks
 import { useContext } from "react";
 // Importando Context
-import { UserContext } from "./../context/UserContext";
+import { UserContext } from "../context/UserContext";
 // Importando Font Awesome
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faRightFromBracket } from "@fortawesome/free-solid-svg-icons";

@@ -1,4 +1,3 @@
-// Importando functions de firebase
 import { initializeApp } from "firebase/app";
 import {
   getFirestore,
@@ -31,32 +30,45 @@ const firebaseConfig = {
 
   const db = getFirestore(app);
 
+  // Hacer la petición para poder traer datos de tblEmpresa
+export const getUsersAdmin = async () => {
+  // paso 1: Traer la coleccion de datos
+  const collectionEmpresa = collection(db, "empresa");
+  // paso 2: Traer los documentos
+  const documentUsers = await getDocs(collectionEmpresa);
+  // paso 3: Crear un arreglo que guarde los documentos que estamos obteniendo
+  const usersAdmin = documentUsers.docs.map((doc) => doc.data());
+  return usersAdmin;
+};
 
-  // Hacer la peticion para poder traer las preguntas
-  export const getTests= async () => {
-    // paso 1: Traer la coleccion de datos
-    const collectionTests = collection(db, "test");
-    // paso 2: Traer los documentos
-    const documentTests = await getDocs(collectionTests);
-    // paso 3: Crear un arreglo que guarde los documentos que estamos obteniendo
-    const tests = documentTests.docs.map((doc) => doc.data());
-    //console.log("mira",tests)
-    return tests;
-  };
+// Hacer la petición para poder traer datos de tblPostulantes
+export const getPostulantes= async () => {
+  // paso 1: Traer la coleccion de datos
+  const collectionPostulantes = collection(db, "postulante");
+  // paso 2: Traer los documentos
+  const documentPostulantes = await getDocs(collectionPostulantes);
+  // paso 3: Crear un arreglo que guarde los documentos que estamos obteniendo
+  const postulantes = documentPostulantes.docs.map((doc) => doc.data());
+  //console.log("postulantes",postulantes)
+  //solo enviamos el numero de postulantes
+  return postulantes.length;
+}
 
-  export const getPostulantes= async () => {
-    // paso 1: Traer la coleccion de datos
-    const collectionPostulantes = collection(db, "postulante");
-    // paso 2: Traer los documentos
-    const documentPostulantes = await getDocs(collectionPostulantes);
-    // paso 3: Crear un arreglo que guarde los documentos que estamos obteniendo
-    const postulantes = documentPostulantes.docs.map((doc) => doc.data());
-    //console.log("postulantes",postulantes)
-    //solo enviamos el numero de postulantes
-    return postulantes.length;
-  }
+// Hacer la petición para poder traer datos de tblPostulantes
+export const getApplicants= async () => {
+  // paso 1: Traer la coleccion de datos
+  const collectionPostulantes = collection(db, "postulante");
+  // paso 2: Traer los documentos
+  const documentPostulantes = await getDocs(collectionPostulantes);
+  // paso 3: Crear un arreglo que guarde los documentos que estamos obteniendo
+  const postulantes = documentPostulantes.docs.map((doc) => doc.data());
+  //console.log("postulantes",postulantes)
+  //solo enviamos el numero de postulantes
+  return postulantes;
+}
 
-  // Hacer la petición para poder traer datos de tblConvocatoria
+
+// Hacer la petición para poder traer datos de tblConvocatoria
 export const getAnnouncements = async () => {
   // paso 1: Traer la coleccion de datos
   const collectionAnnouncement = collection(db, "convocatoria");
@@ -96,36 +108,31 @@ export const getPsychological = async() => {
   return usersPsychological;
 }
 
-export const getLabor = async() => {
-  const collectionLabor = collection(db, "laboral");
-  const documentLabor = await getDocs(collectionLabor);
-  const usersLabor = documentLabor.docs.map((doc) => doc.data());
-  return usersLabor;
-}
+  // Hacer la peticion para poder traer las preguntas
+  export const getTests= async () => {
+    // paso 1: Traer la coleccion de datos
+    const collectionTests = collection(db, "test");
+    // paso 2: Traer los documentos
+    const documentTests = await getDocs(collectionTests);
+    // paso 3: Crear un arreglo que guarde los documentos que estamos obteniendo
+    const tests = documentTests.docs.map((doc) => doc.data());
+    //console.log("mira",tests)
+    return tests;
+  };
 
-// vamos a crear una funcion qu reciba un email y password y cree un cuenta en firebase
-export const auth = getAuth();
-
-export const loginUser = async (email, password) => {
-  try {
-    const user = await signInWithEmailAndPassword(auth, email, password);
-
-    return {
-      ok: true,
-      data: user,
-    };
-  } catch (error) {
-    return {
-      ok: false,
-      data: error.message,
-    };
+  export const getLabor = async() => {
+    const collectionLabor = collection(db, "laboral");
+    const documentLabor = await getDocs(collectionLabor);
+    const usersLabor = documentLabor.docs.map((doc) => doc.data());
+    return usersLabor;
   }
-};
+
+  
 
   export const registerPostulante = async (idPostulante,postulante) => {
     const id = uuidv4().replaceAll("-", "");
     postulante.id = id;
-    postulante.id_Postulante = idPostulante;
+    postulante.id_postulante = idPostulante;
     await setDoc(doc(db, "postulante", id), postulante);
   };
 
@@ -164,3 +171,21 @@ export const loginUser = async (email, password) => {
   await updateDoc(calificacionRef, calificacion);
 };
 
+// vamos a crear una funcion qu reciba un email y password y cree un cuenta en firebase
+export const auth = getAuth();
+
+export const loginUser = async (email, password) => {
+  try {
+    const user = await signInWithEmailAndPassword(auth, email, password);
+
+    return {
+      ok: true,
+      data: user,
+    };
+  } catch (error) {
+    return {
+      ok: false,
+      data: error.message,
+    };
+  }
+};

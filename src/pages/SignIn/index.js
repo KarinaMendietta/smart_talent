@@ -138,7 +138,7 @@ export default function SignIn() {
             sx={{ mt: 2 }}
           >
             <TextField
-              sx={{ backgroundColor: "#1abc9c"}}
+              sx={{ backgroundColor: "#1abc9c", height:"65px" }}
               margin="normal"
               required
               fullWidth
@@ -151,7 +151,7 @@ export default function SignIn() {
             />
 
             <TextField
-              sx={{ backgroundColor: "#1abc9c" }}
+              sx={{ backgroundColor: "#1abc9c", height:"65px" }}
               margin="normal"
               required
               fullWidth

@@ -1,5 +1,7 @@
+// Importando react-router-dom
+import { Link } from "react-router-dom";
 //Importando Hooks
-import { useState, useEffect} from "react";
+import { useState, useEffect } from "react";
 //Importando de firestore
 import { getAnnouncements } from "../../service/firestore";
 // Importando Font Awesome
@@ -30,7 +32,12 @@ const CardsHome = () => {
   const fetchAnnouncements = async () => {
     const data = await getAnnouncements();
     setAnnouncements(data);
-    console.log(data)
+    console.log(data);
+  };
+
+  const handleClickPostulate = (id) => {
+    console.log(id);
+    localStorage.setItem("idConvocatoria", id);
   };
 
   //Inicializando los fetch
@@ -38,73 +45,100 @@ const CardsHome = () => {
     fetchAnnouncements();
   }, []);
   return (
-    <Container >
-      <h2 className="cards-title">Ofertas Laborales</h2>
-      <Grid container spacing={3}>
-        {announcements.length > 0 &&
-          announcements.map((announcement, index) => (
-            <Grid key={index} item md={6} lg={6} sm={12} xs={12} style={{minHeight:'730px'}}>
-              <Card className="card" sx={{ borderRadius: "2rem" }} >
-                <CardMedia
-                  component="img"
-                  className="img-pokemon"
-                  image={announcement.photo_convocatoria}
-                  sx={{height:'25rem'}}
-                />
-                <CardContent className="card__content" sx={{display:'flex', flexDirection:'column', justifyContent:'space-between'}}>
-                  <h3 className="card__name">{announcement.nombre_convocatoria}</h3>
-
-                  <Grid container spacing={3} mb={2}>
-                    <Grid item md={12} lg={12} sm={12} xs={12} mb={2}>
-                        <p className="card__description">{announcement.descripcion}</p>
-                    </Grid>
-
-                    <Grid item md={6} lg={6} sm={4} xs={6} mb={2}>
-                      <FontAwesomeIcon
-                        icon={faLocationDot}
-                        className="icon--card"
-                      />
-                      <span className="card__span">Arequipa</span>
-                    </Grid>
-
-                    <Grid item md={6} lg={6} sm={4} xs={6} mb={2}>
-                      <FontAwesomeIcon icon={faUser} className="icon--card" />
-                      <span className="card__span">12 Vacantes</span>
-                    </Grid>
-
-                    <Grid item md={6} lg={6} sm={4} xs={6} mb={2}>
-                      <FontAwesomeIcon
-                        icon={faCalendar}
-                        className="icon--card"
-                      />
-                      <span className="card__span">
-                        01/01/2022 - 20/01/2022
-                      </span>
-                    </Grid>
-
-                    <Grid item md={6} lg={6} sm={4} xs={6} mb={2}>
-                      <FontAwesomeIcon
-                        icon={faMoneyBill}
-                        className="icon--card"
-                      />
-                      <span className="card__span">S/ 2500</span>
-                    </Grid>
-                  </Grid>
-
-                  <Button
-                    fullWidth
-                    variant="contained"
-                    color="primary"
-                    sx={{ fontSize: "1.6rem", borderRadius: "1rem" }}
+    <div className="cards-home">
+      <div className="cards-home__container">
+        <h2 className="cards-title">Ofertas Laborales</h2>
+        <Grid container spacing={3} className="gridCardsHome">
+          {announcements.length > 0 &&
+            announcements.map((announcement, index) => (
+              <Grid
+                key={index}
+                item
+                md={6}
+                lg={6}
+                sm={12}
+                xs={12}
+                style={{ minHeight: "730px" }}
+              >
+                <Card className="card" sx={{ borderRadius: "2rem" }}>
+                  <CardMedia
+                    component="img"
+                    className="img-pokemon"
+                    image={announcement.photo_convocatoria}
+                    sx={{ height: "25rem" }}
+                  />
+                  <CardContent
+                    className="card__content"
+                    sx={{
+                      display: "flex",
+                      flexDirection: "column",
+                      justifyContent: "space-between",
+                    }}
                   >
-                    Postular
-                  </Button>
-                </CardContent>
-              </Card>
-            </Grid>
-          ))}
-      </Grid>
-    </Container>
+                    <h3 className="card__name">
+                      {announcement.nombre_convocatoria}
+                    </h3>
+
+                    <Grid container spacing={3} mb={2}>
+                      <Grid item md={12} lg={12} sm={12} xs={12} mb={2}>
+                        <p className="card__description">
+                          {announcement.descripcion}
+                        </p>
+                      </Grid>
+
+                      <Grid item md={6} lg={6} sm={4} xs={6} mb={2}>
+                        <FontAwesomeIcon
+                          icon={faLocationDot}
+                          className="icon--card"
+                        />
+                        <span className="card__span">Arequipa</span>
+                      </Grid>
+                      {/* Trabajar en conjunto con el área de SEGURIDAD y garantizar que en la compañía la SEGURIDAD ES LO PRIMERO. Garantizar la Calidad en planta a través de los SMD y Elementos Clave (EC) del sistema de Gestión de Calidad.  */}
+
+                      <Grid item md={6} lg={6} sm={4} xs={6} mb={2}>
+                        <FontAwesomeIcon icon={faUser} className="icon--card" />
+                        <span className="card__span">12 Vacantes</span>
+                      </Grid>
+
+                      <Grid item md={6} lg={6} sm={4} xs={6} mb={2}>
+                        <FontAwesomeIcon
+                          icon={faCalendar}
+                          className="icon--card"
+                        />
+                        <span className="card__span">
+                          01/01/2022 - 20/01/2022
+                        </span>
+                      </Grid>
+
+                      <Grid item md={6} lg={6} sm={4} xs={6} mb={2}>
+                        <FontAwesomeIcon
+                          icon={faMoneyBill}
+                          className="icon--card"
+                        />
+                        <span className="card__span">S/ 2500</span>
+                      </Grid>
+                    </Grid>
+
+                    <Link to={"/form-postulante"}>
+                      <Button
+                        fullWidth
+                        variant="contained"
+                        color="primary"
+                        onClick={() =>
+                          handleClickPostulate(+announcement.id_convocatoria)
+                        }
+                        sx={{ fontSize: "1.6rem", borderRadius: "1rem" }}
+                      >
+                        Postular
+                      </Button>
+                    </Link>
+                  </CardContent>
+                </Card>
+              </Grid>
+            ))}
+        </Grid>
+      </div>
+    </div>
   );
 };
 

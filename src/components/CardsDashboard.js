@@ -1,7 +1,7 @@
 //Importando Hooks
 import { useState, useEffect } from "react";
 //Importando de firestore
-import { getApplicants, getAnnouncements, getQualifications } from "../service/firestore";
+import { getApplicants, getQualifications } from "../service/firestore";
 // Importando Font Awesome
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
@@ -18,12 +18,6 @@ const CardsDash = (props) => {
     return data;
   };
 
-  // Obteniendo la base de datos tblConvocatoria
-  const fetchAnnouncements = async () => {
-    const data = await getAnnouncements();
-    return data;
-  };
-
   // Obteniendo la base de datos tblCalificacion
   const fetchQualifications = async () => {
     const data = await getQualifications();
@@ -33,28 +27,14 @@ const CardsDash = (props) => {
 
   const map = async () => {
     const applicants = await fetchApplicants();
-    const announcements = await fetchAnnouncements();
     const qualifications = await fetchQualifications();
 
     const applicantsLength = await applicants.length;
+    console.log('applicants ',applicants );
+    console.log('applicantsLength ',applicantsLength );
 
-    const qualificationApproving = await qualifications.filter((qualification) => (qualification.calif_academica + qualification.calif_laboral + qualification.calif_psicologica) > 60 ).map((a)=>a.id_postulante).length
-
-
-    // const califPsicologica = await qualifications.map((qualification) => {
-    //   const calif = qualification;
-    //   let suma = calif?.calif_asertividad + calif?.calif_autoestima + calif?.calif_comunicacion + calif?.calif_toma_desicion ;
-    //   return suma
-    // })
-    // console.log('califPsicologica', califPsicologica);
-
-    // const sumaCalificaciones = await qualifications.map((qualification) => {
-    //   const calif = qualification;
-    //   let sumaPsicologica  = calif?.calif_asertividad + calif?.calif_autoestima + calif?.calif_comunicacion + calif?.calif_toma_desicion ;
-    //   const sumaTotal = qualification.calif_academica + sumaPsicologica + qualification.calif_laboral;
-    //   return sumaTotal;
-    // })
-    // console.log('sumaCalificaciones',sumaCalificaciones);
+    const qualificationApproving = await qualifications.filter((qualification) => (+qualification.calif_academica + +qualification.calif_laboral + +qualification.calif_psicologica) > 140 ).map((a)=>a.id_postulante).length;
+    console.log('qualificationApproving',qualificationApproving);
 
     const data = {
       numero_postulantes: applicantsLength,

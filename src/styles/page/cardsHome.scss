@@ -2,9 +2,18 @@
 @import './../base/variables.scss';
 @import './../base/mixins.scss';
 
+.cards-home{
+    background-color: #2b2b2b;
+    .cards-home__container{
+        max-width: 100rem;
+    }
+}
+.gridCardsHome{
+    padding-bottom: 2rem;
+}
 .cards-title{
-    margin: calc($margin_elemt*3) 0 calc($margin_elemt*2);
-    color: $color-5-l;
+    padding: calc($margin_elemt*3) 0 calc($margin_elemt*2);
+    color: #fff;
 }
 .card{
     padding: $padding_elemt $padding_elemt calc($padding_elemt/2);

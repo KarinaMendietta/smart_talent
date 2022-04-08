@@ -1,17 +1,29 @@
 @import "./../base/colours.scss";
 @import "./../base/variables.scss";
+@import "./../base/mixins.scss";
 
 .tables {
-  max-width: 100%;
-  // min-width: 20rem;
+  width: 25rem;
   display: flex;
   flex-direction: column;
   margin-top: 4rem;
   background: $tables-bg;
   border-radius: 1rem;
+  margin: 0 auto;
+  overflow-wrap: break-word;
 
-  // min-width: 0px;
-  // overflow-wrap: break-word;
+  @media only screen and (min-width:350px) {
+    width: 30rem;
+  }
+  @media only screen and (min-width:450px) {
+    width: 40rem;
+  }
+  @media only screen and (min-width:550px) {
+    width: 50rem;
+  }
+  @media only screen and (min-width: 650px) {
+    width: auto;
+  }
 }
 
 .table-title {
