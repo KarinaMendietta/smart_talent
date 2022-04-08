@@ -1,7 +1,7 @@
 //Importando Hooks
 import { useState, useEffect } from "react";
 //Importando de firestore
-import { getPostulantes, getAnnouncements } from "../../service/firestore";
+import { getApplicants, getAnnouncements } from "../../service/firestore";
 // Importando ApexCharts
 import Chart from "react-apexcharts";
 // Importando Lodash
@@ -15,7 +15,7 @@ const BarChart = (props) => {
 
   // Obteniendo la base de datos tblPostulantes
   const fetchApplicants = async () => {
-    const data = await getPostulantes();
+    const data = await getApplicants();
     return data;
   };
 

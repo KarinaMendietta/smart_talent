@@ -121,16 +121,16 @@ const FormPsicologico = () => {
     console.log("sumaP", sumaP);
 
     const calificaciones = {
-      calif_academica: califAcademica,
-      calif_laboral: califLaboral,
-      calif_psicologica: sumaP,
-      calif_asertividad: sumaAsertividad,
-      calif_comunicacion: sumaComunicacion,
-      calif_autoestima: sumaAutoestima,
-      calif_toma_decision: sumaTomaDesicion,
+      calif_academica: +califAcademica,
+      calif_laboral: +califLaboral,
+      calif_psicologica: +sumaP,
+      calif_asertividad: +sumaAsertividad,
+      calif_comunicacion: +sumaComunicacion,
+      calif_autoestima: +sumaAutoestima,
+      calif_toma_decision: +sumaTomaDesicion,
     };
 
-    await registerCalificacion(idPostulante, idConvocatoria, calificaciones);
+    await registerCalificacion(+idPostulante, +idConvocatoria, calificaciones);
     console.log("todas califica", calificaciones);
     
   };
@@ -171,7 +171,7 @@ const FormPsicologico = () => {
             tests.map((test, index) => (
               <Grid item xs={12}>
                 <div>
-                  <p>{test.pregunta}</p>
+                  <p>{test.id_test}{test.pregunta}</p>
                 </div>
                 <div>
                   <FormControl

@@ -23,6 +23,11 @@ import "../../styles/page/formEstilo.scss";
 import SendIcon from '@mui/icons-material/Send';
 
 const FormPostulante = () => {
+
+  const [idConvocatoria, setIDConvocatoria] = useState(
+    localStorage.getItem("idConvocatoria")
+  );
+
   const [values, setValues] = useState({
     nombre_postulante: "",
     apellido_postulante: "",
@@ -38,6 +43,7 @@ const FormPostulante = () => {
     estado: "",
     fecha_postulacion: "",
     mes: "",
+    id_convocatoria: "",
   });
 
   const handleInputChange = (e) => {
@@ -54,6 +60,7 @@ const FormPostulante = () => {
       estado: "activo",
       fecha_postulacion: new Date(),
       mes: new Date().getMonth(),
+      id_convocatoria: +idConvocatoria,
     });
   };
 

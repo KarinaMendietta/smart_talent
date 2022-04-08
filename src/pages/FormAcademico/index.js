@@ -61,7 +61,7 @@ const FormAcademico = () => {
   const [califAcadem, setCalifAcadem] = useState(0);
 
   const handleClickRegisterAcademico = async () => {
-    await registerAcademico(idPostulante, values);
+    await registerAcademico(+idPostulante, values);
 
     let academ = 0;
     let ingles = 0;

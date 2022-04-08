@@ -54,6 +54,20 @@ export const getPostulantes= async () => {
   return postulantes.length;
 }
 
+// Hacer la petición para poder traer datos de tblPostulantes
+export const getApplicants= async () => {
+  // paso 1: Traer la coleccion de datos
+  const collectionPostulantes = collection(db, "postulante");
+  // paso 2: Traer los documentos
+  const documentPostulantes = await getDocs(collectionPostulantes);
+  // paso 3: Crear un arreglo que guarde los documentos que estamos obteniendo
+  const postulantes = documentPostulantes.docs.map((doc) => doc.data());
+  //console.log("postulantes",postulantes)
+  //solo enviamos el numero de postulantes
+  return postulantes;
+}
+
+
 // Hacer la petición para poder traer datos de tblConvocatoria
 export const getAnnouncements = async () => {
   // paso 1: Traer la coleccion de datos

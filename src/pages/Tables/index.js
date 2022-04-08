@@ -1,7 +1,7 @@
 //Importando Hooks
 import { useState, useEffect, useContext } from "react";
 //Importando de firestore
-import { getPostulantes, getAnnouncements, getQualifications, getAcademics, getPsychological, getLabor } from "../../service/firestore";
+import { getApplicants, getAnnouncements, getQualifications, getAcademics, getPsychological, getLabor } from "../../service/firestore";
 // Importando Componente
 import { ButtonModal } from "./../../components/Modal/ButtonModal";
 // Importando Font Awesome
@@ -39,7 +39,7 @@ const Tables = () => {
 
   // Obteniendo la base de datos tblPostulantes
   const fetchApplicants = async () => {
-    const data = await getPostulantes();
+    const data = await getApplicants();
     setApplicants(data);
     // console.log(applicants);
   };
