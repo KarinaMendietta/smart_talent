@@ -3,13 +3,14 @@ import ParticlesBg from "particles-bg";
 import Fade from "react-reveal";
 // Importando react-router-dom
 import { Link } from "react-router-dom";
+import "./../styles/page/home/layout.css"
 
 
 // class Finalizo extends Component {
   
 const Finalizo = () => {
     return (
-      <header id="finalizo" >
+      <header id="finalizo" className="finalizo-form" >
        <ParticlesBg type="circle" bg={true} ></ParticlesBg>     
         
 

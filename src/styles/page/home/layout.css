@@ -49,6 +49,8 @@
    background-size: cover;
    text-align: center;
    overflow: hidden;
+   height: 800px;
+   min-height: 500px;
 }
 
 /* vertically center banner section */
@@ -68,20 +70,25 @@ header .banner {
    padding-bottom: 30px;
    text-align: center;
 
+
+}
+.row .banner {
+   margin: 0 auto !important;
 }
 
-header .banner-text {
+.banner-text {
    width: 100%;
+   margin: 0 auto !important;
 }
 
-header .banner-text h1 {
+.banner-text h1 {
    font: 90px/1.1em 'opensans-bold', sans-serif;
    color: #fff;
    letter-spacing: -2px;
    margin: 0 auto 18px auto;
 }
 
-header .banner-text h3 {
+.banner-text h3 {
    font: 18px/1.9em 'opensans-regular',sans-serif;
    color: #ddd;
    margin: 0 auto;
@@ -319,8 +326,12 @@ ul#nav li.current a {
    color: #ffffff;
 }
 
-.fondofinalizar {
-   background-color: #0D0D0D;
+.finalizo-form {
+   background-color: rgba(13, 13, 13,0.3);
+   margin: 0 auto;
+   display: flex;
+   justify-content: center;
+   align-items: center;
 }
 
 /* ------------------------------------------------------------------ */

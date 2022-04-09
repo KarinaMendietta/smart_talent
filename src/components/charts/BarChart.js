@@ -131,7 +131,7 @@ const BarChart = (props) => {
         )}
       </div>
       <div className="barChart__content">
-        <h3>Postulantes por posición laboral</h3>
+        <h3>Postulantes por convocatoria</h3>
         <p>N° de postulaciones por convocatoria</p>
       </div>
     </div>
