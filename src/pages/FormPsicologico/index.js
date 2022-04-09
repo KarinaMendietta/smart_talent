@@ -25,6 +25,8 @@ const FormPsicologico = () => {
   const [califLaboral, setCalifLaboral] = useState(
     localStorage.getItem("califLaboral")
   );
+
+  const [buttonDisabled, setButtonDisabled] = useState(true);
  
   //Para traer las preguntas
     const [tests, setTests] = useState([]);
@@ -81,15 +83,25 @@ const FormPsicologico = () => {
     console.log("tomadecisi",sumaTomaDesicion)
   };
 
+  const [cuentaPregunta, setCuentaPregunta] = useState(0);
   const [isDisabled, setIsDisabled] = useState(null);
+
   const handleClickRegisterCalificacion = async (index) => {
     await registerPsicologico(idPostulante, values);
 
+    setCuentaPregunta(cuentaPregunta += cuentaPregunta) 
+    //console.log("cuenta",cuentaPregunta)
+
     setIsDisabled({
       ...isDisabled,
-      [index]: true,
+      [index]: true,   
+             
     });
 
+    //if (+cuentaPregunta === 17) {
+    //  setButtonDisabled(true) 
+    //} 
+    
     console.log("isDisabled", isDisabled);
 
     //swal({
@@ -121,6 +133,7 @@ const FormPsicologico = () => {
 
     await registerCalificacion(idPostulante,idConvocatoria,calificaciones)
     console.log("todas califica", calificaciones)
+    
     swal({
       icon: "success",
       title: "Success",
@@ -201,7 +214,10 @@ const FormPsicologico = () => {
               ))}
               
         </Grid>
-        <Button onClick={handleClickRegisterCalificaciones} variant="contained" fullWidth>
+        <Button onClick={handleClickRegisterCalificaciones} 
+                variant="contained" 
+                fullWidth 
+                disabled={buttonDisabled}>
             Terminar
         </Button>       
         
