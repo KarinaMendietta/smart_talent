@@ -23,13 +23,14 @@ import { getPostulantes, registerAcademico } from "../../service/firestore";
 import swal from "sweetalert";
 import "../../styles/page/formEstilo.scss";
 import SendIcon from "@mui/icons-material/Send";
+import { postAcademico } from "../../service/academicoServices";
 
 const FormAcademico = () => {
-  const [idPostulante, setIDPostulante] = useState(
-    localStorage.getItem("idPostulante")
+  const [idPostulante, setIDPostulante] = useState(localStorage.getItem("idPostulante")
   );
 
   const [values, setValues] = useState({
+    postulante_id:idPostulante,
     profesion: "",
     area_profesional: "",
     nivel_academico: "",
@@ -61,7 +62,9 @@ const FormAcademico = () => {
   const [califAcadem, setCalifAcadem] = useState(0);
 
   const handleClickRegisterAcademico = async () => {
-    await registerAcademico(+idPostulante, values);
+
+    const NuevoAcademico = await postAcademico(values)
+    // await registerAcademico(+idPostulante, values);
 
     let academ = 0;
     let ingles = 0;

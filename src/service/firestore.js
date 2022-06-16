@@ -6,7 +6,6 @@ import {
   doc,
   setDoc,
   updateDoc,
-  deleteDoc,
 } from "firebase/firestore/lite";
 import {
   getAuth,

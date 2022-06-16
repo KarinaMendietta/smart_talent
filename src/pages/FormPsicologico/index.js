@@ -22,6 +22,9 @@ import {
 import swal from "sweetalert";
 import "./../../styles/page/formEstilo.scss";
 import { height } from "@mui/system";
+import { getTest } from "../../service/testServices";
+import { postPsicologico } from "../../service/psicologicoServices";
+import { postCalificacion } from "../../service/calificacionServices";
 
 const FormPsicologico = () => {
   const [idPostulante, setIDPostulante] = useState(
@@ -49,12 +52,20 @@ const FormPsicologico = () => {
   };
 
   useEffect(() => {
-    fetchTests();
+    //fetchTests();
+    getTest()
+    .then(data=>{
+      if(data.ok){
+        setTests(data.content);        
+      }
+      console.log(tests)
+    })
   }, []);
 
   //Para leer las respuestas
   const [values, setValues] = useState({
-    id_test: "",
+    postulante_id:idPostulante,
+    test_id: "",
     calificacion: "",
   });
 
@@ -93,9 +104,10 @@ const FormPsicologico = () => {
     console.log("tomadecisi", sumaTomaDesicion);
   };
 
-  const [isDisabled, setIsDisabled] = useState(null);
+  const [isDisabled,setIsDisabled] = useState(null);
   const handleClickRegisterCalificacion = async (index) => {
-    await registerPsicologico(idPostulante, values);
+    //await registerPsicologico(idPostulante, values);
+    await postPsicologico(values)
 
     setIsDisabled({
       ...isDisabled,
@@ -121,16 +133,20 @@ const FormPsicologico = () => {
     console.log("sumaP", sumaP);
 
     const calificaciones = {
-      calif_academica: +califAcademica,
-      calif_laboral: +califLaboral,
-      calif_psicologica: +sumaP,
-      calif_asertividad: +sumaAsertividad,
-      calif_comunicacion: +sumaComunicacion,
-      calif_autoestima: +sumaAutoestima,
-      calif_toma_decision: +sumaTomaDesicion,
+      postulante_id:idPostulante,
+      convocatoria_id:idConvocatoria,
+      calf_academica: +califAcademica,
+      calf_laboral: +califLaboral,
+      calf_psicologica: +sumaP,
+      calf_asertividad: +sumaAsertividad,
+      calf_comunicacion: +sumaComunicacion,
+      calf_autoestima: +sumaAutoestima,
+      calf_tomadecision: +sumaTomaDesicion,
+      estado:'activo',
     };
 
-    await registerCalificacion(+idPostulante, +idConvocatoria, calificaciones);
+    //await registerCalificacion(+idPostulante, +idConvocatoria, calificaciones);
+    await postCalificacion(calificaciones)
     console.log("todas califica", calificaciones);
     
   };
@@ -182,7 +198,7 @@ const FormPsicologico = () => {
                     <RadioGroup
                       row
                       aria-labelledby="label-radio"
-                      name={test.id_test}
+                      name={test.test_id}
                       onChange={handleChangeCalificacion}
                     >
                       <FormControlLabel

@@ -21,6 +21,7 @@ import swal from "sweetalert";
 import { getMonth } from "date-fns";
 import "../../styles/page/formEstilo.scss";
 import SendIcon from "@mui/icons-material/Send";
+import { getPostulante, postPostulante } from "../../service/postulanteServices";
 
 const FormPostulante = () => {
   const [idConvocatoria, setIDConvocatoria] = useState(
@@ -28,22 +29,24 @@ const FormPostulante = () => {
   );
 
   const [values, setValues] = useState({
-    nombre_postulante: "",
-    apellido_postulante: "",
-    dni_postulante: "",
-    correo_electronico: "",
-    fecha_nacimiento: new Date(),
-    genero: "",
-    pais_nacimiento: "",
-    numero_celular: "",
-    departamento: "",
-    provincia: "",
-    direccion: "",
+    postulante_nombre: "",
+    postulante_apellido: "",
+    postulante_dni: "",
+    postulante_email: "",
+    postulante_fecha_nacimiento: new Date(),
+    postulante_genero: "",
+    postulante_pais: "",
+    postulante_celular: "",
+    postulante_departamento: "",
+    postulante_provincia: "",
+    postulante_direccion: "",
     estado: "",
     fecha_postulacion: "",
-    mes: "",
-    id_convocatoria: "",
+    mes_postulacion: "",
+   
   });
+
+  console.log(values)
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -52,14 +55,14 @@ const FormPostulante = () => {
       ...values,
       [name]: value,
 
-      genero: Genero,
-      departamento: Departamento,
-      provincia: Provincia,
-      fecha_nacimiento: Fecha,
+      postulante_genero: Genero,
+      postulante_departamento: Departamento,
+      postulante_provincia: Provincia,
+      postulante_fecha_nacimiento: Fecha,
       estado: "activo",
       fecha_postulacion: new Date(),
-      mes: new Date().getMonth(),
-      id_convocatoria: +idConvocatoria,
+      mes_postulacion: new Date().getMonth(),
+     
     });
   };
 
@@ -85,9 +88,20 @@ const FormPostulante = () => {
   };
 
   const handleClickRegisterPostulante = async () => {
-    await registerPostulante(idPostulante, values);
+    
+    const NuevoPostulante = await postPostulante(values)
 
-    localStorage.setItem("idPostulante", idPostulante);
+    let IdNuevo = NuevoPostulante.content.postulante_id
+    console.log("variablesIDNuevo",IdNuevo)
+    //setIdPostulante(IdNuevo);
+    
+    console.log("idnuevo",NuevoPostulante.content.postulante_id)
+
+    
+    
+    // await registerPostulante(idPostulante, values);
+
+    localStorage.setItem("idPostulante", IdNuevo);
 
     swal({
       icon: "success",
@@ -96,15 +110,17 @@ const FormPostulante = () => {
     });
   };
 
-  const handleIdPostulante = async () => {
-    const id = await getPostulantes();
-    setIdPostulante(id + 1);
-    console.log("este es el id", idPostulante);
-  };
+  // const handleIdPostulante = async () => {
+  //   const id = await getPostulantes();
+  //   setIdPostulante(id + 1);
+  //   console.log("este es el id", idPostulante);
+  // };
 
-  useEffect(() => {
-    handleIdPostulante();
-  }, [idPostulante]);
+  // useEffect(() => {
+  //   // handleIdPostulante();
+  //   //getPostulante()
+
+  // }, [idPostulante]);
 
   return (
     <FormControl container className="formEstilo" mt={2}>
@@ -125,7 +141,7 @@ const FormPostulante = () => {
       >
         <h1>Formulario de datos</h1>
         <TextField
-          name="nombre_postulante"
+          name="postulante_nombre"
           label="Nombre"
           type="text"
           variant="filled"
@@ -133,7 +149,7 @@ const FormPostulante = () => {
           sx={{fontSize:"1.4rem", width:"100%"}}
         />
         <TextField
-          name="apellido_postulante"
+          name="postulante_apellido"
           label="Apellido"
           type="text"
           variant="filled"
@@ -141,7 +157,7 @@ const FormPostulante = () => {
           sx={{fontSize:"1.4rem"}}
         />
         <TextField
-          name="dni_postulante"
+          name="postulante_dni"
           label="Dni"
           type="text"
           variant="filled"
@@ -149,7 +165,7 @@ const FormPostulante = () => {
           sx={{fontSize:"1.4rem"}}
         />
         <TextField
-          name="correo_electronico"
+          name="postulante_email"
           label="Correo"
           type="mail"
           variant="filled"
@@ -189,12 +205,12 @@ const FormPostulante = () => {
             variant="filled"
             sx={{fontSize:"1.4rem"}}
           >
-            <MenuItem value={"Femenino"}>Femenino</MenuItem>
-            <MenuItem value={"Masculino"}>Masculino</MenuItem>
+            <MenuItem value={"femenino"}>Femenino</MenuItem>
+            <MenuItem value={"masculino"}>Masculino</MenuItem>
           </Select>
         </Box>
         <TextField
-          name="pais_nacimiento"
+          name="postulante_pais"
           label="Pais de nacimiento"
           type="text"
           variant="filled"
@@ -202,7 +218,7 @@ const FormPostulante = () => {
           sx={{fontSize:"1.4rem"}}
         />
         <TextField
-          name="numero_celular"
+          name="postulante_celular"
           label="Celular"
           type="text"
           variant="filled"
@@ -302,7 +318,7 @@ const FormPostulante = () => {
         </Box>
 
         <TextField
-          name="direccion"
+          name="postulante_direccion"
           label="Direccion"
           type="text"
           variant="filled"

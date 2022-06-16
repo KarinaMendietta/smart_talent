@@ -4,6 +4,8 @@ import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 //Importando de firestore
 import { getAnnouncements } from "../../service/firestore";
+import { getCardsHome } from "../../service/cardsHomeServices";
+
 // Importando Font Awesome
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -32,17 +34,24 @@ const CardsHome = () => {
   const fetchAnnouncements = async () => {
     const data = await getAnnouncements();
     setAnnouncements(data);
-    console.log(data);
+    //console.log(data);
   };
 
   const handleClickPostulate = (id) => {
-    console.log(id);
+    //console.log(id);
     localStorage.setItem("idConvocatoria", id);
   };
 
   //Inicializando los fetch
   useEffect(() => {
-    fetchAnnouncements();
+    getCardsHome()
+    .then(data=>{
+      if(data.ok){
+        setAnnouncements(data.content);        
+      }
+      console.log(announcements)
+    })
+    // fetchAnnouncements();
   }, []);
   return (
     <div className="cards-home">
@@ -64,7 +73,7 @@ const CardsHome = () => {
                   <CardMedia
                     component="img"
                     className="img-pokemon"
-                    image={announcement.photo_convocatoria}
+                    image={announcement.convocatoria_photo}
                     sx={{ height: "25rem" }}
                   />
                   <CardContent
@@ -76,13 +85,13 @@ const CardsHome = () => {
                     }}
                   >
                     <h3 className="card__name">
-                      {announcement.nombre_convocatoria}
+                      {announcement.convocatoria_nombre}
                     </h3>
 
                     <Grid container spacing={3} mb={2}>
                       <Grid item md={12} lg={12} sm={12} xs={12} mb={2}>
                         <p className="card__description">
-                          {announcement.descripcion}
+                          {announcement.convocatoria_descripcion}
                         </p>
                       </Grid>
 
@@ -125,7 +134,7 @@ const CardsHome = () => {
                         variant="contained"
                         color="primary"
                         onClick={() =>
-                          handleClickPostulate(+announcement.id_convocatoria)
+                          handleClickPostulate(+announcement.convocatoria_id)
                         }
                         sx={{ fontSize: "1.6rem", borderRadius: "1rem" }}
                       >

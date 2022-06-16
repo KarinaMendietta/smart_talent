@@ -22,10 +22,10 @@ import { getPostulantes, registerLaboral } from "../../service/firestore";
 import swal from "sweetalert";
 import "../../styles/page/formEstilo.scss";
 import SendIcon from "@mui/icons-material/Send";
+import { postLaboral } from "../../service/laboral.Services";
 
 const FormLaboral = () => {
-  const [idPostulante, setIDPostulante] = useState(
-    localStorage.getItem("idPostulante")
+  const [idPostulante, setIDPostulante] = useState(localStorage.getItem("idPostulante")
   );
 
   const [Tiempo, setTiempo] = useState(null);
@@ -35,7 +35,7 @@ const FormLaboral = () => {
   };
 
   const [values, setValues] = useState({
-    id_postulante: "",
+    postulante_id: idPostulante,
     nombre_empresa: "",
     ruc: "",
     telefono: "",
@@ -43,7 +43,7 @@ const FormLaboral = () => {
     cargo_desempenho: "",
     fecha_inicio: new Date(),
     fecha_termino: new Date(),
-    breve_descripcion_actividad: "",
+    descripcion_actividad: "",
     tiempo: "",
   });
 
@@ -61,7 +61,8 @@ const FormLaboral = () => {
   };
 
   const handleClickRegisterLaboral = async () => {
-    await registerLaboral(+idPostulante, values);
+    //await registerLaboral(+idPostulante, values);
+    await postLaboral(values)
 
     let califLaboral = 0;
     console.log("dice tiempo", values.tiempo);
@@ -201,7 +202,7 @@ const FormLaboral = () => {
           </Select>
         </Box>
         <TextField
-          name="breve_descripcion_actividad"
+          name="descripcion_actividad"
           label="Descripcion Actividad (Breve)"
           type="text"
           variant="filled"
